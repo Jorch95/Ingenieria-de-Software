@@ -46,3 +46,13 @@ group :development do
 end
 
 gem 'hirb'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+#gem 'sass-rails', '>= 3.2'
+
+gem 'devise'
+
+group :production, :staging do
+    gem 'pg', '~> 0.15'
+    gem 'rails_12factor'
+end

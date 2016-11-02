@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102163322) do
+ActiveRecord::Schema.define(version: 20161102173806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,15 +93,24 @@ ActiveRecord::Schema.define(version: 20161102163322) do
     t.boolean  "sexo"
     t.string   "email"
     t.date     "fecha_nacimiento"
-    t.boolean  "admin",            default: false
+    t.boolean  "admin",                  default: false
     t.string   "tc_apellido"
     t.string   "tc_nombre"
     t.integer  "tc_numero"
     t.integer  "tc_pin"
     t.date     "tc_caducidad"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "achievement_id"
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
 
   add_index "users", ["achievement_id"], name: "index_users_on_achievement_id", using: :btree
