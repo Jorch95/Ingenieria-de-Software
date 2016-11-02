@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102035108) do
+ActiveRecord::Schema.define(version: 20161102163322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(version: 20161102035108) do
     t.text     "comentario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "favour_id"
   end
+
+  add_index "comments", ["favour_id"], name: "index_comments_on_favour_id", using: :btree
 
   create_table "favours", force: :cascade do |t|
     t.text     "descripcion"
@@ -51,7 +54,12 @@ ActiveRecord::Schema.define(version: 20161102035108) do
     t.boolean  "calificacion"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "favour_id"
   end
+
+  add_index "grades", ["favour_id"], name: "index_grades_on_favour_id", using: :btree
+  add_index "grades", ["user_id"], name: "index_grades_on_user_id", using: :btree
 
   create_table "purchases", force: :cascade do |t|
     t.date     "fecha"
@@ -70,8 +78,10 @@ ActiveRecord::Schema.define(version: 20161102035108) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "favour_id"
   end
 
+  add_index "requests", ["favour_id"], name: "index_requests_on_favour_id", using: :btree
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -97,8 +107,12 @@ ActiveRecord::Schema.define(version: 20161102035108) do
   add_index "users", ["achievement_id"], name: "index_users_on_achievement_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "comments", "favours"
   add_foreign_key "favours", "users"
+  add_foreign_key "grades", "favours"
+  add_foreign_key "grades", "users"
   add_foreign_key "purchases", "users"
+  add_foreign_key "requests", "favours"
   add_foreign_key "requests", "users"
   add_foreign_key "users", "achievements"
 end

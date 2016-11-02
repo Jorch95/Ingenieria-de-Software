@@ -1,4 +1,6 @@
 class Favour < ActiveRecord::Base
-  belong_to :user 
-
+  belongs_to :user
+  has_many :requests
+  has_many :comments
+  has_one :grade
 end
