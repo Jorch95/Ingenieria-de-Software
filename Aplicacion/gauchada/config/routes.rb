@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   get 'about/contact'
   get 'legal/terms'
   get 'legal/privacy'
