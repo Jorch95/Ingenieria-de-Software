@@ -1,0 +1,54 @@
+/* 	Place all the styles related to the legal controller here.
+	They will automatically be included in application.css.
+	You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+@font-face {
+	font-family: 'OpenSans-Bold';
+	src: url(OpenSans-Bold.ttf);
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'OpenSans-Regular';
+	src: url(OpenSans-Regular.ttf);
+	font-style: normal;
+}
+
+h3 {
+	/* empezando por arriba y en sentido agujas del reloj*/
+	padding: 20px 0px 5px 20px;
+	text-align: center;
+	font-family: "OpenSans-Bold";
+	text-transform: uppercase;
+}
+
+h5 {
+	padding-left: 60px;
+	padding-top: 15px;
+	font-family: "OpenSans-Regular";
+	font-size: medium;
+}
+
+.normalFont {
+	text-align: justify;
+	font-family: "OpenSans-Regular";
+	font-size: small;
+}
+
+ol {
+	padding: 5px 60px 5px 70px;
+}
+
+li {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+p {
+	padding: 5px 60px 5px 60px;
+}
+
+.panel-body{
+  text-align:center;
+}

@@ -13,6 +13,66 @@
  *= require_tree .
  *= require_self
  */
- // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+ /* "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"*/
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.logo-inicio {
+  width: 35px; /* ancho */
+  margin-top: 10px;
+}
+
+/* Para el footer */
+.logo-foot {
+  	width: 30px;
+}
+
+.panel-footer {
+  text-align: center;
+}
+
+.hoverGris img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hoverGris  img:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
+/* Para la barra */
+.brand-centered {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.brand-centered .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .logo-inicio {
+    width: 30px;
+    margin-top: 5px;
+  }
+}
+
+
+/* Esto modifica bootstrap */
+.navbar-inverse .navbar-nav > li > a:active{
+  /* Configuracion sadaca da bootstrap-theme.css
+        .navbar-inverse .navbar-nav > .active > a {}
+  */
+  background-image: -webkit-linear-gradient(top, #222222 0%, #282828 100%);
+  background-image: linear-gradient(to bottom, #222222 0%, #282828 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff282828', GradientType=0);
+  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
+}
