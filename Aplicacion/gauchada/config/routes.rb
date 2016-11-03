@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'requests/solicitar'
+
+  #get '/solicitar', to:'requests_controller#solicitar'
+  get 'favours/show/:id', to: 'favours#show'
+  #get 'favours/show'
+  get 'favours/index', to: 'favours#index'
+
   get 'home/index'
 
   get 'about/contact'
