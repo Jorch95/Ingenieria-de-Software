@@ -3,19 +3,19 @@
 <table class="table">
 
 	<tr>
-		<th> Nombre </th>
-		<th> Descripción </th>
+		<th> Titulo </th>
+		<th> Imagen </th>
+		<th> Ciudad </th>
     	<th> Acciones </th>
 	</tr>
 
 	<% @favours.each do |favour| %>
 		<tr>
-			<td> <%= favour.titulo %> </td>
-			<td> <%= favour.descripcion %> </td>
+			<td> <h4 class: "text-align"><%= favour.titulo %></h4> </td>
+			<td> <%= image_tag favour.image_url, class: "max-size" %> </td>
+			<td> <%= favour.ciudad %> </td>
 			<td>
-					<% id = favour.id %>
-					<%= id %>
-				 <%= link_to "Mostrar", '/favours/show/:id', class: 'btn btn-info btn-sm' %>
+				 <%= link_to "Mostrar", favour, class: 'btn btn-info btn-sm' %>
 				 <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-info btn-sm' %>
 			</td>
 		</tr>
