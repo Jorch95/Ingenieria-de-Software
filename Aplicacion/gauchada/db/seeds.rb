@@ -21,5 +21,5 @@ end
   #puts users[f].valid?
   #users[f].errors.full_messages.each do |msg|
   #  puts msg
-  #end
-end
+  #send
+en
