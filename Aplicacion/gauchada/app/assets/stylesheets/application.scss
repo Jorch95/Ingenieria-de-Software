@@ -16,6 +16,7 @@
  /* "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"*/
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome";
 
 .logo-inicio {
   width: 35px; /* ancho */
@@ -24,7 +25,7 @@
 
 /* Para el footer */
 .logo-foot {
-  	width: 30px;
+	width: 30px;
 }
 
 .panel-footer {
@@ -61,18 +62,4 @@
     width: 30px;
     margin-top: 5px;
   }
-}
-
-
-/* Esto modifica bootstrap */
-.navbar-inverse .navbar-nav > li > a:active{
-  /* Configuracion sadaca da bootstrap-theme.css
-        .navbar-inverse .navbar-nav > .active > a {}
-  */
-  background-image: -webkit-linear-gradient(top, #222222 0%, #282828 100%);
-  background-image: linear-gradient(to bottom, #222222 0%, #282828 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff282828', GradientType=0);
-  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
-          box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
 }
