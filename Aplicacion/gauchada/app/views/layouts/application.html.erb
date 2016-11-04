@@ -52,7 +52,7 @@
 							</li>
 					<% else %>
 						<li>
-							<%= link_to('Iniciar sesion', new_user_session_path) %> 
+							<%= link_to('Iniciar sesion', new_user_session_path) %>
 						</li>
 						<li>
 							<%= link_to('Registrate', new_user_registration_path) %>
@@ -69,7 +69,7 @@
 	<%= yield %>
 
 		<!-- El pie de pagina -->
-	<div class="panel-footer">
+	<footer class="container">
 		<div class="row">
 		<div class="col-md-4 text-muted">
 			&copy; 2016 MasterBranch S.A.
@@ -85,7 +85,7 @@
 			<%= link_to 'Contacto', about_contact_path %>
 		</div>
 		</div>
-	</div>
+	</footer>
 
 
 </body>
