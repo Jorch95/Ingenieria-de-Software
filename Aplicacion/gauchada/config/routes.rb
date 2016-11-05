@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'legal/terms'
   get 'legal/privacy'
 
-  get "/" => "home#index", :as => "root"
+  get "/" => "favours#index", :as => "root"
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

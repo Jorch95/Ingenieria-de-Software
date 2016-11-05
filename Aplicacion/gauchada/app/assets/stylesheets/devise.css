@@ -1,5 +1,5 @@
 #index-fondo {
-	background-image: url("http://gdurl.com/JZEb");
+	 background-image: url("http://gdurl.com/JZEb");
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -7,21 +7,31 @@
 }
 
 .formulario-reg {
-	padding: 50px 200px 20px 200px;
-	/* top right bottom left*/
+    margin: 50px 50px 20px 50px; /* top right bottom left*/
+    background-color: red;
 }
 
+.cont-center{
+    background-color: blue;
+    margin: 0;
+    align-content: center;
+}
 
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: #888;
-    line-height: 30px;
+.input-group-addon {
+    min-width: 120px;
     text-align: center;
+    border-bottom-left-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+    border:1px solid #ccc !important;
 }
 
-strong { font-weight: 500; }
+.form-control {
+    max-width: 340px;
+}
+
+.input-group{
+    text-align:center;
+}
 
 a, a:hover, a:focus {
 	color: #f35b3f;
@@ -50,10 +60,3 @@ h4 {
     color: #555;
     line-height: 26px;
 }
-
-img { max-width: 100%; }
-
-::-moz-selection { background: #f35b3f; color: #fff; text-shadow: none; }
-::selection { background: #f35b3f; color: #fff; text-shadow: none; }
-
-

@@ -28,10 +28,6 @@
 	width: 30px;
 }
 
-.panel-footer {
-  text-align: center;
-}
-
 .hoverGris img {
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
@@ -57,14 +53,37 @@
   align-items: center;
 }
 
+body > .conteiner {
+	padding-top: 80px;
+	margin: 20px 0;
+}
+
+html { /* No toquen esto pls, que se rompe todo jaja*/
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 70px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	text-align: center;
+	background-image: linear-gradient( #f5fff9, #eaebea);
+
+}
+
 @media (max-width: 768px) {
   .logo-inicio {
     width: 30px;
     margin-top: 5px;
   }
 }
-footer {
-  position: abolute;
-  bottom:0;
-  text-align: center;
+@media (max-width: 991px) {
+  	html { /* No toquen esto pls, que se rompe todo jaja*/
+  		padding-bottom: 120px;	
+	}
 }
+
+

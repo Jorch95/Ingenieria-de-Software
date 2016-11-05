@@ -64,26 +64,28 @@
 		</div>
 	<!--/.container-fluid -->
 	</nav>
+	
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
+	
 	<%= yield %>
 
 		<!-- El pie de pagina -->
-	<footer class="container">
-		<div class="row">
-		<div class="col-md-4 text-muted">
-			&copy; 2016 MasterBranch S.A.
-		</div>
-		<div class="col-md-4 hoverGris">
-			<%= link_to image_tag("http://gdurl.com/GY5O", :class => "logo-foot"), root_path %> <!-- logo.svg -->
-		</div>
-	  	<div class="col-md-4 text-muted">
-			<%= link_to 'Condiciones', legal_terms_path %>
-			&nbsp;&nbsp;
-			<%= link_to 'Privacidad', legal_privacy_path %>
-			&nbsp;&nbsp;
-			<%= link_to 'Contacto', about_contact_path %>
-		</div>
+	<footer class="footer">
+		<div class="container">
+			<div class="col-md-4 text-muted">
+				&copy; 2016 MasterBranch S.A.
+			</div>
+			<div class="col-md-4 hoverGris">
+				<%= link_to image_tag("http://gdurl.com/GY5O", :class => "logo-foot"), root_path %> <!-- logo.svg -->
+			</div>
+		  	<div class="col-md-4 text-muted">
+				<%= link_to 'Condiciones', legal_terms_path %>
+				&nbsp;&nbsp;
+				<%= link_to 'Privacidad', legal_privacy_path %>
+				&nbsp;&nbsp;
+				<%= link_to 'Contacto', about_contact_path %>
+			</div>
 		</div>
 	</footer>
 

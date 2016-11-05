@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//document.getElementById("error_explanation").className = "alert alert-danger";
