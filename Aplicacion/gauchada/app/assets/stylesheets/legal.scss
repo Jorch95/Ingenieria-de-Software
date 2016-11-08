@@ -15,7 +15,7 @@
 	font-style: normal;
 }
 
-h3 {
+h3.legal {
 	/* empezando por arriba y en sentido agujas del reloj*/
 	padding: 20px 0px 5px 20px;
 	text-align: center;
@@ -23,7 +23,7 @@ h3 {
 	text-transform: uppercase;
 }
 
-h5 {
+h5.legal {
 	padding-left: 60px;
 	padding-top: 15px;
 	font-family: "OpenSans-Regular";
@@ -36,16 +36,16 @@ h5 {
 	font-size: small;
 }
 
-ol {
+ol.legal {
 	padding: 5px 60px 5px 70px;
 }
 
-li {
+li.legal {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
-p {
+p.legal {
 	padding: 5px 60px 5px 60px;
 }
 

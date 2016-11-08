@@ -7,19 +7,19 @@
 	<link rel="javascripts" href="assets/stylesheets/application.js">
 
 </head>
-<body id="index-fondo">
+<body class="fondo1">
 
 <div class="alert alert-danger alert-dismissible" role="alert">
   <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   asdasdasdasdasd
 </div>
 
+	<div class="formulario-margen">
+		<h2>Registráte</h2>
+			<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :onsubmit => "checkear()"}) do |f| %>
+			<script src="checkeador.js"></script>
+				<%= devise_error_messages! %>
 
-	<div class="formulario-reg">
-		<h3>Registrate</h3>
-
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :onsubmit => "checkear()" }) do |f| %>
-			<%= devise_error_messages! %>
 
 <!-- document.getElementById("error_explanation").className = "alert alert-danger"; -->
 <% 
@@ -36,91 +36,93 @@
 			<% end %>
 <% 
 =end %>
+			<div class="formulario-reg">
 
-			<script src="checkeador.js"></script>
-			<div class="form-group input-group">
-				<label class="sr-only">Email</label>
-				<span class="input-group-addon">
-					<i class="fa fa-envelope"></i> <%= f.label :email %>
-				</span>
-				<%= f.email_field :email, autofocus: true, placeholder: 'Ingrese su mail', class: 'form-control' %>
-			</div>
-			<br>
-			<div class="cont-center">
-			<div class="form-group input-group">
-				<label class="sr-only">Contraseña</label>
-				<span class="input-group-addon">
-					<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
-				</span>
-				<%= f.password_field :password, autocomplete: "off", placeholder: '7 caracteres como minimo', class: 'form-control'%>
-			</div>
-			</div>
-			<br>
-			<div class="form-group input-group">
-				<label class="sr-only">Confirmar contraseña</label>
-				<span class="input-group-addon">
-					<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
-				</span>
-				<%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Repetir contraseña', class: 'form-control'%>
-			</div>
-			<br>
+				<div class="form-group input-group">
+					<label class="sr-only">Email</label>
+					<span class="input-group-addon">
+						<i class="fa fa-envelope"></i> <%= f.label 'Email' %>
+					</span>
+					<%= f.email_field :email, required: true, autofocus: true, placeholder: 'Ingrese su mail', class: 'form-control' %>
+				</div>
 
-			<div class="form-group input-group">
-				<label class="sr-only">Nombre</label>
-				<span class="input-group-addon">
-					<i class="fa fa-user"></i> <%= f.label :nombre %>
-				</span>
-				<%= f.text_field :nombre, placeholder: 'Ingrese su nombre', class: 'form-control' %>
-			</div>
+				<div class="form-group input-group">
+					<label class="sr-only">Contraseña</label>
+					<span class="input-group-addon">
+						<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+					</span>
+					<%= f.password_field :password, required: true, autocomplete: "off", placeholder: '7 caracteres como minimo', class: 'form-control' %>
+				</div>
+			
+				<div class="form-group input-group">
+					<label class="sr-only">Confirmar contraseña</label>
+					<span class="input-group-addon">
+						<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+					</span>
+					<%= f.password_field :password_confirmation, required: true, autocomplete: "off", placeholder: 'Repetir contraseña', class: 'form-control'%>
+				</div>
 
-			<div class="form-group input-group">
-				<label class="sr-only">Apellido</label>
-				<span class="input-group-addon">
-					<i class="fa fa-user"></i> <%= f.label :apellido %>
-				</span>
-				<%= f.text_field :apellido, placeholder: 'Ingrese su apellido', class: 'form-control' %>
-			</div>
+				<div class="form-group input-group">
+					<label class="sr-only">Nombre</label>
+					<span class="input-group-addon">
+						<i class="fa fa-user"></i> <%= f.label 'Nombre' %>
+					</span>
+					<%= f.text_field :nombre, required: true, placeholder: 'Ingrese su nombre', class: 'form-control' %>
+				</div>
 
-			<div class="form-group input-group">
-				<label class="sr-only">Telefono</label>
-				<span class="input-group-addon">
-					<i class="fa fa-phone"></i> <%= f.label :telefono %>
-				</span>
-				<%= f.text_field :telefono, :pattern => '[0-9]{10,16}' ,placeholder: 'Ingrese 10 a 16 numeros, con caracteristica', class: 'form-control' %>
-			</div>
+				<div class="form-group input-group">
+					<label class="sr-only">Apellido</label>
+					<span class="input-group-addon">
+						<i class="fa fa-user"></i> <%= f.label 'Nombre' %>
+					</span>
+					<%= f.text_field :apellido, required: true, placeholder: 'Ingrese su apellido', class: 'form-control' %>
+				</div>
 
-			<div class="form-group input-group">
-				<label class="sr-only">Sexo</label>
-				<span class="input-group-addon">
-					<i class="fa fa-venus-mars"></i> <%= f.label :sexo %>
-				</span>
-				<%= f.select :sexo, [["Hombre", 1], ["Mujer", 0]], {}, {class: 'form-control'} %>
-			</div> 
+				<div class="form-group input-group">
+					<label class="sr-only">Telefono</label>
+					<span class="input-group-addon">
+						<i class="fa fa-phone"></i> <%= f.label 'Telefono' %>
+					</span>
+					<%= f.text_field :telefono, required: true, :pattern => '[0-9]{10,16}' ,placeholder: 'Ingrese 10 a 16 numeros, con caracteristica', class: 'form-control' %>
+				</div>
 
-			<div class="form-group input-group">
-				<label class="sr-only">País</label>
-				<span class="input-group-addon">
-					<i class="fa fa-globe"></i> <%= f.label :pais %>
-				</span>
-				<%= f.country_select :pais, {}, {class: 'form-control'} %>
-			</div>
+				<div class="form-group input-group">
+					<label class="sr-only">Sexo</label>
+					<span class="input-group-addon">
+						<i class="fa fa-venus-mars"></i> <%= f.label 'Sexo' %>
+					</span>
+					<%= f.select :sexo, [["Hombre", 1], ["Mujer", 0]], {}, {class: 'form-control'} %>
+				</div> 
 
-			<br>
-			<div class="form-group input-group">
-				<label class="sr-only">Fecha de nacimeinto</label>
-				<span class="input-group-addon">
-					<i class="fa fa-birthday-cake"></i> <%= f.label 'Nacimiento' %>
-				</span>
-				<%= f.date_field :fecha_nacimiento, class: 'form-control'%>
+				<div class="form-group input-group">
+					<label class="sr-only">País</label>
+					<span class="input-group-addon">
+						<i class="fa fa-globe"></i> <%= f.label 'Pais' %>
+					</span>
+					<%= f.country_select :pais, {}, {class: 'form-control'} %>
+				</div>
+
+				<div class="form-group input-group">
+					<label class="sr-only">Fecha de nacimeinto</label>
+					<span class="input-group-addon">
+						<i class="fa fa-birthday-cake"></i> <%= f.label 'Nacimiento' %>
+					</span>
+					<%= f.date_field :fecha_nacimiento, required: true, class: 'form-control'%>
+				</div>
+
 			</div>
-			<br>
 
 			<div class="checkbox" id="Acepto1">
 				<label>
-					<input type="checkbox" for ="Acepto1"/>
-						Acepto los <%= link_to "Terminos y condiciones", @pagTerms%>, y estoy de acuerdo con las <%= link_to "Politicas de privacidad", @pagPrivacy%>.<br>
+					<input type="checkbox" id="Acepto"/>
+			Acepto los <%= link_to "Terminos y condiciones", legal_terms_path %>, y estoy de acuerdo con las <%= link_to "Politicas de privacidad", legal_privacy_path %>.<br>
 					</label>
-			</div>
+			</div>	
+			
+			<div class="center-block panel-body">
+				<input type="submit" class="btn btn-default" value="Registrar"/>
+			</div>		
+
 
 			<br>
 			<div class="actions">
@@ -130,6 +132,26 @@
 
 		<% end %>
 	</div>
+
+
+<div class="modal fade" id="mensajeEmergenteTyC-P" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>

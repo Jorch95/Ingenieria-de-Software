@@ -34,28 +34,49 @@
 
 			<div id="menuDesplegable" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li>
+					<li class="barra">
 						<%= link_to('Favores', favours_path, :method => :get) %>
 					</li>
-					<li><a href="#">Cosas</a></li>
+					<li class="barra"><a href="#">Cosas</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Cosas</a></li>
+					<li class="barra"><a href="#">Cosas</a></li>
 					<% if user_signed_in? %>
-						<li class="dropdown">
+						<li class="barra dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 							<i class="fa fa-id-card-o" aria-hidden="true"></i> Usuario <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Editar perfil</a></li>
-									<li><%= link_to('Cerrar sesion', destroy_user_session_path, :method => :delete) %></li>
+									<li class="barra">
+										<%= link_to edit_user_registration_path, :method => :get do %>
+											<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
+										<% end %>
+									</li>
+									<li class="barra">
+										<%= link_to  do %>
+											<i class="fa fa-tasks" aria-hidden="true"></i> Cuenta
+										<% end %>
+									</li>
+									<% if current_user.admin? %>	
+										<li class="barra">
+											<%= link_to  do %>
+												<i class="fa fa-line-chart" aria-hidden="true"></i> Análisis
+											<% end %>
+										</li>
+									<% end %>
+									<li class="barra">
+										<%= link_to destroy_user_session_path, :method => :delete do %>
+											<i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión
+										<% end %>
+									
+									</li>
 								</ul>
 							</li>
 					<% else %>
-						<li>
-							<%= link_to('Iniciar sesion', new_user_session_path) %>
+						<li class="barra">
+							<%= link_to('Iniciar sesión', new_user_session_path) %>
 						</li>
-						<li>
-							<%= link_to('Registrate', new_user_registration_path) %>
+						<li class="barra">
+							<%= link_to('Registráte', new_user_registration_path) %>
 						</li>
 					<% end %>
 				</ul>
@@ -64,9 +85,17 @@
 		</div>
 	<!--/.container-fluid -->
 	</nav>
-	
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+
+	<% flash.each do |key, value| %>
+		<div class="alert alert-<%= key %> alert-dismissible" role="alert">
+			<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<ul>
+				<li>
+					<%= value %>
+				</li>
+			</ul>
+		</div>
+	<% end %>
 	
 	<%= yield %>
 

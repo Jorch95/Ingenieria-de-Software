@@ -1,24 +1,53 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+<html>
+  <title>Iniciar Sección</title>
+  <link rel="stylesheet" type="text/css" href="aplication.scss">
+  <link rel="stylesheet" href="assets/stylesheets/devise.css">
+  <link rel="javascripts" href="assets/stylesheets/application.js">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+</head>
 
-    <%= f.label :email %><br/>
-    <%= f.email_field :email, autofocus: true, :class => 'form-control'%>
+<body class="fondo3">
 
-  <div class="field">
-    <%= f.label :password %><br/>
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control col' %>
-  </div>
+<div class="formulario-margen" id="relleno-sesion">
+	<h3>Ingresa tus datos</h3>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <%= f.submit "Log in", :class => 'btn btn-default actions'%>
+		<div class="formulario-reg">
 
-<% end %>
+			<div class="form-group input-group">
+				<label class="sr-only">Email</label>
+				<span class="input-group-addon">
+					<i class="fa fa-envelope"></i> <%= f.label :email %>
+				</span>
+				<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+			</div>
 
-<%= render "devise/shared/links" %>
+			<div class="form-group input-group">
+				<label class="sr-only">Contraseña</label>
+				<span class="input-group-addon">
+					<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+				</span>
+				<%= f.password_field :password, autocomplete: "off", class: 'form-control col' %>
+			</div>
+			<div style="text-align: right;"> 
+				<%= link_to('Olvidaste la contraseña?', new_user_password_path) %>
+			</div>
+			<br>
+			<% if devise_mapping.rememberable? -%>
+				<div class="field">
+					<%= f.check_box :remember_me, id: "recordar"%>
+					<%= f.label "Recordar datos", for: "recordar" %>
+				</div>
+			<% end -%>
+			
+			<%= f.submit "Iniciar sección", :class => 'btn btn-default actions'%>
+		</div>
+
+	<% end %>
+</div>
+
+</body>
+</html>
