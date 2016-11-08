@@ -17,7 +17,7 @@ users = []
 end
 
 10.times do |f|
-  users[f].favours.create(titulo: "Ayuda #{f}", descripcion:" Descripcion #{f}", ciudad: "Alguna #{f}", fecha: DateTime.new(2016,11,04), )
+  users[f].favours.create(titulo: "Ayuda #{f}", descripcion:" Descripcion #{f}", ciudad: "Alguna #{f}", fecha: DateTime.new(2016,11,04), image_url: "perro#{f}.jpg" )
   #puts users[f].valid?
   #users[f].errors.full_messages.each do |msg|
   #  puts msg

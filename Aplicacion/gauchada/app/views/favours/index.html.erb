@@ -3,22 +3,23 @@
 <table class="table">
 
 	<tr>
-		<!-- TODO: Extraer a una clase usando favours.scss -->
-		<th style="text-align: center;"> Titulo </th>
-		<th style="text-align: center;"> Imagen </th>
-		<th style="text-align: center;"> Ciudad </th>
-    	<th style="text-align: center;"> Acciones </th>
+		<th class="center"> Titulo </th>
+		<th class="center"> Imagen </th>
+		<th class="center"> Ciudad </th>
+    <th class="center"> Acciones </th>
 	</tr>
 
 	<% @favours.each do |favour| %>
 		<tr>
-			<td> <h4 class: "text-align"><%= favour.titulo %></h4> </td>
-			<td> <%= image_tag favour.image_url, class: "max-size" %> </td>
-			<td> <%= favour.ciudad %> </td>
-			<td>
+			<td class="center"> <h4><%= favour.titulo %></h4> </td>
+			<td class="center"> <%= image_tag favour.image_url, class: "max-size" %> </td>
+			<td class="center"> <%= favour.ciudad %> </td>
+			<td class="center">
 				 <%= link_to "Mostrar", favour, class: 'btn btn-info btn-sm' %>
-				 <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-info btn-sm' %>
-				 <!-- TODO agregar el editar si soy propietario de usuario -->
+				 <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-primary btn-sm' %>
+				 <% if (@edit) %>
+			 	 <%= link_to "Editar", "/", class: 'btn btn-info btn-sm' %>
+				 <% end %>
 			</td>
 		</tr>
 	<% end %>
