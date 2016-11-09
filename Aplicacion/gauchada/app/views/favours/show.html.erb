@@ -1,13 +1,12 @@
 <div class="container">
 <div class="col-md-4">
 <h1> <%= @favour.titulo %> </h1>
-<h4> Fecha: <%= @favour.created_at %> </h4>
 <h4> Fecha: <%= @favour.fecha %> </h4>
 <h4> Provincia: <%= @favour.provincia %>. Ciudad: <%= @favour.ciudad %> </h4>
 <h4> Publicado por: <%= @favour.user.nombre %> <%= @favour.user.apellido %> </h4>
 <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-success btn-sm' %>
 <% if current_user == @favour.user %>
-<%= link_to "Editar", "edit_favour", class: 'btn btn-warning btn-sm' %>
+ <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-warning btn-sm' %>
 <% end %> </div>
 <div class="col-md-8">
 <%= image_tag @favour.image_url, class: "image-size" %></br> </div>
