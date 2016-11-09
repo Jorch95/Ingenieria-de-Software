@@ -3,7 +3,7 @@
     min-width: 420px;
     max-width: 500px;
     width: 50%;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .formulario-margen {
@@ -11,7 +11,7 @@
     text-align: center;
     align-content: center;
     width: 40%;
-    margin: 0 auto; 
+    margin: 0 auto;
     border-radius: 6px;
 }
 
@@ -20,8 +20,8 @@
 }
 
 .input-group-addon { /* Es el cudro a lado de input */
-    min-width: 120px;
-    max-width: 120px;
+    min-width: 140px;
+    max-width: 140px;
     text-align: center;
     border-bottom-left-radius: 4px !important;
     border-top-left-radius: 4px !important;
