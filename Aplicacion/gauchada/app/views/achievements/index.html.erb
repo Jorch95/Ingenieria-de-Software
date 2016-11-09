@@ -18,7 +18,7 @@
       <td > <%= a.rango_superior%> </td>
 			<td >
 				<%= link_to "Editar", edit_achievement_path(a), class: 'btn btn-info btn-sm' %>
-				<%= link_to "Eliminar",a,method: :delete, class: 'btn btn-danger btn-sm' %>
+				<%= link_to "Eliminar",a,method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
 			</td>
 		</tr>
 	<% end %>
