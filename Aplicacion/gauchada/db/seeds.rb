@@ -26,3 +26,8 @@ User.create(nombre: "nahuel", apellido: "ter", password:"123123123", password_co
   #  puts msg
   #send
 end
+
+puts 'Creo algunos logros'
+5.times do |i|
+  Achievement.find_or_create_by(titulo: "Logro #{i}", descripcion:"Descripcion lero lero uno dos tres probando",rango_inferior:0+5*i, rango_superior: -1+5*(i+1))
+end
