@@ -1,6 +1,12 @@
 class AchievementsController < ApplicationController
   def index
-    @achievements=Achievement.where(enable: true).order(:rango_inferior)
+    order = params[:sort] || "rango"
+    if order == "titulo"
+      ordering = { titulo: :asc }
+    elsif order == "rango"
+      ordering = { rango_inferior: :asc }
+    end
+    @achievements=Achievement.where(enable: true).order(ordering)
   end
   def destroy
     a=Achievement.find(params[:id])
