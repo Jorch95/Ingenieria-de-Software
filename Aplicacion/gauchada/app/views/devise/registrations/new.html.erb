@@ -9,16 +9,10 @@
 </head>
 <body class="fondo1">
 
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
-
 	<div class="formulario-margen">
 		<h2>Registráte</h2>
 			<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-			<script src="checkeador.js"></script>
 				<%= devise_error_messages! %>
-
 
 <!-- document.getElementById("error_explanation").className = "alert alert-danger"; -->
 <% 
@@ -110,42 +104,21 @@
 				</div>
 
 			</div>
+			<div class="checkbox">
+				<%= f.label :terminos_legales do %>
+					<%= f.check_box :terminos_legales %>
+					Acepto los <%= link_to "Terminos y condiciones", legal_terms_path %>, y estoy de acuerdo con las <%= link_to "Politicas de privacidad", legal_privacy_path %>.
+				<% end %>
+			</div>
 
-			<div class="checkbox" id="Acepto1">
-				<label>
-					<input type="checkbox" id="Acepto"/>
-			Acepto los <%= link_to "Terminos y condiciones", legal_terms_path %>, y estoy de acuerdo con las <%= link_to "Politicas de privacidad", legal_privacy_path %>.<br>
-					</label>
-			</div>	
-			
 			<br>
 			<div class="actions">
-				<%= f.submit "Registrar", :class => 'btn btn-default actions', :html => { :onsubmit => "checkear()"}%>
+				<%= f.submit "Registrar", :class => 'btn btn-default actions'%>
 			</div>
 			<br>
 
 		<% end %>
 	</div>
-
-
-<div class="modal fade" id="mensajeEmergenteTyC-P" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 </body>
 </html>
