@@ -5,14 +5,11 @@ class FavoursController < ApplicationController
   def show
       @favour = Favour.find(params[:id])
   end
-  def Editar
+  def edit
       @favour = Favour.find(params[:id])
-      if session[:user_id] != @favour.user_id
-        @edit = false
-        flash[:notice] = "No podes editar este tweet"
-        redirect_to(index)
-      else
-        @edit = true
+      if current_user != @favour.user
+        flash[:notice] = "No podes editar este favor"
+        redirect_to action: "index"
       end
   end
 end
