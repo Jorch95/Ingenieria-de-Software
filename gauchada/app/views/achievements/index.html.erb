@@ -1,0 +1,34 @@
+<body class="fondo1">
+<h1 align="center"> Listado de logros </h1>
+
+<table class="table table-striped table-bordered" style="width: 90% ; background-color: #ffa141" style="" align="center">
+
+	<tr>
+		<th > Logro <%= link_to raw("<span class='fa fa-caret-square-o-down'></span>"), achievements_path(sort: "titulo") %></th>
+		<th > Descripción </th>
+		<th > Limite inferior <%= link_to raw("<span class='fa fa-caret-square-o-down'></span>"), achievements_path(sort: "rango")  %></th>
+		<th > Limite superior <%= link_to raw("<span class='fa fa-caret-square-o-down'></span>"), achievements_path(sort: "rango") %></th>
+		<th > Acciones </th>
+	</tr>
+
+	<% @achievements.each do |a| %>
+		<tr>
+			<td > <%=a.titulo%> </td>
+			<td > <%= a.descripcion %> </td>
+			<td > <%= a.rango_inferior%> </td>
+      <td > <%= a.rango_superior%> </td>
+			<td >
+				<%= link_to "Editar", edit_achievement_path(a), class: 'btn btn-info btn-sm' %>
+				<%= link_to "Eliminar",a,method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
+			</td>
+		</tr>
+	<% end %>
+
+	<% if @achievements.size == 0 %>
+		<tr align="center"> <td colspan="5"> No hay logros </td> </tr>
+	<% end %>
+
+</table>
+<div align="center"><%= link_to "Agregar un logro", new_achievement_path, class: 'btn btn-success btm-sm' %></div>
+<br>
+</body>

@@ -1,0 +1,55 @@
+<body class="fondo1">
+<div class="formulario-margen">
+<h2>Crear nuevo logro</h2>
+<% if @achievement.errors.any? %>
+<div id="error_explanation">
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <ul>
+      <% @achievement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<%= form_for(@achievement) do |f| %>
+<div class="formulario-reg">
+  	<div class="form-group input-group">
+  <label class="sr-only">Titulo</label>
+  <span class="input-group-addon">
+    <i class="fa fa-pencil"></i> <%= f.label "Titulo" %>
+  </span>
+  <%= f.text_field :titulo, required: true,
+    placeholder: 'Ingrese el titulo', class: "form-control" %>
+</div>
+  	<div class="form-group input-group">
+      <label class="sr-only">Descripcion</label>
+      <span class="input-group-addon">
+        <i class="fa fa-file"></i> <%= f.label "Descripcion" %>
+      </span>
+    <%= f.text_area :descripcion, required: true,
+      placeholder: 'Ingrese la descripcion', class: "form-control" %>
+</div>
+	<div class="form-group input-group">
+    <label class="sr-only">Rango inferior</label>
+    <span class="input-group-addon">
+      <%= f.label "Rango inferior" %>
+    </span>
+    <%= f.text_field :rango_inferior, required: true, class: "form-control" %>
+</div>
+	<div class="form-group input-group">
+    <label class="sr-only">Rango superior</label>
+    <span class="input-group-addon">
+      <%= f.label "Rango superior" %>
+    </span>
+    <%= f.text_field :rango_superior, required: true, class: "form-control" %>
+</div>
+<div class="actions">
+  <%= f.submit "Guardar", :class => 'btn btn-default actions'%>
+</div>
+</div>
+<% end %>
+</div>
+</body>

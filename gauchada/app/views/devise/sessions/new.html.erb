@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<html>
+  <title>Iniciar Sección</title>
+  <link rel="stylesheet" type="text/css" href="aplication.scss">
+  <link rel="stylesheet" href="assets/stylesheets/devise.css">
+  <link rel="javascripts" href="assets/stylesheets/application.js">
+
+</head>
+
+<body class="fondo3">
+
+<div class="formulario-margen" id="relleno-sesion">
+	<h3>Ingresa tus datos</h3>
+
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+		<div class="formulario-reg">
+
+			<div class="form-group input-group">
+				<label class="sr-only">Email</label>
+				<span class="input-group-addon">
+					<i class="fa fa-envelope"></i> <%= f.label :email %>
+				</span>
+				<%= f.email_field :email, autofocus: true, class: 'form-control' %>
+			</div>
+
+			<div class="form-group input-group">
+				<label class="sr-only">Contraseña</label>
+				<span class="input-group-addon">
+					<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+				</span>
+				<%= f.password_field :password, autocomplete: "off", class: 'form-control col' %>
+			</div>
+			<div style="text-align: right;"> 
+				<%= link_to('Olvidaste la contraseña?', new_user_password_path) %>
+			</div>
+			<br>
+			<% if devise_mapping.rememberable? -%>
+				<div class="field">
+					<%= f.check_box :remember_me, id: "recordar"%>
+					<%= f.label "Recordar datos", for: "recordar" %>
+				</div>
+			<% end -%>
+			
+			<%= f.submit "Iniciar sección", :class => 'btn btn-default actions'%>
+		</div>
+
+	<% end %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ /* "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"*/
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "font-awesome";
+
+.fondo1 {
+     background-image: url("http://gdurl.com/JZEb");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.fondo2 {
+     background-image: url("http://gdurl.com/R17g");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.fondo3 { 
+     background-image: url("http://gdurl.com/JCz2");
+ }
+
+
+.fondo-llave {
+     background-image: url("http://gdurl.com/HBs9");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.logo-inicio {
+  width: 33px; /* ancho */
+  margin-top: 7px;
+}
+
+/* Para el footer */
+.logo-foot {
+	width: 30px;
+}
+
+.hoverGris img {
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hoverGris  img:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
+li.barra{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Para la barra */
+.brand-centered {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.brand-centered .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+body > .conteiner {
+	padding-top: 80px;
+	margin: 20px 0;
+}
+
+html { /* No toquen esto pls, que se rompe todo jaja*/
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 70px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	text-align: center;
+	background-image: linear-gradient(rgba(225,225,225,0.5), #f5fff9);
+}
+
+::selection { /* para cuando seleccionas texto */
+  background: #F17321;
+  color: white;
+}
+
+/*flash de devise*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+@media (max-width: 768px) {
+  .logo-inicio {
+    width: 30px;
+    margin-top: 5px;
+  }
+}
+@media (max-width: 991px) {
+  	html { /* No toquen esto pls, que se rompe todo jaja*/
+  		padding-bottom: 120px;	
+	}
+}
+
+

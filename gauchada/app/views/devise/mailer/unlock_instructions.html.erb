@@ -1,0 +1,9 @@
+<p>Hola <%= @resource.email %>!</p>
+
+<p>Tu cuenta a sido bloqueada por intentar iniciar sección  muchas veces sin exito.</p>
+
+<p>Ingrese al link que esta a continuación para desbloquearlo:</p>
+
+<p><%= link_to 'Desbloqueame', unlock_url(@resource, unlock_token: @token) %></p>
+
+<p>Disculpe las molestias y que tenga un buen día.</p>
