@@ -26,7 +26,7 @@
   	<div class="form-group input-group">
       <label class="sr-only">Descripcion</label>
       <span class="input-group-addon">
-        <i class="fa fa-pencil"></i> <%= f.label "Descripcion" %>
+        <i class="fa fa-file"></i> <%= f.label "Descripcion" %>
       </span>
     <%= f.text_area :descripcion, required: true,
       placeholder: 'Ingrese la descripcion', class: "form-control" %>
@@ -34,14 +34,14 @@
 	<div class="form-group input-group">
     <label class="sr-only">Rango inferior</label>
     <span class="input-group-addon">
-      <i class="fa fa-pencil"></i> <%= f.label "Rango inferior" %>
+      <%= f.label "Rango inferior" %>
     </span>
     <%= f.text_field :rango_inferior, required: true, class: "form-control" %>
 </div>
 	<div class="form-group input-group">
     <label class="sr-only">Rango superior</label>
     <span class="input-group-addon">
-      <i class="fa fa-pencil"></i> <%= f.label "Rango superior" %>
+      <%= f.label "Rango superior" %>
     </span>
     <%= f.text_field :rango_superior, required: true, class: "form-control" %>
 </div>

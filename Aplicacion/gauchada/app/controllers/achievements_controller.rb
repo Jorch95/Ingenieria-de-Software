@@ -15,6 +15,19 @@ class AchievementsController < ApplicationController
     end
   end
 
+  def edit
+    @achievement = Achievement.find params[:id]
+  end
+
+  def update
+    @achievement = Achievement.find params[:id]
+    if @achievement.update(achievement_params)
+      redirect_to action: "index"
+    else
+      render :edit
+    end
+  end
+
   def index
     order = params[:sort] || "rango"
     if order == "titulo"
