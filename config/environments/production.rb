@@ -77,9 +77,29 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Para qei funcione los estilos y demas
+  # Para que funcione los estilos y demas
   config.assets.compile = true
   config.assets.digest = true
   config.serve_static_assets = true
+
+# Disable delivery errors, bad email addresses will be ignored
+config.action_mailer.raise_delivery_errors = true
+
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = false
+config.action_mailer.default :charset => "utf-8"
+Rails.application.routes.default_url_options[:host] = 'nosrobaronelnombre.herokuapp.com'
+
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.default_url_options = { :host => 'nosrobaronelnombre.herokuapp.com' }
+config.action_mailer.smtp_settings = {
+	address: "smtp.gmail.com",
+	port: 587,
+	domain: ENV["GMAIL_DOMAIN"],
+	authentication: "plain",
+	enable_starttls_auto: true,
+	user_name: ENV["GMAIL_USERNAME"],
+	password: ENV["GMAIL_PASSWORD"]
+}
 
 end
