@@ -37,3 +37,4 @@ Achievement.find_or_create_by!(titulo: "Logro #{i}", descripcion:"Descripcion le
 end
 Achievement.find_or_create_by(titulo: "Yisus", descripcion:"Lo mejor de lo mejor",rango_inferior:1000, rango_superior: 9999999)
 Achievement.find_or_create_by(titulo: "Ricardo Fort", descripcion:"MAIAMEEEEEEEEEEE",rango_inferior:50, rango_superior:666)
+Achievement.find_or_create_by(titulo: "A",descripcion: "Hola :)",rango_inferior: 700, rango_superior: 720)
