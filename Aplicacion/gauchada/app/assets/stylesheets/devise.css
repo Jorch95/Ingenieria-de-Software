@@ -1,62 +1,37 @@
-#index-fondo {
-	 background-image: url("http://gdurl.com/JZEb");
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
 .formulario-reg {
-    margin: 50px 50px 20px 50px; /* top right bottom left*/
-    background-color: red;
+   /* background-color: red; */
+    min-width: 420px;
+    max-width: 500px;
+    width: 50%;
+    margin: 0 auto;
 }
 
-.cont-center{
-    background-color: blue;
-    margin: 0;
+.formulario-margen {
+    min-width: 500px;
+    text-align: center;
     align-content: center;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 6px;
 }
 
-.input-group-addon {
-    min-width: 120px;
+#relleno-sesion {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group-addon { /* Es el cudro a lado de input */
+    min-width: 140px;
+    max-width: 140px;
     text-align: center;
     border-bottom-left-radius: 4px !important;
     border-top-left-radius: 4px !important;
     border:1px solid #ccc !important;
 }
 
-.form-control {
-    max-width: 340px;
+.checkbox {
+    margin: 50px;
 }
 
-.input-group{
-    text-align:center;
-}
-
-a, a:hover, a:focus {
-	color: #f35b3f;
-	text-decoration: none;
-    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
-}
-
-h1, h2 {
-	margin-top: 10px;
-	font-size: 38px;
-    font-weight: 100;
-    color: #555;
-    line-height: 50px;
-}
-
-h3 {
-	font-size: 22px;
-    font-weight: 300;
-    color: #555;
-    line-height: 30px;
-}
-
-h4 {
-	font-size: 18px;
-    font-weight: 300;
-    color: #555;
-    line-height: 26px;
+span.help-block { /* Da problemas al registrarse */
+    display: none;
 }

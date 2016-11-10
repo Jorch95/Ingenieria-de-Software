@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   #get '/solicitar', to:'requests_controller#solicitar'
   #get 'favours/show'
   resources :favours
+  resources :achievements
+
   get 'home/index'
 
   get 'about/contact'
