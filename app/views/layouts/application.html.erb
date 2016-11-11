@@ -44,7 +44,13 @@
 					<% if user_signed_in? %>
 						<li class="barra dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-							<i class="fa fa-id-card-o" aria-hidden="true"></i> Usuario <span class="caret"></span></a>
+							<i class="fa fa-id-card-o" aria-hidden="true"></i>
+							<% if current_user.admin? %>
+							 Administrador
+							 <%else%>
+							 Usuario
+							 <%end%>
+							 <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li class="barra">
 										<%= link_to edit_user_registration_path, :method => :get do %>
