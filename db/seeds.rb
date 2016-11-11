@@ -26,8 +26,8 @@ User.create(nombre: "Nancy", apellido: "Diaz", password:"123123123", password_co
 puts 'Creo algunos favores'
 
   users[0].favours.create(titulo: "Ayuda 0", descripcion:" Descripcion 0", ciudad: "Alguna 0", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/Tt5L" )
-  users[1].favours.create(titulo: "Ayuda 1", descripcion:" Descripcion 1", ciudad: "Alguna 1", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/kt6L" )
-  users[2].favours.create(titulo: "Ayuda 2", descripcion:" Descripcion 2", ciudad: "Alguna 2", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/e_E4" )
+  users[1].favours.create(titulo: "Ayuda 1", descripcion:" Descripcion 1", ciudad: "Alguna 1", fecha: DateTime.new(2016,11,23))
+  users[2].favours.create(titulo: "Ayuda 2", descripcion:" Descripcion 2", ciudad: "Alguna 2", fecha: DateTime.new(2016,11,23))
   users[3].favours.create(titulo: "Ayuda 3", descripcion:" Descripcion 3", ciudad: "Alguna 3", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/avof" )
   #puts users[f].valid?
   #users[f].errors.full_messages.each do |msg|
