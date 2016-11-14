@@ -35,13 +35,18 @@ class AchievementsController < ApplicationController
     elsif order == "rango"
       ordering = { rango_inferior: :asc }
     end
-    @achievements=Achievement.where(enable: true).order(ordering)
+    @achievements=Achievement.order(ordering)
   end
 
   def destroy
     a=Achievement.find(params[:id])
-    a.enable=false
-    if a.save
+    if a.users.any?
+      a.enable=false
+      if a.save
+        flash[:notice]="El logro tiene usuarios asociados. Se realizo baja lógica"
+      end
+    else
+      a.destroy
       flash[:notice]="Se elimino satisfactoriamente"
     end
     redirect_to achievements_path
