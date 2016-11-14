@@ -15,7 +15,7 @@
 		<%if a.enable%>
 			<tr>
 		<%else%>
-			<tr style="background-color: #FF0000">
+			<tr style="background-color: #FF3A3A">
 		<%end%>
 				<td > <%=a.titulo%> </td>
 				<td > <%= a.descripcion %> </td>
@@ -33,7 +33,7 @@
 			<% end %>
 
 		</table>
-		<body align="center">*Los logros deshabilitados apareceran en rojo</body>
+		<body align="center">*Los logros deshabilitados apareceran en <font color="red">rojo</font></body>
 		<div align="center"><%= link_to "Agregar un logro", new_achievement_path, class: 'btn btn-success btm-sm' %></div>
 		<br>
 	</body>
