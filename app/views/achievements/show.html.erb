@@ -1,0 +1,6 @@
+<%= @achievement.titulo%>
+<br>
+<% @achievement.users.each do |u|%>
+<%=u.nombre+"("+u.puntaje.to_s+")"%>
+<br>
+<%end%>
