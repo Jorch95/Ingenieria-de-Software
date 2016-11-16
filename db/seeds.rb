@@ -32,7 +32,7 @@ User.create(nombre: "Nancy", apellido: "Diaz", password:"123123123", password_co
 tc_nombre: "-", tc_numero: 45434534, tc_pin: 43793400, tc_caducidad: caduc)
 
 puts 'Creo algunos favores'
-users[0].favours.find_or_create_by(titulo: "Ayuda 0", descripcion:" Descripcion 0", ciudad: "Alguna 0", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/Tt5L" )
-users[1].favours.find_or_create_by(titulo: "Ayuda 1", descripcion:" Descripcion 1", ciudad: "Alguna 1", fecha: DateTime.new(2016,11,23))
-users[2].favours.find_or_create_by(titulo: "Ayuda 2", descripcion:" Descripcion 2", ciudad: "Alguna 2", fecha: DateTime.new(2016,11,23))
-users[3].favours.find_or_create_by(titulo: "Ayuda 3", descripcion:" Descripcion 3", ciudad: "Alguna 3", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/avof" )
+users[0].favours.find_or_create_by(titulo: "Ayuda 0", descripcion:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum justo vitae mi commodo cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget dapibus dui, eu viverra mauris. Fusce quis justo mi. Donec viverra aliquet nisi. Phasellus auctor quam eget eros porta consectetur. Nullam vel efficitur erat. Quisque pulvinar eget arcu semper finibus. Suspendisse euismod massa vitae nisl dapibus condimentum. Sed ultricies turpis risus, quis tincidunt diam ullamcorper ut. Pellentesque pulvinar augue libero, quis iaculis leo commodo tempor. Phasellus eleifend convallis euismod. Ut urna ex, malesuada facilisis nibh in, imperdiet varius lorem.", ciudad: "Mendoza", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/Tt5L" )
+users[1].favours.find_or_create_by(titulo: "Ayuda 1", descripcion:" Descripcion 1", ciudad: "Bariloche", fecha: DateTime.new(2016,11,23))
+users[2].favours.find_or_create_by(titulo: "Ayuda 2", descripcion:" Descripcion 2", ciudad: "Buenos aires", fecha: DateTime.new(2016,11,23))
+users[3].favours.find_or_create_by(titulo: "Ayuda 3", descripcion:" Descripcion 3", ciudad: "Olmos", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/avof" )
