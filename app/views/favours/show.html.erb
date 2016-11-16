@@ -4,7 +4,9 @@
 <h4> Fecha: <%= @favour.fecha %> </h4>
 <h4> Provincia: <%= @favour.provincia %>. Ciudad: <%= @favour.ciudad %> </h4>
 <h4> Publicado por: <%= @favour.user.nombre %> <%= @favour.user.apellido %> </h4>
+<% if current_user.id != @favour.user.id%>
 <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-success btn-sm' %>
+<%end%>
 <% if current_user == @favour.user %>
  <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-warning btn-sm' %>
 <% end %> </div>
