@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<html>
+<head>
   <title>Editar usuario</title>
   <link rel="stylesheet" type="text/css" href="aplication.scss">
   <link rel="stylesheet" href="assets/stylesheets/devise.css">
@@ -9,22 +9,22 @@
 </head>
 <body class="fondo1">
 
-  <div class="formulario-margen">
-    <h2>Editar usuario</h2>
-    <h5> Si no queres modificar tu contraseña escribi en las tres contraseñas la actual.</h5>
+	<div class="formulario-margen">
+		<h2>Editar usuario</h2>
+		<h5> Si no queres modificar tu contraseña escribi en las tres contraseñas la actual.</h5>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-      <div class="formulario-reg">
+		<div class="formulario-reg">
 
-        <div class="form-group input-group">
-          <label class="sr-only">Email</label>
-          <span class="input-group-addon">
-            <i class="fa fa-envelope"></i> <%= f.label 'Email' %>
-          </span>
-          <%= f.email_field :email, required: true, autofocus: true, placeholder: 'Ingrese su mail', class: 'form-control' %>
-        </div>
+		<div class="form-group input-group">
+			<label class="sr-only">Email</label>
+			<span class="input-group-addon">
+				<i class="fa fa-envelope"></i> <%= f.label 'Email' %>
+			</span>
+			<%= f.email_field :email, required: true, autofocus: true, placeholder: 'Ingrese su mail', class: 'form-control' %>
+		</div>
 
         <!--
   		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -32,133 +32,135 @@
   		<% end %>
 		-->
 
-        <div class="form-group input-group">
-        	<label class="sr-only">Contraseña</label>
-        	<span class="input-group-addon">
-        		<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
-       		</span>
-    		<%= f.password_field :password, autocomplete: "off", placeholder: '7 caracteres como minimo', class: 'form-control'  %>
-  		</div>
-
-  		<div class="form-group input-group">
-        	<label class="sr-only">Contraseña</label>
-          <span class="input-group-addon">
-            <i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
-          </span>
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Repetir contraseña', class: 'form-control' %>
-  </div>
-
-  <div class="form-group input-group">
-          <label class="sr-only">Contraseña</label>
-          <span class="input-group-addon">
-            <i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
-          </span>
-    
-    <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Contraseña actual', class: 'form-control' %>
-  </div>
-
-        <div class="form-group input-group">
-          <label class="sr-only">Nombre</label>
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i> <%= f.label 'Nombre' %>
-          </span>
-          <%= f.text_field :nombre, required: true, placeholder: 'Ingrese su nombre', class: 'form-control' %>
-        </div>
-
-        <div class="form-group input-group">
-          <label class="sr-only">Apellido</label>
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i> <%= f.label 'Apellido' %>
-          </span>
-          <%= f.text_field :apellido, required: true, placeholder: 'Ingrese su apellido', class: 'form-control' %>
-        </div>
-
-        <div class="form-group input-group">
-          <label class="sr-only">Telefono</label>
-          <span class="input-group-addon">
-            <i class="fa fa-phone"></i> <%= f.label 'Telefono' %>
-          </span>
-          <%= f.text_field :telefono, required: true, :pattern => '[0-9]{10,16}' , placeholder: 'Ingrese 10 a 16 numeros, con caracteristica', class: 'form-control' %>
-        </div>
-
-        <div class="form-group input-group">
-          <label class="sr-only">Sexo</label>
-          <span class="input-group-addon">
-            <i class="fa fa-venus-mars"></i> <%= f.label 'Sexo' %>
-          </span>
-          <%= f.select :sexo, [["Hombre", true], ["Mujer", false]], {}, {class: 'form-control'} %>
-        </div> 
-
-        <div class="form-group input-group">
-          <label class="sr-only">País</label>
-          <span class="input-group-addon">
-            <i class="fa fa-globe"></i> <%= f.label 'Pais' %>
-          </span>
-          <%= f.country_select :pais, {}, {class: 'form-control'} %>
-        </div>
-
-        <div class="form-group input-group">
-          <label class="sr-only">Fecha de nacimeinto</label>
-          <span class="input-group-addon">
-            <i class="fa fa-birthday-cake"></i> <%= f.label 'Nacimiento' %>
-          </span>
-          <%= f.date_field :fecha_nacimiento, required: true, class: 'form-control' %>
-        </div>
-
-        <div class="form-group input-group">
-          <label class="sr-only">Tarjeta Apellido</label>
-          <span class="input-group-addon">
-            <i class="fa fa-credit-card"></i> <%= f.label 'Apellido' %>
-          </span>
-          <%= f.text_field :tc_apellido,  placeholder: 'Apellido del titular de la tarjeta', class: 'form-control' %>
-        </div>
-
-                <div class="form-group input-group">
-          <label class="sr-only">Tarjeta Nombre</label>
-          <span class="input-group-addon">
-            <i class="fa fa-credit-card"></i> <%= f.label 'Nombre' %>
-          </span>
-          <%= f.text_field :tc_nombre, placeholder: 'Nombre del titular de la tarjeta', class: 'form-control' %>
-        </div>
-
-       <div class="form-group input-group">
-          <label class="sr-only">Tarjeta Número</label>
-          <span class="input-group-addon">
-            <i class="fa fa-credit-card"></i> <%= f.label 'Número' %>
-          </span>
-          <%= f.number_field :tc_numero, placeholder: 'Numero de la tarjeta', class: 'form-control' %>
-        </div>
-
-               <div class="form-group input-group">
-          <label class="sr-only">Tarjeta Pin</label>
-          <span class="input-group-addon">
-            <i class="fa fa-credit-card"></i> <%= f.label 'Pin' %>
-          </span>
-          <%= f.number_field :tc_pin, placeholder: 'Pin de 4 digitos de la tarjeta', class: 'form-control' %>
-        </div>
-
-
-               <div class="form-group input-group">
-          <label class="sr-only">Tarjeta Caducidad</label>
-          <span class="input-group-addon">
-            <i class="fa fa-credit-card"></i> <%= f.label 'Caducidad' %>
-          </span>
-          <%= f.date_field :tc_caducidad, class: 'form-control' %>
-        </div>
-
-       <div class="actions">
-	    	<%= f.submit "Update", :class => 'btn btn-default actions' %>
-	    	<%= link_to "Back", :back, :class => 'btn btn-primary actions' %>
-
+		<div class="form-group input-group">
+			<label class="sr-only">Contraseña</label>
+			<span class="input-group-addon">
+				<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+			</span>
+			<%= f.password_field :password, autocomplete: "on", placeholder: '7 caracteres como minimo', class: 'form-control'  %>
+		</div>
+		
+		<div class="form-group input-group">
+			<label class="sr-only">Contraseña</label>
+			<span class="input-group-addon">
+				<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+			</span>
+			<%= f.password_field :password_confirmation, autocomplete: "on", placeholder: 'Repetir contraseña', class: 'form-control' %>
 		</div>
 
+		<div class="form-group input-group">
+			<label class="sr-only">Contraseña</label>
+			<span class="input-group-addon">
+				<i class="fa fa-key"></i> <%= f.label 'Contraseña' %>
+			</span>
+			<%= f.password_field :current_password, autocomplete: "off", placeholder: 'Contraseña actual', class: 'form-control' %>
+		</div>
+
+		<div class="form-group input-group">
+			<label class="sr-only">Nombre</label>
+			<span class="input-group-addon">
+				<i class="fa fa-user"></i> <%= f.label 'Nombre' %>
+			</span>
+			<%= f.text_field :nombre, required: true, placeholder: 'Ingrese su nombre', class: 'form-control' %>
+		</div>
+
+		<div class="form-group input-group">
+			<label class="sr-only">Apellido</label>
+			<span class="input-group-addon">
+				<i class="fa fa-user"></i> <%= f.label 'Apellido' %>
+			</span>
+			<%= f.text_field :apellido, required: true, placeholder: 'Ingrese su apellido', class: 'form-control' %>
+		</div>
+
+		<div class="form-group input-group">
+			<label class="sr-only">Telefono</label>
+			<span class="input-group-addon">
+				<i class="fa fa-phone"></i> <%= f.label 'Telefono' %>
+			</span>
+			<%= f.text_field :telefono, required: true, :pattern => '[0-9]{10,16}' , placeholder: 'Ingrese 10 a 16 numeros, con caracteristica', class: 'form-control' %>
+		</div>
+
+		<div class="form-group input-group">
+			<label class="sr-only">Sexo</label>
+			<span class="input-group-addon">
+				<i class="fa fa-venus-mars"></i> <%= f.label 'Sexo' %>
+			</span>
+			<%= f.select :sexo, [["Hombre", true], ["Mujer", false]], {}, {class: 'form-control'} %>
+		</div> 
+
+		<div class="form-group input-group">
+			<label class="sr-only">País</label>
+			<span class="input-group-addon">
+				<i class="fa fa-globe"></i> <%= f.label 'Pais' %>
+			</span>
+			<%= f.country_select :pais, {}, {class: 'form-control'} %>
+		</div>
+
+		<div class="form-group input-group">
+			<label class="sr-only">Fecha de nacimeinto</label>
+			<span class="input-group-addon">
+				<i class="fa fa-birthday-cake"></i> <%= f.label 'Nacimiento' %>
+			</span>
+			<%= f.date_field :fecha_nacimiento, required: true, class: 'form-control' %>
+		</div>
+
+
+		<% unless current_user.tc_apellido.nil? && current_user.tc_nombre.nil? && current_user.tc_numero.nil? && current_user.tc_pin.nil? && current_user.tc_caducidad.nil? %>
+
+			<div class="form-group input-group">
+				<label class="sr-only">Tarjeta Apellido</label>
+				<span class="input-group-addon">
+					<i class="fa fa-credit-card"></i> <%= f.label 'Apellido' %>
+				</span>
+				<%= f.text_field :tc_apellido,  placeholder: 'Apellido del titular de la tarjeta', class: 'form-control' %>
+			</div>
+
+
+			<div class="form-group input-group">
+				<label class="sr-only">Tarjeta Nombre</label>
+				<span class="input-group-addon">
+					<i class="fa fa-credit-card"></i> <%= f.label 'Nombre' %>
+				</span>
+				<%= f.text_field :tc_nombre, placeholder: 'Nombre del titular de la tarjeta', class: 'form-control' %>
+			</div>
+
+			<div class="form-group input-group">
+				<label class="sr-only">Tarjeta Número</label>
+				<span class="input-group-addon">
+					<i class="fa fa-credit-card"></i> <%= f.label 'Número' %>
+				</span>
+				<%= f.number_field :tc_numero, placeholder: 'Numero de la tarjeta', class: 'form-control' %>
+			</div>
+
+			<div class="form-group input-group">
+				<label class="sr-only">Tarjeta Pin</label>
+				<span class="input-group-addon">
+					<i class="fa fa-credit-card"></i> <%= f.label 'Pin' %>
+				</span>
+				<%= f.number_field :tc_pin, placeholder: 'Pin de 4 digitos de la tarjeta', class: 'form-control' %>
+			</div>
+
+
+			<div class="form-group input-group">
+				<label class="sr-only">Tarjeta Caducidad</label>
+				<span class="input-group-addon">
+					<i class="fa fa-credit-card"></i> <%= f.label 'Caducidad' %>
+				</span>
+				<%= f.date_field :tc_caducidad, class: 'form-control' %>
+			</div>
+
+        <% end %> <!-- If de los campos de la tarjeta -->
+
+		<div class="actions">
+			<%= f.submit "Actualizar", :class => 'btn btn-default actions' %>
+			<%= link_to "Atras", :back, :class => 'btn btn-primary actions' %>
+		</div>
   	</div>
 
-    <% end %>
-    	    	<br>
-	    	<h5>Si queieres desvincularte del sitio:</h5>
-			<%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, :class => 'btn btn-danger actions' %>
-
+    <% end %> <!-- If del forum -->
+	<br>
+	<h5>Si queieres desvincularte del sitio:</h5>
+	<%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, :class => 'btn btn-danger actions' %>
     <br>
     <br>
   </div>

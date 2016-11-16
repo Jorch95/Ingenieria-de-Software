@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111024935) do
+ActiveRecord::Schema.define(version: 20161114183742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,11 +63,11 @@ ActiveRecord::Schema.define(version: 20161111024935) do
   add_index "grades", ["user_id"], name: "index_grades_on_user_id", using: :btree
 
   create_table "purchases", force: :cascade do |t|
-    t.date     "fecha"
     t.integer  "puntos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "total"
   end
 
   add_index "purchases", ["user_id"], name: "index_purchases_on_user_id", using: :btree
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20161111024935) do
     t.boolean  "admin",                  default: false
     t.string   "tc_apellido"
     t.string   "tc_nombre"
-    t.integer  "tc_numero"
+    t.string   "tc_numero"
     t.integer  "tc_pin"
     t.date     "tc_caducidad"
     t.datetime "created_at",                             null: false

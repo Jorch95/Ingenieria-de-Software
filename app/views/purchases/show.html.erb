@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compras totales</title>
+  <link rel="stylesheet" type="text/css" href="aplication.scss">
+   <link rel="stylesheet" type="text/css" href="purchases.scss">
+  <link rel="javascripts" href="assets/stylesheets/application.js">
+</head>
+<body class="fondo1">
+
+	<br>
+	<div align="center"><%= link_to "Comprar más puntos", new_purchases_path, class: 'btn btn-success btm-sm' %></div>
+	<h3 align="center"> Todas las compras realizadas por usted </h3>
+
+	<table class="table table-striped table-bordered" style="width: 60% ; background-color: #ffa141" align="center">
+		<tr>
+			<th> Fecha
+				<% if @sentido == "desc-c" %>
+					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), purchases_path(sort: "created_at", sentido: "asc-c") %>
+				<% else %>
+					<%= link_to raw("<span class='fa fa-sort-numeric-desc'></span>"), purchases_path(sort: "created_at", sentido: "desc-c") %>
+				<% end %>
+			</th>
+			<th> Cantidad 
+				<% if @sentido == "desc-p" %>
+					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), purchases_path(sort: "puntos", sentido: "asc-p") %>
+				<% else %>
+					<%= link_to raw("<span class='fa fa-sort-numeric-desc'></span>"), purchases_path(sort: "puntos", sentido: "desc-p") %>
+				<% end %>
+			</th>
+			<th> Total 
+				<% if @sentido == "desc-t" %> 
+					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), purchases_path(sort: "total", sentido: "asc-t") %>
+				<% else %>
+					<%= link_to raw("<span class='fa fa-sort-numeric-desc'></span>"), purchases_path(sort: "total", sentido: "desc-t") %>
+				<% end %>
+			</th>
+		</tr>
+
+		<% @purchases.each do |p| %>
+			<tr>
+				<td> <%= p.created_at %> </td>
+				<td> <%= p.puntos %> </td>
+				<td> <%= p.total %> </td>
+			</tr>
+		<% end %>
+
+		<% if @purchases.size == 0 %>
+			<tr align="center"> <td colspan="3"> No hay compras </td> </tr>
+		<% end %>
+
+	</table>
+</body>
+</html>
+

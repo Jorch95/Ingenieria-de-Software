@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+# get 'purchases/new'
+
+# get 'purchases/index'
+
+# get 'purchases/create'
+
+  resource :purchases
+  
   get 'requests/solicitar'
 
   #get '/solicitar', to:'requests_controller#solicitar'
