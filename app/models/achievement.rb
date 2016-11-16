@@ -6,6 +6,16 @@ class Achievement < ActiveRecord::Base
   validates_presence_of :titulo, :descripcion, :rango_inferior, :rango_superior
   validate :correct_range_format?
   validate :is_in_range?
+before_save :users_check
+
+  def users_check
+    if self.enable
+      User.where("puntaje >= :inferior AND puntaje <= :superior",{inferior: self.rango_inferior, superior: self.rango_superior}).each do |u|
+        u.achievement=self
+        u.save
+      end
+    end
+  end
 
   def correct_range_format?
     if errors[:rango_inferior].empty? && errors[:rango_superior].empty?

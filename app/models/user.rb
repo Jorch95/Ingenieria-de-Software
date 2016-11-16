@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 				self.achievement=a
 				return
 			end
+			self.achievement=nil
 		end
 	end
 
