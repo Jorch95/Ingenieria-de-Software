@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	has_one :achievement
+	belongs_to :achievement
 	has_many :purchases
 	has_many :favours
 	has_many :requests
@@ -24,5 +24,19 @@ class User < ActiveRecord::Base
 	validates :fecha_nacimiento,
 				date: { before: Proc.new { Time.now - 18.year }, message: 'Debes ser mayor de 18 años.' },
   on: :create
+
+
+	##Se sobreescribe el save para que se mantenga la clasificacion actualizada de los logros
+	before_save :achievement_check
+	def achievement_check
+		#buscar en que rango pertenece
+		Achievement.where(enable: true).each do |a|
+			if self.puntaje>=a.rango_inferior && self.puntaje<=a.rango_superior
+				self.achievement=a
+				return
+			end
+		end
+	end
+
 
 end
