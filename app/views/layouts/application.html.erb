@@ -40,7 +40,9 @@
 					<li class="barra"><a href="#">Cosas</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="barra"><a href="#">Cosas</a></li>
+					<li class="barra">
+						<%= link_to('Compras', purchases_path, :method => :get) %>
+					</li>
 					<% if user_signed_in? %>
 						<li class="barra dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -52,6 +54,14 @@
 							 <%end%>
 							 <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
+
+									<li class="barra">
+										<%= link_to  do %>
+											<i class="fa fa-user" aria-hidden="true"></i> <%= current_user.email %>
+										<% end %>
+									</li>
+								<li role="separator" class="divider"></li>
+
 									<li class="barra">
 										<%= link_to edit_user_registration_path, :method => :get do %>
 											<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil

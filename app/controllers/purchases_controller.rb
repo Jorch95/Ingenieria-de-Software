@@ -7,15 +7,31 @@ class PurchasesController < ApplicationController
 		@userNumero = current_user.tc_numero
 		@userPin = current_user.tc_pin
 		@userCadu = current_user.tc_caducidad
-		@total = Purchase::PRECIO_POR_PUNTO*2
 		@purchase = Purchase.new
+		if current_user.tc_apellido == nil
+			current_user.update(tc_apellido: '')
+		end
+		if current_user.tc_nombre == nil
+			current_user.update(tc_nombre: '')
+		end
 	end
 
-	def create
-		@purchase = Purchase.new purchase_params
+	def destroy
+		Purchase.all.where(user_id: current_user.id).each do |pur|
+			pur.delete
+		end
+		redirect_to action: "show"
 	end
 
 	def show
+		@puntosTotales = current_user.puntaje
+		@costoTotal = 0
+		@puntosTotal = 0
+		Purchase.all.where(user_id: current_user.id).each do |pur|
+			@costoTotal = @costoTotal + pur.total
+			@puntosTotal = @puntosTotal + pur.puntos
+		end
+
 		# para que en la vista solo actualice el icono del campo correspondiente se le agrega al sentido el -c para el create_at, el -t para el total y asi siguiendo.
 		order = params[:sort] || "created_at"
 		@sentido = params[:sentido] || "desc-c"
@@ -40,10 +56,21 @@ class PurchasesController < ApplicationController
 		end
     	@purchases = Purchase.all.where(user_id: current_user.id).order(ordering)
 	end
+
+	def create
+		@purchase = current_user.purchases.new purchase_params
+		@purchase.update(total: @purchase.puntos*Purchase::PRECIO_POR_PUNTO)
+		if @purchase.save
+			current_user.update(puntaje: current_user.puntaje + @purchase.puntos)
+			redirect_to action: "show"
+		else
+			render :new
+		end
+	end
 	
 	private
 	
 	def purchase_params
-		params.require(:purchase).permit(:puntos)
+		params.require(:purchase).permit(:puntos, :total)
 	end
 end

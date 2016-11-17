@@ -9,9 +9,9 @@
 <body class="fondo1">
 
 	<br>
+	<h3 class="titulo" align="center"> Todas las compras realizadas por usted </h3>
 	<div align="center"><%= link_to "Comprar más puntos", new_purchases_path, class: 'btn btn-success btm-sm' %></div>
-	<h3 align="center"> Todas las compras realizadas por usted </h3>
-
+	<br>
 	<table class="table table-striped table-bordered" style="width: 60% ; background-color: #ffa141" align="center">
 		<tr>
 			<th> Fecha
@@ -28,7 +28,7 @@
 					<%= link_to raw("<span class='fa fa-sort-numeric-desc'></span>"), purchases_path(sort: "puntos", sentido: "desc-p") %>
 				<% end %>
 			</th>
-			<th> Total 
+			<th> Total en $ARS
 				<% if @sentido == "desc-t" %> 
 					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), purchases_path(sort: "total", sentido: "asc-t") %>
 				<% else %>
@@ -44,12 +44,21 @@
 				<td> <%= p.total %> </td>
 			</tr>
 		<% end %>
-
-		<% if @purchases.size == 0 %>
-			<tr align="center"> <td colspan="3"> No hay compras </td> </tr>
-		<% end %>
-
+		<tr>
+			<td> <strong>TOTAL</strong> </td>
+			<td> <%= @puntosTotal %> </td>
+			<td> <%= @costoTotal %> </td>
+		</tr>
+		<tr>
+			<td> <strong>Mis puntos</strong> </td>
+			<td> <%= @puntosTotales %> </td>
+			<td> </td>
+		</tr>
 	</table>
+
+	<div align="center">
+		<%= link_to "Eliminar historial", purchases_path, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
+	</div>
 </body>
 </html>
 

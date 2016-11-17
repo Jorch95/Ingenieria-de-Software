@@ -12,15 +12,17 @@
 		$(document).ready(function() {
 			function actualizarPrecio(){
 				var puntos = parseFloat($("#puntos").val());
-				var total = puntos * <%= Purchase::PRECIO_POR_PUNTO %>;
-				$("#total").val(total);
+				var total=puntos * <%= Purchase::PRECIO_POR_PUNTO %>;
+				//$("#total").val(puntos * <%= Purchase::PRECIO_POR_PUNTO %>);
+				document.getElementById("total").value=total;
 			}
 			$(document).on("change, keyup", "#puntos", actualizarPrecio);
 		});	
 	</script>
 
 	<div class="formulario-margen">
-		<h3>Nueva compra de puntos</h3>
+		<h3 class="titulo">Nueva compra de puntos</h3>
+		<%= @NEW %>
 		<% if @purchase.errors.any? %>
 			<div id="error_explanation">
   				<div class="alert alert-danger alert-dismissable">
@@ -41,7 +43,7 @@
 					<span class="input-group-addon">
 						<i class="fa fa-hashtag"></i> <%= f.label "Puntos" %>
 					</span>
-					<%= f.text_field :puntos, required: true, value: "", name: "actualizarPrecio", id: "puntos", placeholder: 'Ingrese los cantidad a comprar', class: "form-control" %>
+					<%= f.text_field :puntos, required: true, value: "", id: "puntos",  placeholder: 'Ingrese los cantidad a comprar', class: "form-control" %>
 				</div>
 
 				<div class="form-group input-group">
@@ -49,23 +51,27 @@
 					<span class="input-group-addon">
 						<%= f.label "Total" %> <i class="fa fa-usd"></i>
 					</span>
-					<input class="form-control" id="total" value="" disabled>
+					<%= f.number_field :total, id: "total", class: "form-control", disabled: true %> <!-- Despues de realiza la asignacion en realidad no gurada el valor -->
 				</div>
 
-				<h3>Datos de tarjeta</h3>
+				<h4 class="titulo">
+					Datos de tarjeta  
+					<%= link_to new_purchases_path do %>
+						<i class="fa fa-refresh" aria-hidden="true"></i>
+					<% end %>
+				</h4>
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Apellido</label>
 						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <%= f.label 'Apellido' %>
+							<i class="fa fa-credit-card"></i> <strong>Apellido</strong>
 						</span>
 						<input class="form-control" value='<%= @userApellido %>' type="text" disabled>
 					</div>
 
-
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Nombre</label>
 						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <%= f.label 'Nombre' %>
+							<i class="fa fa-credit-card"></i> <strong>Nombre</strong>
 						</span>
 						<input class="form-control" value='<%= @userNombre %>' type="text" disabled>
 					</div>
@@ -73,7 +79,7 @@
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Número</label>
 						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <%= f.label 'Número' %>
+							<i class="fa fa-credit-card"></i> <strong>Número</strong>
 						</span>
 						<input class="form-control" value='<%= @userNumero %>' type="text" disabled>
 					</div>
@@ -81,7 +87,7 @@
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Pin</label>
 						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <%= f.label 'Pin' %>
+							<i class="fa fa-credit-card"></i> <strong>Pin</strong>
 						</span>
 						<input class="form-control" value='<%= @userPin %>' type="text" disabled>
 					</div>
@@ -90,18 +96,17 @@
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Caducidad</label>
 						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <%= f.label 'Caducidad' %>
+							<i class="fa fa-credit-card"></i> <strong>Caducidad</strong>
 						</span>
 						<input class="form-control" value='<%= @userCadu %>' type="text" disabled>
 					</div>
 		
 				<div class="actions">
-					<%= link_to "Actualzar tarjeta", new_purchases_path, class: 'btn btn-default btm-sm' %>
+					<%= link_to "Actualzar tarjeta",  edit_user_registration_path, class: 'btn btn-default btm-sm' %>
 					<%= f.submit "Comprar", :class => 'btn btn-success actions'%>
 				</div>
 			</div>
 		<% end %>
-
 	</div>
 
 </body>
