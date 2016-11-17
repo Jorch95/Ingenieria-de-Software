@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 puts 'Creo algunos logros'
 5.times do |i|
   Achievement.find_or_create_by!(titulo: "Logro #{i}", descripcion:"Descripcion lero lero uno dos tres probando",rango_inferior:0+5*i, rango_superior: -1+5*(i+1))
@@ -41,3 +33,8 @@ users[0].favours.find_or_create_by(titulo: "Ayuda 0", descripcion:"Lorem ipsum d
 users[1].favours.find_or_create_by(titulo: "Ayuda 1", descripcion:" Descripcion 1", ciudad: "Bariloche", fecha: DateTime.new(2016,11,23))
 users[2].favours.find_or_create_by(titulo: "Ayuda 2", descripcion:" Descripcion 2", ciudad: "Buenos aires", fecha: DateTime.new(2016,11,23))
 users[3].favours.find_or_create_by(titulo: "Ayuda 3", descripcion:" Descripcion 3", ciudad: "Olmos", fecha: DateTime.new(2016,11,23), image_url: "http://gdurl.com/avof" )
+users[0].favours.find_or_create_by(titulo: "Busco acompañante de viaje", descripcion:"Soy camionero y busco una persona que me acompañe e mi viaje hasta Rawson porque sufro problemas de sueño.\n Saldriamos el primer fin de semana de octubre y retornariamos el fin de semana siguiente. \n Condición fundamental: debe cebar buenos mates.", ciudad: "Rosario", fecha: DateTime.new(2016,10,29))
+users[0].favours.find_or_create_by(titulo: "Reencontrarme con Ramirez", descripcion:"Ramirez es un burrito que tenia de mascota en un campo de Tucumán. Quisiera reencontrarme con él pero no puedo moverme por un problema físico. \nMe gustaría que alguien lo traiga desde mi pueblo para poder saludarlo y luego volver a llevarlo.\n*La foto es del 2004, Ramirez puede haber cambiado un poco.", ciudad: "Tierra del Fuedo", fecha: DateTime.new(2016,11,2), image_url: "http://gdurl.com/dQOd" )
+users[3].favours.find_or_create_by(titulo: "Busco testigo falso", descripcion:"El año pasado tuve un accidente automovilistico en el que choqué el frente de una casa. El dueño de esa casa me quiere llevar a juicio y estoy buscando evitarlo.\nNecesito de un/a abuelito/a que testifique a mi favor diciendo que choqué el frente de la casa para esquivarlo/a.", ciudad: "La Pampa", fecha: DateTime.new(2016,11,15))
+users[2].favours.find_or_create_by(titulo: "Restaurar obra de arte", descripcion:"La imagen de la izquierda es la original y la de la derecha mi intento por restaurarla. ¿Alguien me haría la gauchada de acomodarla para que se parezca más a la original?.", ciudad: "San Luis", fecha: DateTime.new(2016,8,16), image_url: "http://gdurl.com/pIsx")
+users[1].favours.find_or_create_by(titulo: "Karl", descripcion:"Karl es mi perrito y necesita de alguien que lo cuide durante la primera quincena de enero que me voy de vacaciones.\nEs muy juguetón y muy buena compañía.", ciudad: "Buenos Aires", fecha: DateTime.new(2016,10,11), image_url: "http://gdurl.com/kDoTg" )
