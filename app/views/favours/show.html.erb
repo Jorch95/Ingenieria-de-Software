@@ -12,7 +12,7 @@
     <% end %> </div>
     <div class="col-md-8">
       <%= image_tag @favour.image_url, class: "image-size" %></br> </div>
-      <p class="text-align"> <%= @favour.descripcion %> </p>
+      <p class="text-align"> <%= simple_format(@favour.descripcion) %> </p>
       <h3> Comentarios </h3>
       <div> <% @favour.comments.each do |c| %>
         <lu><h4><%= c.comentario  %>
