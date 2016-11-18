@@ -1,6 +1,6 @@
 class Favour < ActiveRecord::Base
   belongs_to :user
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :comments
   has_one :grade
 
@@ -8,7 +8,7 @@ class Favour < ActiveRecord::Base
   scope :titulo, -> (titulo) { where titulo: titulo }
   scope :descripcion, -> (descripcion) { where "favours.descripcion like ?", "%" + descripcion + "%" }
   scope :ciudad, -> (ciudad) { where ciudad: ciudad }
-  scope :descendente, -> {order("fecha desc")}
-  scope :ascendente, -> {order("fecha asc")}
+  scope :descendente, -> {order("created_at desc")}
+  scope :ascendente, -> {order("created_at asc")}
 
 end
