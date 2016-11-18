@@ -10,7 +10,7 @@ class Favour < ActiveRecord::Base
   #scope :descripcion, -> (descripcion) { where( ["keyword LIKE :descripcion", {:descripcion => "%#{descripcion}%"}] ) }
 
   scope :ciudad, -> (ciudad) { where ciudad: ciudad }
-  scope :descendente, -> {order("fecha desc")}
-  scope :ascendente, -> {order("fecha asc")}
+  scope :descendente, -> {order("created_at desc")}
+  scope :ascendente, -> {order("created_at asc")}
 
 end
