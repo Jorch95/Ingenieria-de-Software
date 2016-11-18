@@ -14,8 +14,8 @@ class FavoursController < ApplicationController
   end
 
 
-  def inicializar_favor 
-    if params[:filtrado_por].present? 
+  def inicializar_favor
+    if params[:filtrado_por].present?
         criterio = params[:criterio]
 
         if params[:filtrado_por] == "Fecha decreciente"
@@ -40,6 +40,15 @@ class FavoursController < ApplicationController
     else
         return Favour.all
     end
+  end
+
+  def destroy
+    f=Favour.find(params[:id])
+    if f.aceptado==false
+      f.destroy
+      flash[:notice]="Se elimino satisfactoriamente"
+    end
+    redirect_to favours_path
   end
 
 end
