@@ -1,7 +1,7 @@
 class FavoursController < ApplicationController
   def index
       @favours = inicializar_favor
-  end
+  end # No aceptado
   def show
       @favour = Favour.find(params[:id])
   end
@@ -27,9 +27,7 @@ class FavoursController < ApplicationController
         if criterio == ""
           return Favour.all
         elsif params[:filtrado_por] == "Descripcion"
-          #return Favour.descripcion(criterio)
-          #return Favour.includes(:resources).where("resources.resource_type_id = ?", @resource_type.id)
-          #return Favour.includes(:criterio).where("descripcion = ?", criterio)
+          return Favour.descripcion(criterio)
         elsif params[:filtrado_por] == "Titulo"
           return Favour.titulo(criterio)
         elsif params[:filtrado_por] == "Ciudad"
