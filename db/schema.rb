@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118115015) do
+ActiveRecord::Schema.define(version: 20161118121824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20161118115015) do
     t.integer  "user_id"
     t.string   "image_url",   default: "http://gdurl.com/GY5O"
     t.boolean  "aceptado",    default: false
+    t.boolean  "finalizado",  default: false
   end
 
   add_index "favours", ["user_id"], name: "index_favours_on_user_id", using: :btree

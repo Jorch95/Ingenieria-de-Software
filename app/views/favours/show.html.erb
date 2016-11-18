@@ -8,7 +8,7 @@
     <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-success btn-sm' %>
     <%end%>
     <% if current_user == @favour.user %>
-      <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-warning btn-sm' %>
+      <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-info btn-sm' %>
       <% if @favour.aceptado==false %>
         <%= link_to "Eliminar",@favour,method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
       <%end%>
