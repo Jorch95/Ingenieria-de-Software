@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 
 <body class="fondo1">
+
   <div class="col-md-3"></div>
   <div class="col-md-6">
     <div id="postlist">
+
+      <div class="panel filtro" style="background-color: #F5F5F5">
+        <div class="center">
+          <%= form_tag({controller: "favours", action: "index"}, method: "get", :class => "form-inline")  do %>
+              <div class="form-group input-group col-md-4">  
+                  <%= select_tag :filtrado_por,  options_for_select(["Descripcion", "Titulo", "Ciudad", "Provincia", "Fecha decreciente", "Fecha creciente"]), :value => params[:filtrado_por], class: 'form-control' %>
+              </div>
+              <div class="form-group input-group col-md-4">  
+                  <%= text_field_tag :criterio, nil, placeholder: 'Criterio de busqueda', :value => params[:criterio], class: 'form-control' %>
+              </div>
+              <%= submit_tag "Filtrar", :class => 'btn btn-primary actions' %>
+              <%= link_to favours_path, method: "get" do %>
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+
       <%@favours.each do |favour|%>
       <div class="panel" style="background-color: #F5F5F5">
         <div class="panel-heading">
