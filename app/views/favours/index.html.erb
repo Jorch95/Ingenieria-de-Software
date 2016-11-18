@@ -27,6 +27,25 @@
       <div class="panel" style="background-color: #F5F5F5">
         <div class="panel-heading">
           <div class="text-center">
+            <% if favour.image_url== "http://gdurl.com/GY5O" %>
+            <div class="row">
+              <div class="col-sm-1" style="padding: 0">
+                <div style="padding-left: 18%">
+                  <%=link_to image_tag(favour.image_url, class: "max-size"),favour%>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <h3 class="pull-left"><%=favour.titulo%></h3>
+              </div>
+              <div class="col-sm-3">
+                <h4 class="pull-right">
+                  <small><em><%=favour.created_at.strftime("%d/%m/%Y")%></em></small>
+                  <br>
+                  <span class="label label-default"><%=favour.ciudad%></span>
+                </h4>
+              </div>
+            </div>
+            <%else%>
             <div class="row">
               <div class="col-sm-9">
                 <h3 class="pull-left"><%=favour.titulo%></h3>
@@ -39,13 +58,16 @@
                 </h4>
               </div>
             </div>
+            <%end%>
           </div>
         </div>
 
         <div class="panel-body">
+          <% if favour.image_url != "http://gdurl.com/GY5O" %>
           <div class="thumbnail">
             <%=link_to image_tag(favour.image_url, class: "max-size"),favour%>
           </div>
+          <%end%>
           <p>
             <%=truncate(favour.descripcion,length: 100)%>
             <% if favour.descripcion.length > 100 %>
