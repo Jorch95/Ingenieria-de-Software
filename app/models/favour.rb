@@ -8,7 +8,8 @@ class Favour < ActiveRecord::Base
   scope :titulo, -> (titulo) { where titulo: titulo }
   scope :descripcion, -> (descripcion) { where "favours.descripcion like ?", "%" + descripcion + "%" }
   scope :ciudad, -> (ciudad) { where ciudad: ciudad }
-  scope :descendente, -> {order("created_at desc")}
-  scope :ascendente, -> {order("created_at asc")}
+  scope :ciudad, -> (ciudad) { where ciudad: ciudad }
+  scope :ordenadoPor, -> (campo,criterio) {order(campo + " " + criterio)}
+  scope :ordenadoPorDefault, -> {order("titulo asc")}
 
 end
