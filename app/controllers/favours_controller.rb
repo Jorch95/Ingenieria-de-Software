@@ -1,7 +1,7 @@
 class FavoursController < ApplicationController
   def index
-      @favours = inicializar_favor
-  end
+      @favours = inicializar_favor.where(aceptado: false)
+  end # No aceptado
   def show
       @favour = Favour.find(params[:id])
   end
@@ -15,32 +15,41 @@ class FavoursController < ApplicationController
 
 
   def inicializar_favor
-    if params[:filtrado_por].present?
-        criterio = params[:criterio]
-
-        if params[:filtrado_por] == "Fecha decreciente"
-          return Favour.all.descendente()
-        elsif params[:filtrado_por] == "Fecha creciente"
-          return Favour.all.ascendente()
-        end
-
-        if criterio == ""
-          return Favour.all
-        elsif params[:filtrado_por] == "Descripcion"
-          #return Favour.descripcion(criterio)
-          #return Favour.includes(:resources).where("resources.resource_type_id = ?", @resource_type.id)
-          #return Favour.includes(:criterio).where("descripcion = ?", criterio)
-        elsif params[:filtrado_por] == "Titulo"
-          return Favour.titulo(criterio)
-        elsif params[:filtrado_por] == "Ciudad"
-          return Favour.ciudad(criterio)
-        elsif params[:filtrado_por] == "Provincia"
-          return Favour.provincia(criterio)
-        end
-    else
-        return Favour.all
+    aux_favor = Favour.all
+    if params[:filtrado_descripcion].present?
+       aux_favor = aux_favor.descripcion(params[:filtrado_descripcion])
     end
-  end
+    if params[:filtrado_titulo].present?
+      aux_favor = aux_favor.titulo(params[:filtrado_titulo])
+    end
+    if params[:filtrado_ciudad].present?
+      aux_favor = aux_favor.ciudad(params[:filtrado_ciudad])
+    end
+    if params[:filtrado_provincia].present?
+      aux_favor = aux_favor.provincia(params[:filtrado_provincia])
+    end
+
+    if params[:ordenado_por].present?
+      campo = params[:ordenado_por].split.first
+      forma = params[:ordenado_por].split[1] # agarra el elemento numero 2
+      if forma == "A-Z" || forma == "creciente"
+        forma = "asc"
+      elsif forma == "Z-A" || forma == "decreciente"
+        forma = "desc"
+      else
+        flash[:alert]="Hubo un error critico, por favor reinicia la pagina."
+      end
+      if campo == "Fecha"
+        campo = "created_at"
+      else
+        campo = campo.downcase
+      end
+      aux_favor = aux_favor.ordenadoPor(campo, forma)
+    else
+      aux_favor = aux_favor.ordenadoPorDefault()
+    end
+    return aux_favor
+end
 
   def destroy
     f=Favour.find(params[:id])

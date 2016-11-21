@@ -2,26 +2,57 @@
 
 <body class="fondo1">
 
-  <div class="col-md-3"></div>
+<script>
+	setInterval(function(){
+    	var $recarga = $("#recarga");
+    	if($recarga.is(":hover")) {
+       		$recarga.addClass('fa-spin');
+    	} else {
+       		$recarga.removeClass().addClass("fa fa-refresh");
+    	}
+}, 200);
+</script>
+
+	<div class="col-md-3">
+		<div class="panel filtro" style="background-color: #F5F5F5">
+			<label class="filtro-padding-laterales"> Criterio de busqueda <i class="fa fa-filter" aria-hidden="true"></i>  </label>       
+			<%= form_tag({controller: "favours", action: "index"}, method: "get")  do %>
+				<div class="form-group filtro-padding-laterales">
+					<%= text_field_tag :filtrado_descripcion, nil, class: 'form-control', placeholder: 'Descripcion', :value => params[:filtrado_descripcion] %>
+				</div>
+				<div class="form-group filtro-padding-laterales">
+					<%= text_field_tag :filtrado_titulo, nil, class: 'form-control', placeholder: 'Titulo', :value => params[:filtrado_titulo] %>
+				</div>
+				<div class="form-group filtro-padding-laterales">
+					<%= text_field_tag :filtrado_ciudad, nil, class: 'form-control', placeholder: 'Ciudad', :value => params[:filtrado_ciudad] %>
+				</div>
+				<div class="form-group filtro-padding-laterales">
+					<%= text_field_tag :filtrado_provincia, nil, class: 'form-control', placeholder: 'Provincia', :value => params[:filtrado_provincia] %>
+				</div>
+				<label class="filtro-padding-laterales"> Criterio de orden <i class="fa fa-first-order" aria-hidden="true"></i>  </label>
+				<div class="form-group filtro-padding-laterales">
+					<%= select_tag :ordenado_por,  options_for_select(["Titulo A-Z", "Titulo Z-A","Ciudad A-Z", "Ciudad Z-A","Provincia A-Z", "Provincia Z-A", "Fecha decreciente", "Fecha creciente"]), :value => params[:ordenado_por], class: 'form-control' %>
+				</div>
+
+				<div class="form-group filtro-padding-laterales">
+	   				<%= submit_tag "Filtrar", :class => 'btn btn-primary actions' %>
+	   				<%= submit_tag "Limpiar filtro", :class => 'btn btn-warning actions', :type => 'reset'%>
+    	          	<%= link_to favours_path, method: "get" do %>
+                  		<i id="recarga" class="fa fa-refresh" aria-hidden="true"></i>
+        	    	<% end %>
+        		</div>
+        	<% end %>
+		</div>
+  	</div>
   <div class="col-md-6">
     <div id="postlist">
-
-      <div class="panel filtro" style="background-color: #F5F5F5">
-        <div class="center">
-          <%= form_tag({controller: "favours", action: "index"}, method: "get", :class => "form-inline")  do %>
-              <div class="form-group input-group col-md-4">
-                  <%= select_tag :filtrado_por,  options_for_select(["Descripcion", "Titulo", "Ciudad", "Provincia", "Fecha decreciente", "Fecha creciente"]), :value => params[:filtrado_por], class: 'form-control' %>
-              </div>
-              <div class="form-group input-group col-md-4">
-                  <%= text_field_tag :criterio, nil, placeholder: 'Criterio de busqueda', :value => params[:criterio], class: 'form-control' %>
-              </div>
-              <%= submit_tag "Filtrar", :class => 'btn btn-primary actions' %>
-              <%= link_to favours_path, method: "get" do %>
-                  <i class="fa fa-refresh" aria-hidden="true"></i>
-              <% end %>
-          <% end %>
-        </div>
-      </div>
+    	<% if @favours.size == 0 %>
+			<div class="panel filtro" style="background-color: #F5F5F5">
+				<div style="align-content: center;">
+					<h4 class="center">No hay favores</h4>
+				</div>
+		<% end %>
+	</div>
 
       <%@favours.each do |favour|%>
       <div class="panel" style="background-color: #F5F5F5">
@@ -90,10 +121,6 @@
         </div>
       </div>
       <%end%>
-      <% if @favours.size == 0 %>
-    		<h4 class="center">No hay favores</h4>
-    	<% end %>
-
     </div>
   </div>
 </body>
