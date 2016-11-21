@@ -1,0 +1,65 @@
+<body class="fondo1">
+<div class="formulario-margen">
+<h2>Crear nuevo favor</h2>
+<p> Para crear favores se necesita que dispongas de un punto al menos.
+  Luego de la creacion del favor se te restara el punto correspondiente </p>
+<% if @favour.errors.any? %>
+<div id="error_explanation">
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <ul>
+      <% @favour.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<%= form_for(@favour) do |f| %>
+<div class="formulario-reg">
+  	<div class="form-group input-group">
+  <label class="sr-only">Titulo</label>
+  <span class="input-group-addon">
+    <i class="fa fa-pencil"></i> <%= f.label "Titulo" %>
+  </span>
+  <%= f.text_field :titulo, required: true,
+    placeholder: 'Ingrese el titulo', class: "form-control" %>
+</div>
+  	<div class="form-group input-group">
+      <label class="sr-only">Descripcion</label>
+      <span class="input-group-addon">
+        <i class="fa fa-pencil"></i> <%= f.label "Descripcion" %>
+      </span>
+    <%= f.text_area :descripcion, required: true,
+      placeholder: 'Ingrese la descripcion', class: "form-control" %>
+</div>
+	<div class="form-group input-group">
+    <label class="sr-only">Imagen</label>
+    <span class="input-group-addon">
+      <i class="fa fa-file"></i><%= f.label "Imagen" %>
+    </span>
+    <%= f.text_field :image_url, required: false, placeholder: 'Ingrese una imagen si tiene', class: "form-control" %>
+</div>
+<div class="form-group input-group">
+  <label class="sr-only">Provincia</label>
+  <span class="input-group-addon">
+    <i class="fa fa-pencil"></i> <%= f.label "Provincia" %>
+  </span>
+  <%= f.text_field :provincia, required: true,
+  placeholder: 'Ingrese provincia', class: "form-control" %>
+</div>
+	<div class="form-group input-group">
+    <label class="sr-only">Ciudad</label>
+    <span class="input-group-addon">
+        <i class="fa fa-pencil"></i><%= f.label "Ciudad" %>
+    </span>
+    <%= f.text_field :ciudad , required: true, placeholder: 'Ingrese ciudad', class: "form-control" %>
+</div>
+<div class="actions">
+  <%= f.submit "Guardar", :class => 'btn btn-default actions'%>
+</div>
+</div>
+<% end %>
+</div>
+</body>
