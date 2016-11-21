@@ -1,7 +1,7 @@
 class Favour < ActiveRecord::Base
   belongs_to :user
   has_many :requests, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one :grade
 
   scope :provincia, -> (provincia) { where provincia: provincia }
