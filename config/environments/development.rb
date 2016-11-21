@@ -33,7 +33,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
