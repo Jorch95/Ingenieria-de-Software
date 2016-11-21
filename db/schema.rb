@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161121180440) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "respuesta", default:""
+    t.text     "respuesta"
     t.text     "comentario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
