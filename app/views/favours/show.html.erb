@@ -32,7 +32,15 @@
                 <h4 class="media-heading user_name"><%=c.user.nombre%></h4>
                 <%=c.comentario%><br>
                 <%if user_signed_in? && current_user.id==@favour.user.id%>
-                "Aca deberia haber un campo para responder siendo el autor"
+                <%=form_for @favour.comments.build do |f|%>
+                <%= hidden_field_tag :favour_id, @favour.id %>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                <%= f.text_field :comentario, required: true, placeholder: 'Responda', class: "form-control" %>
+              </div><div class="col-md-2">
+                <%= f.submit "Enviar", :class => 'btn btn-default actions'%>
+              </div>
+                <%end%>
                 <%end%>
               </div>
             </div>
