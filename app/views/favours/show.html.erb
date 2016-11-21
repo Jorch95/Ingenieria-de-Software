@@ -8,17 +8,51 @@
     <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-success btn-sm' %>
     <%end%>
     <% if current_user == @favour.user %>
-      <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-info btn-sm' %>
-      <% if @favour.aceptado==false %>
-        <%= link_to "Eliminar",@favour,method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
-      <%end%>
-    <% end %> </div>
+    <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-info btn-sm' %>
+    <% if @favour.aceptado==false %>
+    <%= link_to "Eliminar",@favour,method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
+    <%end%>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <%= image_tag @favour.image_url, class: "image-size" %></br> </div>
+    <p class="text-align"> <%= simple_format(@favour.descripcion) %> </p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="page-header">
+            <h3><small class="pull-right"><%=@favour.comments.length.to_s+" preguntas"%></small> Preguntas </h3>
+          </div>
+          <div class="comments-list">
+            <% @favour.comments.each do |c|%>
+            <div class="media">
+              <p class="pull-right"><small> hace <%= time_ago_in_words c.created_at %> </small></p>
+              <div class="media-body">
+                <h4 class="media-heading user_name"><%=c.user.nombre%></h4>
+                <%=c.comentario%><br>
+                <%if user_signed_in? && current_user.id==@favour.user.id%>
+                "Aca deberia haber un campo para responder siendo el autor"
+                <%end%>
+              </div>
+            </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <%if user_signed_in? && current_user.id!=@favour.user.id%>
     <div class="col-md-8">
-      <%= image_tag @favour.image_url, class: "image-size" %></br> </div>
-      <p class="text-align"> <%= simple_format(@favour.descripcion) %> </p>
-      <h3> Preguntas </h3>
-      
-
-
-
-        <!-- TODO agregar calificacion y comentarios con su respuesta si la hay -->
+      <%=form_for @favour.comments.build do |f|%>
+      <%= hidden_field_tag :favour_id, @favour.id %>
+      <div class="col-md-10">
+      <%= f.text_field :comentario, required: true, placeholder: 'Realize una pregunta', class: "form-control" %>
+    </div><div class="col-md-2">
+      <%= f.submit "Enviar", :class => 'btn btn-default actions'%>
+    </div>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+    <br>

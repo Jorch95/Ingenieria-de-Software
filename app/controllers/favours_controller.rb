@@ -5,6 +5,7 @@ class FavoursController < ApplicationController
   def show
       @favour = Favour.find(params[:id])
   end
+
   def edit
       @favour = Favour.find(params[:id])
       if current_user != @favour.user

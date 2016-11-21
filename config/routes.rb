@@ -7,13 +7,14 @@ Rails.application.routes.draw do
 # get 'purchases/create'
 
   resource :purchases
-  
+
   get 'requests/solicitar'
 
   #get '/solicitar', to:'requests_controller#solicitar'
   #get 'favours/show'
   resources :favours
   resources :achievements
+  resources :comments
 
   get 'home/index'
 

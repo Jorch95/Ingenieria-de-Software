@@ -22,11 +22,18 @@
 }
 
 .filtro {
-  padding-top: 20px; 
-  padding-bottom: 20px; 
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .filtro-padding-laterales {
-  padding-left: 20px; 
-  padding-right: 20px; 
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
 }
