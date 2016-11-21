@@ -15,7 +15,7 @@
 
 	<div class="col-md-3">
 		<div class="panel filtro" style="background-color: #F5F5F5">
-			<label class="filtro-padding-laterales"> Criterio de busqueda <i class="fa fa-filter" aria-hidden="true"></i>  </label>       
+			<label class="filtro-padding-laterales"> Criterio de busqueda <i class="fa fa-filter" aria-hidden="true"></i>  </label>
 			<%= form_tag({controller: "favours", action: "index"}, method: "get")  do %>
 				<div class="form-group filtro-padding-laterales">
 					<%= text_field_tag :filtrado_descripcion, nil, class: 'form-control', placeholder: 'Descripcion', :value => params[:filtrado_descripcion] %>
@@ -110,7 +110,7 @@
         <div class="panel-footer">
           <div class="center">
           <%= link_to "Mostrar", favour, class: 'btn btn-primary btn-sm' %>
-          <% if user_signed_in? && current_user.id != favour.user.id %>
+          <% if user_signed_in? && current_user.id != favour.user_id %>
           <%= link_to "Enviar Solicitud", requests_solicitar_path, class: 'btn btn-success btn-sm' %>
           <% end %>
           <% if current_user == favour.user %>
@@ -123,4 +123,7 @@
       <%end%>
     </div>
   </div>
+	<div class="col-md-3">
+		<%= link_to "Si queres aca podes Crear un Favor!", new_favour_url , class: 'btn btn-success btn-sm' %>
+	</div>
 </body>

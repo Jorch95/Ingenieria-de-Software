@@ -13,6 +13,17 @@ class FavoursController < ApplicationController
         redirect_to action: "index"
       end
   end
+  def new
+      @favour = Favour.new
+  end
+  def create
+    @favour=current_user.favours.new favour_params
+    if @favour.save
+      redirect_to action: "index"
+    else
+      render :new
+    end
+  end
 
 
   def inicializar_favor
@@ -60,5 +71,7 @@ end
     end
     redirect_to favours_path
   end
-
+  def favour_params
+    params.require(:favour).permit(:titulo,:descripcion, :ciudad)
+  end
 end
