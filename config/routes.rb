@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :favours
   resources :achievements
   resources :comments
+  resources :requests
 
   get 'home/index'
 
