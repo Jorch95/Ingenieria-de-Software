@@ -163,6 +163,11 @@ input[type="color"]:focus,
     text-align: left;
  }
 
+ .navbar {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+ }
+
 @media (max-width: 768px) {
   .logo-inicio {
     width: 30px;
