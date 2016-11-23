@@ -13,4 +13,7 @@ class RequestsController < ApplicationController
       render :new
     end
   end
+  def show
+    @requests=Favour.find(params[:favour_id]).requests
+  end
 end

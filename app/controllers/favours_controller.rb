@@ -5,6 +5,7 @@ class FavoursController < ApplicationController
   end # No aceptado
   def show
       @favour = Favour.find(params[:id])
+      @request = @favour.requests
   end
 
   def edit
@@ -40,6 +41,9 @@ class FavoursController < ApplicationController
     aux_favor = Favour.all
     if params[:filtrado_descripcion].present?
        aux_favor = aux_favor.descripcion(params[:filtrado_descripcion])
+    end
+    if params[:filtrado_user_id].present?
+       aux_favor = aux_favor.user_id(params[:filtrado_user_id])
     end
     if params[:filtrado_titulo].present?
       aux_favor = aux_favor.titulo(params[:filtrado_titulo])

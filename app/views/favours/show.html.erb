@@ -6,13 +6,16 @@
     <h4> Publicado por: <%= @favour.user.nombre %> <%= @favour.user.apellido %> </h4>
     <% if user_signed_in? && current_user.id != @favour.user.id %>
     <%= link_to "Enviar Solicitud", new_request_path(:favour_id => @favour.id), class: 'btn btn-success btn-sm' %>
+    <% end %>
+    <% if current_user == @favour.user %>
+    <%= link_to "Editar", edit_favour_path(@favour), class: 'btn btn-info btn-sm' %>
+    <% end %>
+    <% if @favour.aceptado==false %>
+    <%= link_to "Eliminar", @favour, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
     <%end%>
     <% if current_user == @favour.user %>
-    <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-info btn-sm' %>
-    <% if @favour.aceptado==false %>
-    <%= link_to "Eliminar",@favour,method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
-    <%end%>
-    <% end %>
+     <%= link_to "Solicitudes", request_path(:favour_id => @favour.id), class: 'btn btn-primary btn-sm' %>
+    <% end %>  
   </div>
   <div class="col-md-8">
     <%= image_tag @favour.image_url, class: "image-size" %></br> </div>
@@ -65,4 +68,4 @@
     </div>
     <%end%>
   </div>
-  <br>
+
