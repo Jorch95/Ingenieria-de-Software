@@ -1,7 +1,7 @@
 class FavoursController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
-      @favours = inicializar_favor.where(aceptado: false)
+      @favours = inicializar_favor.where(aceptado: false).where(finalizado: false)
   end # No aceptado
   def show
       @favour = Favour.find(params[:id])
