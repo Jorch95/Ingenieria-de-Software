@@ -1,16 +1,20 @@
 class FavoursController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
-      @favours = inicializar_favor.where(aceptado: false).where(finalizado: false)
+    @favours = inicializar_favor.where(aceptado: false).where(finalizado: false)
+    if user_signed_in?
       @requests= Request.where(user_id: current_user.id)
+    end
   end # No aceptado
   def show
-      @favour = Favour.find(params[:id])
+    @favour = Favour.find(params[:id])
+    if user_signed_in?
       @requests= Request.where(user_id: current_user.id)
+    end
   end
 
   def edit
-      @favour = Favour.find(params[:id])
+    @favour = Favour.find(params[:id])
   end
 
   def update
@@ -23,7 +27,7 @@ class FavoursController < ApplicationController
   end
 
   def new
-      @favour = Favour.new
+    @favour = Favour.new
   end
   def create
     @favour=current_user.favours.new favour_params
@@ -41,7 +45,7 @@ class FavoursController < ApplicationController
   def inicializar_favor
     aux_favor = Favour.all
     if params[:filtrado_descripcion].present?
-       aux_favor = aux_favor.descripcion(params[:filtrado_descripcion])
+      aux_favor = aux_favor.descripcion(params[:filtrado_descripcion])
     end
     if params[:filtrado_titulo].present?
       aux_favor = aux_favor.titulo(params[:filtrado_titulo])
@@ -73,7 +77,7 @@ class FavoursController < ApplicationController
       aux_favor = aux_favor.ordenadoPorDefault()
     end
     return aux_favor
-end
+  end
 
   def destroy
     f=Favour.find(params[:id])

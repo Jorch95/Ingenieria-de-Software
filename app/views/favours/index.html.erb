@@ -14,6 +14,14 @@
 </script>
 
 	<div class="col-md-3">
+
+		<% if user_signed_in?%>
+			<div class="center">
+			<%= link_to "Si queres aca podes Crear un Favor!", new_favour_url , class: 'btn btn-success center boton-crear-favor'%>
+			</div>
+			<br>
+		<%end%>
+
 		<div class="panel filtro" style="background-color: #F5F5F5">
 			<label class="filtro-padding-laterales"> Criterio de busqueda <i class="fa fa-filter" aria-hidden="true"></i>  </label>
 			<%= form_tag({controller: "favours", action: "index"}, method: "get")  do %>
@@ -123,9 +131,4 @@
       <%end%>
     </div>
   </div>
-	<% if user_signed_in?%>
-	<div class="col-md-3">
-		<%= link_to "Si queres aca podes Crear un Favor!", new_favour_url , class: 'btn btn-success btn-sm' %>
-	</div>
-	<%end%>
 </body>
