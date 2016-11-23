@@ -1,4 +1,5 @@
 class FavoursController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
       @favours = inicializar_favor.where(aceptado: false)
   end # No aceptado
@@ -81,6 +82,6 @@ end
     redirect_to favours_path
   end
   def favour_params
-    params.require(:favour).permit(:titulo,:descripcion, :ciudad)
+    params.require(:favour).permit(:titulo,:descripcion, :ciudad, :provincia)
   end
 end

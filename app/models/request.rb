@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
 
   def is_in_range?
     if Time.now.to_i>self.fecha.to_time.to_i
-      errors.add :base,"La fecha debe ser mayor que la actual"
-end
-end
+      errors.add :fecha,""
+    end
+  end
 end
