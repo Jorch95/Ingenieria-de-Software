@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'about/contact'
+  get 'about/FAQ'
   get 'legal/terms'
   get 'legal/privacy'
 

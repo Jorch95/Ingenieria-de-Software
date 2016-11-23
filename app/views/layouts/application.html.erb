@@ -35,13 +35,16 @@
 			<div id="menuDesplegable" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<li class="barra">
-						<%= link_to('Favores', favours_path, :method => :get) %>
+						<%= link_to favours_path, :method => :get do %>
+						<i class="fa fa-sign-language" aria-hidden="true"></i> Favores
+						<% end %>
 					</li>
-					<li class="barra"><a href="#">Cosas</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="barra">
-						<%= link_to('Compras', purchases_path, :method => :get) %>
+						<%= link_to purchases_path, :method => :get do %>
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
+						<% end %>
 					</li>
 					<% if user_signed_in? %>
 						<li class="barra dropdown">
@@ -135,6 +138,8 @@
 				<%= link_to 'Privacidad', legal_privacy_path %>
 				&nbsp;&nbsp;
 				<%= link_to 'Contacto', about_contact_path %>
+				&nbsp;&nbsp;
+				<%= link_to 'FAQ', about_FAQ_path %>
 			</div>
 		</div>
 	</footer>
