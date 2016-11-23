@@ -2,11 +2,6 @@ class PurchasesController < ApplicationController
 	before_action :authenticate_user!
 
 	def new
-		@userApellido = current_user.tc_apellido
-		@userNombre = current_user.tc_nombre
-		@userNumero = current_user.tc_numero
-		@userPin = current_user.tc_pin
-		@userCadu = current_user.tc_caducidad
 		@purchase = Purchase.new
 		if current_user.tc_apellido == nil
 			current_user.update(tc_apellido: '')
@@ -18,13 +13,12 @@ class PurchasesController < ApplicationController
 
 	def destroy
 		Purchase.all.where(user_id: current_user.id).each do |pur|
-			pur.delete
+			pur.update(baja_logica: true)
 		end
 		redirect_to action: "show"
 	end
 
 	def show
-		@puntosTotales = current_user.puntaje
 		@costoTotal = 0
 		@puntosTotal = 0
 		Purchase.all.where(user_id: current_user.id).each do |pur|
@@ -54,7 +48,7 @@ class PurchasesController < ApplicationController
 				ordering = { created_at: :desc }
 			end
 		end
-    	@purchases = Purchase.all.where(user_id: current_user.id).order(ordering)
+		@purchases = Purchase.all.where(user_id: current_user.id).where(baja_logica: false).order(ordering)
 	end
 
 	def create

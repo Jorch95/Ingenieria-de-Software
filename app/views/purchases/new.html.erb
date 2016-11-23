@@ -65,7 +65,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Apellido</strong>
 						</span>
-						<input class="form-control" value='<%= @userApellido %>' type="text" disabled>
+						<input class="form-control" value='<%= current_user.tc_apellido %>' type="text" disabled>
 					</div>
 
 					<div class="form-group input-group">
@@ -73,7 +73,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Nombre</strong>
 						</span>
-						<input class="form-control" value='<%= @userNombre %>' type="text" disabled>
+						<input class="form-control" value='<%= current_user.tc_nombre %>' type="text" disabled>
 					</div>
 
 					<div class="form-group input-group">
@@ -81,7 +81,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Número</strong>
 						</span>
-						<input class="form-control" value='<%= @userNumero %>' type="text" disabled>
+						<input class="form-control" value='<%= current_user.tc_numero %>' type="text" disabled>
 					</div>
 
 					<div class="form-group input-group">
@@ -89,7 +89,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Pin</strong>
 						</span>
-						<input class="form-control" value='<%= @userPin %>' type="text" disabled>
+						<input class="form-control" value='<%= current_user.tc_pin %>' type="text" disabled>
 					</div>
 
 
@@ -98,7 +98,7 @@
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Caducidad</strong>
 						</span>
-						<input class="form-control" value='<%= @userCadu %>' type="text" disabled>
+						<input class="form-control" value='<%= current_user.tc_caducidad %>' type="text" disabled>
 					</div>
 		
 				<div class="actions">

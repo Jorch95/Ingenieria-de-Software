@@ -12,7 +12,7 @@
 	<h3 class="titulo" align="center"> Todas las compras realizadas por usted </h3>
 	<div align="center"><%= link_to "Comprar más puntos", new_purchases_path, class: 'btn btn-success btm-sm' %></div>
 	<br>
-	<table class="table table-striped table-bordered" style="width: 60% ; background-color: #ffa141" align="center">
+	<table class="table table-striped table-bordered" style="width: 70% ; background-color: #ffa141" align="center">
 		<tr>
 			<th> Fecha
 				<% if @sentido == "desc-c" %>
@@ -28,7 +28,7 @@
 					<%= link_to raw("<span class='fa fa-sort-numeric-desc'></span>"), purchases_path(sort: "puntos", sentido: "desc-p") %>
 				<% end %>
 			</th>
-			<th> Total en $ARS
+			<th> Costo en $ARS
 				<% if @sentido == "desc-t" %> 
 					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), purchases_path(sort: "total", sentido: "asc-t") %>
 				<% else %>
@@ -45,14 +45,9 @@
 			</tr>
 		<% end %>
 		<tr>
-			<td> <strong>TOTAL</strong> </td>
-			<td> <%= @puntosTotal %> </td>
-			<td> <%= @costoTotal %> </td>
-		</tr>
-		<tr>
-			<td> <strong>Mis puntos</strong> </td>
-			<td> <%= @puntosTotales %> </td>
-			<td> </td>
+			<td>  </td>
+			<td> <strong>TOTAL</strong> <%= @puntosTotales %> </td>
+			<td> <strong>TOTAL</strong> <%= @costoTotal %> </td>
 		</tr>
 	</table>
 

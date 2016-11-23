@@ -29,14 +29,14 @@
 				<div class="form-group filtro-padding-laterales">
 					<%= text_field_tag :filtrado_provincia, nil, class: 'form-control', placeholder: 'Provincia', :value => params[:filtrado_provincia] %>
 				</div>
-				<label class="filtro-padding-laterales"> Criterio de orden <i class="fa fa-first-order" aria-hidden="true"></i>  </label>
+				<label class="filtro-padding-laterales"> Criterio de orden</label>
 				<div class="form-group filtro-padding-laterales">
 					<%= select_tag :ordenado_por,  options_for_select(["Titulo A-Z", "Titulo Z-A","Ciudad A-Z", "Ciudad Z-A","Provincia A-Z", "Provincia Z-A", "Fecha decreciente", "Fecha creciente"]), :value => params[:ordenado_por], class: 'form-control' %>
 				</div>
 
 				<div class="form-group filtro-padding-laterales">
-	   				<%= submit_tag "Filtrar", :class => 'btn btn-primary actions' %>
-	   				<%= submit_tag "Limpiar filtro", :class => 'btn btn-warning actions', :type => 'reset'%>
+	   				<%= submit_tag "Filtrar", :class => 'btn btn-primary btn-sm' %>
+	   				<%= submit_tag "Limpiar filtro", :class => 'btn btn-warning btn-sm', :type => 'reset'%>
     	          	<%= link_to favours_path, method: "get" do %>
                   		<i id="recarga" class="fa fa-refresh" aria-hidden="true"></i>
         	    	<% end %>
@@ -72,7 +72,7 @@
                 <h4 class="pull-right">
                   <small><em><%=favour.created_at.strftime("%d/%m/%Y")%></em></small>
                   <br>
-                  <span class="label label-default"><%=favour.ciudad%></span>
+                  <span class="label label-default"><%=favour.ciudad + ", " + favour.provincia%></span>
                 </h4>
               </div>
             </div>
@@ -85,7 +85,7 @@
                 <h4 class="pull-right">
                   <small><em><%=favour.created_at.strftime("%d/%m/%Y")%></em></small>
                   <br>
-                  <span class="label label-default"><%=favour.ciudad%></span>
+                  <span class="label label-default"><%=favour.ciudad + ", " + favour.provincia%></span>
                 </h4>
               </div>
             </div>
