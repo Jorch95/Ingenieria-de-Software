@@ -32,7 +32,7 @@
 				</span>
 				<%= f.password_field :password, autocomplete: "off", class: 'form-control col' %>
 			</div>
-			<div style="text-align: right;"> 
+			<div style="text-align: right;">
 				<%= link_to('Olvidaste la contraseña?', new_user_password_path) %>
 			</div>
 			<br>
@@ -42,8 +42,8 @@
 					<%= f.label "Recordar datos", for: "recordar" %>
 				</div>
 			<% end -%>
-			
-			<%= f.submit "Iniciar sección", :class => 'btn btn-default actions'%>
+
+			<%= f.submit "Iniciar sesión", :class => 'btn btn-default actions'%>
 		</div>
 
 	<% end %>
