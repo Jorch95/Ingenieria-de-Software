@@ -110,7 +110,7 @@
         <div class="panel-footer">
           <div class="center">
           <%= link_to "Mostrar", favour, class: 'btn btn-primary btn-sm' %>
-          <% if user_signed_in? && current_user.id != favour.user_id %>
+          <% if user_signed_in? && current_user.id != favour.user_id && @requests.where(favour_id: favour.id).empty?%>
           <%= link_to "Enviar Solicitud", new_request_path(:favour_id => favour.id), class: 'btn btn-success btn-sm' %>
           <% end %>
           <% if current_user == favour.user %>

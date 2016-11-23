@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   def new
     @request=Request.new
-    @favour=Favour.find(params[:favour_id])
+    @favour=Favour.find(params[:favour_id])    
   end
   def create
     @favour = Favour.find(params[:favour_id])
