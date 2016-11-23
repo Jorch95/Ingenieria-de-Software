@@ -72,6 +72,6 @@ end
     redirect_to favours_path
   end
   def favour_params
-    params.require(:favour).permit(:titulo,:descripcion, :ciudad)
+    params.require(:favour).permit(:titulo,:descripcion, :ciudad, :provincia)
   end
 end
