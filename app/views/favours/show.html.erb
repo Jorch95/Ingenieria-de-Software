@@ -5,7 +5,7 @@
     <h4> Provincia: <%= @favour.provincia %>. Ciudad: <%= @favour.ciudad %> </h4>
     <h4> Publicado por: <%= @favour.user.nombre %> <%= @favour.user.apellido %> </h4>
     <% if user_signed_in? && current_user.id != @favour.user.id %>
-    <%= link_to "Enviar Solicitud", requests_solicitar_path(:favour_id => @favour.id), class: 'btn btn-success btn-sm' %>
+    <%= link_to "Enviar Solicitud", new_request_path(:favour_id => @favour.id), class: 'btn btn-success btn-sm' %>
     <%end%>
     <% if current_user == @favour.user %>
     <%= link_to "Editar", edit_favour_path(@favour) , class: 'btn btn-info btn-sm' %>

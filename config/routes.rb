@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   resource :purchases
 
-  get 'requests/solicitar'
-
   #get '/solicitar', to:'requests_controller#solicitar'
   #get 'favours/show'
   resources :favours

@@ -1,5 +1,8 @@
 es:
   activerecord:
+    attributes:
+      request:
+        fecha: "La fecha debe ser posterior a la actual"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
