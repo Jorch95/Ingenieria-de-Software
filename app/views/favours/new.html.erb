@@ -37,14 +37,14 @@
 	<div class="form-group input-group">
     <label class="sr-only">Imagen</label>
     <span class="input-group-addon">
-      <i class="fa fa-file"></i><%= f.label "Imagen" %>
+      <i class="fa fa-picture-o" aria-hidden="true"></i><%= f.label "Imagen" %>
     </span>
     <%= f.text_field :image_url, required: false, placeholder: 'Ingrese una imagen si tiene', class: "form-control" %>
 </div>
 <div class="form-group input-group">
   <label class="sr-only">Provincia</label>
   <span class="input-group-addon">
-    <i class="fa fa-pencil"></i> <%= f.label "Provincia" %>
+    <i class="fa fa-map" aria-hidden="true"></i> <%= f.label "Provincia" %>
   </span>
   <%= f.text_field :provincia, required: true,
   placeholder: 'Ingrese provincia', class: "form-control" %>
@@ -52,7 +52,7 @@
 	<div class="form-group input-group">
     <label class="sr-only">Ciudad</label>
     <span class="input-group-addon">
-        <i class="fa fa-pencil"></i><%= f.label "Ciudad" %>
+        <i class="fa fa-map" aria-hidden="true"></i><%= f.label "Ciudad" %>
     </span>
     <%= f.text_field :ciudad , required: true, placeholder: 'Ingrese ciudad', class: "form-control" %>
 </div>

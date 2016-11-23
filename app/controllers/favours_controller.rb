@@ -8,16 +8,25 @@ class FavoursController < ApplicationController
 
   def edit
       @favour = Favour.find(params[:id])
-      if current_user != @favour.user
-        flash[:notice] = "No podes editar este favor"
-        redirect_to action: "index"
-      end
   end
+
+  def update
+    @favour = Favour.find params[:id]
+    if @favour.update(favour_params)
+      redirect_to action: "index"
+    else
+      render :edit
+    end
+  end
+
   def new
       @favour = Favour.new
   end
   def create
     @favour=current_user.favours.new favour_params
+    user = current_user
+    puntajeN = user.puntaje-1
+    user.update(puntaje: puntajeN)
     if @favour.save
       redirect_to action: "index"
     else
