@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :favours, dependent: :destroy
 	has_many :requests, dependent: :destroy
 	has_many :comments
+	has_many :notifications
 
 
 	validates :terminos_legales, acceptance: true

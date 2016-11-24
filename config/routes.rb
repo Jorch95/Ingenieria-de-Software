@@ -5,6 +5,7 @@ resources :favours
 resources :achievements
 resources :comments
 resources :requests
+resources :notifications
 get 'home/index'
 get 'about/contact'
 get 'about/FAQ'

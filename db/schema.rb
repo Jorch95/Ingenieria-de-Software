@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123185607) do
+ActiveRecord::Schema.define(version: 20161124033231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 20161123185607) do
 
   add_index "grades", ["favour_id"], name: "index_grades_on_favour_id", using: :btree
   add_index "grades", ["user_id"], name: "index_grades_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "texto"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "purchases", force: :cascade do |t|
     t.integer  "puntos"
@@ -127,6 +136,7 @@ ActiveRecord::Schema.define(version: 20161123185607) do
   add_foreign_key "favours", "users"
   add_foreign_key "grades", "favours"
   add_foreign_key "grades", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "purchases", "users"
   add_foreign_key "requests", "favours"
   add_foreign_key "requests", "users"

@@ -1,0 +1,212 @@
+// Place all the styles related to the Notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.details
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+.title,
+.date
+{
+  display: block;
+}
+.button-default
+{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  position: relative;
+}
+@import url(http://fonts.googleapis.com/css?family=Lato:700);
+
+*,
+*:after,
+*:before
+{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.button-default
+{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  position: relative;
+}
+
+.show-notifications
+{
+  position: relative;
+
+
+
+  &.active ~ .notifications
+  {
+    opacity: 1;
+    top: 60px;
+  }
+}
+
+.notifications
+{
+  left: 10px;
+  opacity: 0;
+  position: absolute;
+  top: -999px;
+
+  &:after
+  {
+    border: 10px solid transparent;
+
+    content: '';
+    display: block;
+    height: 0;
+    left: 10px;
+    position: absolute;
+    top: -20px;
+    width: 0;
+  }
+
+  h3,
+  .show-all
+  {
+
+    margin: 0;
+    padding: 10px;
+    width: 350px;
+  }
+
+  h3
+  {
+    cursor: default;
+    font-size: 1.05em;
+    font-weight: normal;
+  }
+
+  .show-all
+  {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover,
+    &:focus
+    {
+      text-decoration: underline;
+    }
+  }
+
+  .notifications-list
+  {
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+
+    .item
+    {
+
+      cursor: default;
+      display: block;
+      padding: 10px;
+      position: relative;
+      white-space: nowrap;
+      width: 350px;
+
+      &:before,
+      .details,
+      .button-dismiss
+      {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      &:before
+      {
+        content: '';
+        height: 8px;
+        width: 8px;
+      }
+
+      .details
+      {
+        margin-left: 10px;
+        white-space: normal;
+        width: 280px;
+
+        .title,
+        .date
+        {
+          display: block;
+        }
+
+        .date
+        {
+          font-size: .85em;
+          margin-top: 3px;
+        }
+      }
+
+      .f-dismiss
+      {
+
+        font-size: 2.25em;
+
+        &:hover,
+        &:focus
+        {
+        }
+      }
+
+      &.no-data
+      {
+        display: none;
+        text-align: center;
+
+        &:before
+        {
+          display: none;
+        }
+      }
+
+      &.expired
+      {
+
+        &:before
+        {
+        }
+
+        .details
+        {
+          .date
+          {
+          }
+        }
+      }
+
+      &.dismissed
+      {
+      }
+    }
+  }
+
+  &.empty
+  {
+    .notifications-list
+    {
+      .no-data
+      {
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+}
