@@ -1,0 +1,98 @@
+
+<!--
+<h3> <%= @user.nombre %> <%= @user.apellido %> </h3> -->
+<div class="container">
+	<div class="row">
+    <div class="col-md-7 ">
+
+<div class="panel panel-default">
+  <div class="panel-heading">  <h4 >Perfil de usuario</h4></div>
+   <div class="panel-body">
+     <div class="box box-info">
+       <div class="box-body">
+         <div class="col-sm-6">
+          <div>
+            <h3 style="color:orange"><%= @user.nombre %> <%= @user.apellido %></h3>
+          </div>
+            <div class="clearfix"></div>
+            <hr style="margin:5px 0 5px 0;">
+
+
+<!-- <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 ">Prasad</div>
+     <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Middle Name:</div><div class="col-sm-7"> Shankar</div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> Huddedar</div>
+  <div class="clearfix"></div>
+<div class="bot-border"></div> -->
+<!--
+<div class="col-sm-5 col-xs-6 tital " >Date Of Joining:</div><div class="col-sm-7">15 Jun 2016</div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Date Of Birth:</div><div class="col-sm-7">11 Jun 1998</div>
+
+  <div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Place Of Birth:</div><div class="col-sm-7">Shirdi</div>
+
+ <div class="clearfix"></div>
+<div class="bot-border"></div>
+-->
+<div class="col-sm-5 col-xs-6 tital " >Puntaje:</div><div class="col-sm-7"> <%= @user.puntaje %></div>
+<div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Logro:</div><div class="col-sm-7"> <%= @user.achievement.titulo %></div>
+<div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Pais:</div><div class="col-sm-7"> <%= @user.pais %></div>
+<div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Email:</div><div class="col-sm-7"> <%= @user.email %></div>
+<div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<div class="col-sm-5 col-xs-6 tital " >Telefono:</div><div class="col-sm-7"> <%= @user.telefono %></div>
+<div class="clearfix"></div>
+<div class="bot-border"></div>
+
+<!-- <div class="col-sm-5 col-xs-6 tital " >Relition:</div><div class="col-sm-7">Hindu</div> -->
+
+
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+        </div>
+
+
+    </div>
+    </div>
+</div>
+    <script>
+              $(function() {
+    $('#profile-image1').on('click', function() {
+        $('#profile-image-upload').click();
+    });
+});
+              </script>
+
+
+
+
+
+
+
+
+
+   </div>
+</div>
