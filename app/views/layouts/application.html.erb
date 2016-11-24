@@ -14,13 +14,13 @@
 
 </head>
 <body>
-		<!-- Barra del navegador -->
+	<!-- Barra del navegador -->
 	<nav class="navbar navbar-default">
 		<div class="container" id="menu">
 			<div class="navbar-header">
 				<div class="brand-centered">
 					<%= link_to root_path do %>
-						<img class="logo-inicio icon-bar gauchada" title="Logo" src="http://gdurl.com/GY5O">
+					<img class="logo-inicio icon-bar gauchada" title="Logo" src="http://gdurl.com/GY5O">
 					<% end %>
 				</div>
 
@@ -35,138 +35,144 @@
 			<div id="menuDesplegable" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<% if user_signed_in? %>
-						<li class="barra dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-							<i class="fa fa-sign-language" aria-hidden="true"></i>						
-							 Favores
-							 <span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									<li class="barra">
-										<%= link_to favours_path, :method => :get do %>
-											<i class="fa fa-bookmark-o" aria-hidden="true"></i> Todos los favores
-										<% end %>
-									</li>
-									<li class="barra">
-										<%= link_to favours_path(:filtrado_user_id => current_user.id), :method => :get do %>
-											<i class="fa fa-bookmark" aria-hidden="true"></i> Mis favores
-										<% end %>
-									</li>
-								</ul>
-							</li>
-					<% else %>
+					<li class="barra dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							<i class="fa fa-sign-language" aria-hidden="true"></i>
+							Favores
+							<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li class="barra">
+									<%= link_to favours_path, :method => :get do %>
+									<i class="fa fa-bookmark-o" aria-hidden="true"></i> Todos los favores
+									<% end %>
+								</li>
+								<li class="barra">
+									<%= link_to favours_path(:filtrado_user_id => current_user.id), :method => :get do %>
+									<i class="fa fa-bookmark" aria-hidden="true"></i> Mis favores
+									<% end %>
+								</li>
+							</ul>
+						</li>
+						<% else %>
 						<li class="barra">
 							<%= link_to favours_path, :method => :get do %>
 							<i class="fa fa-sign-language" aria-hidden="true"></i> Favores
 							<% end %>
 						</li>
-					<% end %>
-
-
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="barra">
-						<%= link_to purchases_path, :method => :get do %>
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
 						<% end %>
-					</li>
-					<% if user_signed_in? %>
+
+
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li class="barra">
+							<%= link_to purchases_path, :method => :get do %>
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
+							<% end %>
+						</li>
+						<% if user_signed_in? %>
+						<li class="barra">
+							<%= link_to notifications_path, :method => :get do %>
+							<i class="fa fa-bell" aria-hidden="true"></i> Notificaciones(<%=current_user.notifications.size%>)
+							<% end %>
+						</li>						
 						<li class="barra dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-							<i class="fa fa-id-card-o" aria-hidden="true"></i>
-							<% if current_user.admin? %>
-							 Administrador
-							 <%else%>
-							 Usuario
-							 <%end%>
-							 <span class="caret"></span></a>
+								<i class="fa fa-id-card-o" aria-hidden="true"></i>
+								<% if current_user.admin? %>
+								Administrador
+								<%else%>
+								Usuario
+								<%end%>
+								<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 
 									<li class="barra">
 										<%= link_to  do %>
-											<i class="fa fa-user" aria-hidden="true"></i> <%= current_user.email %>
+										<i class="fa fa-user" aria-hidden="true"></i> <%= current_user.email %>
 										<% end %>
 									</li>
-								<li role="separator" class="divider"></li>
+									<li role="separator" class="divider"></li>
 
 									<li class="barra">
 										<%= link_to edit_user_registration_path, :method => :get do %>
-											<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
+										<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
 										<% end %>
 									</li>
 									<li class="barra">
 										<%= link_to do %>
-											<i class="fa fa-tasks" aria-hidden="true"></i> Cuenta
+										<i class="fa fa-tasks" aria-hidden="true"></i> Cuenta
 										<% end %>
 									</li>
 									<% if current_user.admin? %>
-										<li class="barra">
-											<%= link_to  do %>
-												<i class="fa fa-line-chart" aria-hidden="true"></i> Análisis
-											<% end %>
-										</li>
-										<li class="barra">
-											<%= link_to  achievements_path do %>
-												<i class="fa fa-trophy" aria-hidden="true"></i> Logros
-											<% end %>
-										</li>
+									<li class="barra">
+										<%= link_to  do %>
+										<i class="fa fa-line-chart" aria-hidden="true"></i> Análisis
+										<% end %>
+									</li>
+									<li class="barra">
+										<%= link_to  achievements_path do %>
+										<i class="fa fa-trophy" aria-hidden="true"></i> Logros
+										<% end %>
+									</li>
 									<% end %>
 									<li class="barra">
 										<%= link_to destroy_user_session_path, :method => :delete do %>
-											<i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión
+										<i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión
 										<% end %>
 
 									</li>
 								</ul>
 							</li>
-					<% else %>
-						<li class="barra">
-							<%= link_to('Iniciar sesión', new_user_session_path) %>
-						</li>
-						<li class="barra">
-							<%= link_to('Registráte', new_user_registration_path) %>
-						</li>
-					<% end %>
+							<% else %>
+							<li class="barra">
+								<%= link_to('Iniciar sesión', new_user_session_path) %>
+							</li>
+							<li class="barra">
+								<%= link_to('Registráte', new_user_registration_path) %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+				<!--/.container-fluid -->
+			</nav>
+
+			<% flash.each do |key, value| %>
+			<div class="alert alert-<%= key %> alert-dismissible" role="alert">
+				<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<ul>
+					<li>
+						<%= value %>
+					</li>
 				</ul>
 			</div>
-		<!--/.nav-collapse -->
-		</div>
-	<!--/.container-fluid -->
-	</nav>
+			<% end %>
 
-	<% flash.each do |key, value| %>
-		<div class="alert alert-<%= key %> alert-dismissible" role="alert">
-			<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<ul>
-				<li>
-					<%= value %>
-				</li>
-			</ul>
-		</div>
-	<% end %>
+			<%= yield %>
 
-	<%= yield %>
-
-		<!-- El pie de pagina -->
-	<footer class="footer">
-		<div class="container">
-			<div class="col-md-4 text-muted">
-				&copy; 2016 MasterBranch S.A.
-			</div>
-			<div class="col-md-4 hoverGris">
-				<%= link_to image_tag("http://gdurl.com/GY5O", :class => "logo-foot"), root_path %> <!-- logo.svg -->
-			</div>
-		  	<div class="col-md-4 text-muted">
-				<%= link_to 'Condiciones', legal_terms_path %>
-				&nbsp;&nbsp;
-				<%= link_to 'Privacidad', legal_privacy_path %>
-				&nbsp;&nbsp;
-				<%= link_to 'Contacto', about_contact_path %>
-				&nbsp;&nbsp;
-				<%= link_to 'FAQ', about_FAQ_path %>
-			</div>
-		</div>
-	</footer>
+			<!-- El pie de pagina -->
+			<footer class="footer">
+				<div class="container">
+					<div class="col-md-4 text-muted">
+						&copy; 2016 MasterBranch S.A.
+					</div>
+					<div class="col-md-4 hoverGris">
+						<%= link_to image_tag("http://gdurl.com/GY5O", :class => "logo-foot"), root_path %> <!-- logo.svg -->
+					</div>
+					<div class="col-md-4 text-muted">
+						<%= link_to 'Condiciones', legal_terms_path %>
+						&nbsp;&nbsp;
+						<%= link_to 'Privacidad', legal_privacy_path %>
+						&nbsp;&nbsp;
+						<%= link_to 'Contacto', about_contact_path %>
+						&nbsp;&nbsp;
+						<%= link_to 'FAQ', about_FAQ_path %>
+					</div>
+				</div>
+			</footer>
 
 
-</body>
-</html>
+		</body>
+		</html>

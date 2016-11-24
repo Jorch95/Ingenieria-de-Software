@@ -1,0 +1,14 @@
+<body class="fondo1">
+  <h2>Notificaiones</h2>
+  <div class="list-group col-md-6">
+    <% @notifications.each do |n| %>
+    <li class="list-group-item">
+      <div class="details">
+        <span class="title"><%=n.texto%></span>
+        <span class="date"><%=n.created_at.strftime("%d/%m/%Y")%></span>
+      </div>
+        <%= link_to "x",n,method: :delete, class: 'button-default button-dismiss pull-right'%>
+    </li>
+    <%end%>
+  </div>
+</body>
