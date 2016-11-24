@@ -1,2 +1,23 @@
-<h1>About#contact</h1>
-<p>Find me in app/views/about/contact.html.erb</p>
+<body class="fondo1">
+
+<div class="formulario-margen">
+	<h1 class="titulo letra-fina">Contactenos</h1>
+	<%= form_tag({controller: "about", action: "contact"}, method: "get")  do %>
+		<div class="formulario-reg">
+			<div class="form-group filtro-padding-laterales">
+				<%= text_field_tag :nombre, nil, class: 'form-control', placeholder: 'Nombre y Apellido', :value => params[:nombre] %>
+			</div>
+			<div class="form-group filtro-padding-laterales">
+				<%= text_field_tag :email, nil, class: 'form-control', placeholder: 'Email', :value => params[:email] %>
+			</div>
+			<div class="form-group filtro-padding-laterales">
+				<%= text_area_tag :mensaje, nil, class: 'form-control', placeholder: 'Mensaje', :value => params[:mensaje] %>
+			</div>		
+
+			<div class="form-group filtro-padding-laterales">
+   				<%= submit_tag "Enviar", :class => 'btn btn-primary btn-sm' %>
+    		</div>
+    	</div>
+    <% end %>
+   </div>
+</body>
