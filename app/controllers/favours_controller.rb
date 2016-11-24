@@ -1,7 +1,7 @@
 class FavoursController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
-    @favours = inicializar_favor.where(aceptado: false).where(finalizado: false)
+    @favours = inicializar_favor
     if user_signed_in?
       @requests= Request.where(user_id: current_user.id)
     end
@@ -44,11 +44,29 @@ class FavoursController < ApplicationController
 
   def inicializar_favor
     aux_favor = Favour.all
+
+      if params[:filtrado_user_id].present? && params[:estatus].present?
+        if user_signed_in?
+          if current_user.id == Integer(params[:filtrado_user_id]) # Si no es el mismo usuario que pide la solicitud que no filtre.
+              if params[:estatus] == "todos"
+                aux_favor = aux_favor.user_id(params[:filtrado_user_id])
+              elsif params[:estatus] == "aceptado"
+                aux_favor = aux_favor.user_id(params[:filtrado_user_id]).where(aceptado: true)
+              elsif params[:estatus] == "finalizado"
+                aux_favor = aux_favor.user_id(params[:filtrado_user_id]).where(finalizado: true)
+              end
+          else
+            redirect_to root_path
+          end
+        else
+          redirect_to root_path
+        end
+      else
+        aux_favor = aux_favor.where(aceptado: false).where(finalizado: false)
+      end 
+
     if params[:filtrado_descripcion].present?
       aux_favor = aux_favor.descripcion(params[:filtrado_descripcion])
-    end
-    if params[:filtrado_user_id].present?
-       aux_favor = aux_favor.user_id(params[:filtrado_user_id])
     end
     if params[:filtrado_titulo].present?
       aux_favor = aux_favor.titulo(params[:filtrado_titulo])

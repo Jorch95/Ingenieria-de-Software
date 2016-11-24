@@ -141,6 +141,22 @@ input[type="color"]:focus,
   outline: 0 none;
 }
 
+ .blanco {
+  color: white;
+ }
+
+.numero-notificaciones {
+  font-size: 9pt;
+  text-align: center;
+  color: white;
+  background-color: #F17321;
+  border-radius: 8px;
+  padding: 2px 4px 2px 4px;
+  display: inline;
+}
+
+
+
 /*flash de devise*/
 .alert-error {
     background-color: #f2dede;
@@ -173,10 +189,6 @@ input[type="color"]:focus,
  .navbar {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
- }
-
- .blanco {
-  color: white;
  }
 
 @media (max-width: 768px) {

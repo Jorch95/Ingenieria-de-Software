@@ -47,11 +47,26 @@
 									<% end %>
 								</li>
 								<li class="barra">
-									<%= link_to favours_path(:filtrado_user_id => current_user.id), :method => :get do %>
+									<%= link_to favours_path(:filtrado_user_id => current_user.id, :estatus => "todos"), :method => :get do %>
 									<i class="fa fa-bookmark" aria-hidden="true"></i> Mis favores
 									<% end %>
 								</li>
+								<li class="barra">
+									<%= link_to favours_path(:filtrado_user_id => current_user.id, :estatus => "aceptado"), :method => :get do %>
+									<i class="fa fa-th-list" aria-hidden="true"></i> En proceso
+									<% end %>
+								</li>
+								<li class="barra">
+									<%= link_to favours_path(:filtrado_user_id => current_user.id, :estatus => "finalizado"), :method => :get do %>
+									<i class="fa fa-th-list" aria-hidden="true"></i> Finalizadas
+									<% end %>
+								</li>
 							</ul>
+						</li>
+						<li class="barra">
+							<%= link_to purchases_path, :method => :get do %>
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
+							<% end %>
 						</li>
 						<% else %>
 						<li class="barra">
@@ -65,25 +80,27 @@
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-						<li class="barra">
-							<%= link_to purchases_path, :method => :get do %>
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
-							<% end %>
-						</li>
 						<% if user_signed_in? %>
-						<li class="barra">
-							<%= link_to notifications_path, :method => :get do %>
-							<i class="fa fa-bell" aria-hidden="true"></i> Notificaciones(<%=current_user.notifications.size%>)
-							<% end %>
-						</li>						
+							<li class="barra">
+								<%= link_to notifications_path, :method => :get do %>
+								<i class="fa fa-bell" aria-hidden="true"></i> Notificaciones 
+								<i aria-hidden="true">
+								<% if current_user.notifications.size > 0 %>
+									<div class="numero-notificaciones">
+										<%=current_user.notifications.size%>
+									</div>
+								<% end %>
+								</i>
+							</li>
+						<% end %>
 						<li class="barra dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 								<i class="fa fa-id-card-o" aria-hidden="true"></i>
 								<% if current_user.admin? %>
-								Administrador
-								<%else%>
-								Usuario
-								<%end%>
+									Administrador
+								<% else %>
+									Usuario
+								<% end %>
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 
