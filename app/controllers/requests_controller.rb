@@ -43,12 +43,13 @@ class RequestsController < ApplicationController
   end
 
   def update
-    Request.find(params[:id]).update(aceptacion: true)
+    r=Request.find(params[:id])
+    r.update(aceptacion: true)
     #debe eliminar el resto
-    Request.find(params[:id]).favour.requests.where.not(id: params[:id]).destroy_all
-    Request.find(params[:id]).favour.update(aceptado: true)
-    redirect_to favour_url(Request.find(params[:id]).favour)
-    #TODO Avisar
+    r.favour.requests.where.not(id: params[:id]).destroy_all
+    r.favour.update(aceptado: true)
+    r.user.notifications.create(texto: "Se ha aceptado tu solicitud al favor "+r.favour.titulo)
+    redirect_to favour_url(r.favour)
   end
 
 end
