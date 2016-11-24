@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
 	def show
 		@costoTotal = 0
 		@puntosTotal = 0
-		Purchase.all.where(user_id: current_user.id).each do |pur|
+		Purchase.all.where(user_id: current_user.id).where(baja_logica: false).each do |pur|
 			@costoTotal = @costoTotal + pur.total
 			@puntosTotal = @puntosTotal + pur.puntos
 		end

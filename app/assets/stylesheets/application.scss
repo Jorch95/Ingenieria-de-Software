@@ -38,6 +38,13 @@
      background-image: url("http://gdurl.com/JCz2");
  }
 
+.titulo {
+  color: white
+}
+
+.letra-fina{
+  font-weight: lighter;
+}
 
 .fondo-llave {
      background-image: url("http://gdurl.com/HBs9");
@@ -168,6 +175,10 @@ input[type="color"]:focus,
   border-top-right-radius: 0;
  }
 
+ .blanco {
+  color: white;
+ }
+
 @media (max-width: 768px) {
   .logo-inicio {
     width: 30px;
@@ -179,5 +190,3 @@ input[type="color"]:focus,
   		padding-bottom: 120px;	
 	}
 }
-
-
