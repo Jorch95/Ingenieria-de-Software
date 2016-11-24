@@ -6,6 +6,7 @@ resources :achievements
 resources :comments
 resources :requests
 resources :notifications
+get 'contact/'=>"contact#contact"
 get 'home/index'
 get 'about/contact'
 get 'about/FAQ'

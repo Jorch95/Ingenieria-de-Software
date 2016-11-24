@@ -49,7 +49,7 @@ class RequestsController < ApplicationController
     r.favour.requests.where.not(id: params[:id]).destroy_all
     r.favour.update(aceptado: true)
     r.user.notifications.create(texto: "Se ha aceptado tu solicitud al favor "+r.favour.titulo)
-    redirect_to favour_url(r.favour)
+    redirect_to contact_path(id: r.user.id)
   end
 
 end
