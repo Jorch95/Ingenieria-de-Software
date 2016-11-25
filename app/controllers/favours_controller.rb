@@ -28,6 +28,7 @@ class FavoursController < ApplicationController
 
   def new
     @favour = Favour.new
+    @puntaje = current_user.puntaje
   end
   def create
     @favour=current_user.favours.new favour_params
@@ -63,7 +64,7 @@ class FavoursController < ApplicationController
         end
       else
         aux_favor = aux_favor.where(aceptado: false).where(finalizado: false)
-      end 
+      end
 
     if params[:filtrado_descripcion].present?
       aux_favor = aux_favor.descripcion(params[:filtrado_descripcion])

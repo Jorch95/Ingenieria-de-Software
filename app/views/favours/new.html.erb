@@ -56,8 +56,10 @@
     </span>
     <%= f.text_field :ciudad , required: true, placeholder: 'Ingrese ciudad', class: "form-control" %>
 </div>
+<% if @puntaje >= 1 %>
 <div class="actions">
   <%= f.submit "Guardar", :class => 'btn btn-default actions'%>
+  <% end %>
 </div>
 </div>
 <% end %>
