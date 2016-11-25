@@ -17,7 +17,7 @@
 				document.getElementById("total").value=total;
 			}
 			$(document).on("change, keyup", "#puntos", actualizarPrecio);
-		});	
+		});
 	</script>
 
 	<div class="formulario-margen">
@@ -55,7 +55,7 @@
 				</div>
 
 				<h4 class="titulo">
-					Datos de tarjeta  
+					Datos de tarjeta
 					<%= link_to new_purchases_path do %>
 						<i class="fa fa-refresh" aria-hidden="true"></i>
 					<% end %>
@@ -100,9 +100,9 @@
 						</span>
 						<input class="form-control" value='<%= current_user.tc_caducidad %>' type="text" disabled>
 					</div>
-		
+
 				<div class="actions">
-					<%= link_to "Actualzar tarjeta",  edit_user_registration_path, class: 'btn btn-default btm-sm' %>
+					<%= link_to "Actualizar tarjeta",  edit_user_registration_path, class: 'btn btn-default btm-sm' %>
 					<%= f.submit "Comprar", :class => 'btn btn-success actions'%>
 				</div>
 			</div>
@@ -111,4 +111,3 @@
 
 </body>
 </html>
-

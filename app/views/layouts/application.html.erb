@@ -81,115 +81,136 @@
 
 					<ul class="nav navbar-nav navbar-right">
 						<% if user_signed_in? %>
+
+					<li class="barra dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							<i class="fa fa-bell" aria-hidden="true"></i>
+							Notificaciones
+							<% if current_user.notifications.size > 0 %>
+							<div class="numero-notificaciones">
+								<%=current_user.notifications.size%>
+							</div>
+							<% end %>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<% current_user.notifications.limit(4).each do |n|%>
+								<li class="barra">
+									<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-10" style="font-size: 12px"><%=n.texto%></div>
+								</div>
+								</li>
+								<li role="separator" class="divider"></li>
+							<%end%>
 							<li class="barra">
-								<%= link_to notifications_path, :method => :get do %>
-								<i class="fa fa-bell" aria-hidden="true"></i> Notificaciones 
-								<i aria-hidden="true">
-								<% if current_user.notifications.size > 0 %>
-									<div class="numero-notificaciones">
-										<%=current_user.notifications.size%>
-									</div>
-								<% end %>
-								</i>
-							</li>
-						<% end %>
-						<li class="barra dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-								<i class="fa fa-id-card-o" aria-hidden="true"></i>
-								<% if current_user.admin? %>
-									Administrador
-								<% else %>
-									Usuario
-								<% end %>
-								<span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-
-									<li class="barra">
-										<%= link_to  do %>
-										<i class="fa fa-user" aria-hidden="true"></i> <%= current_user.email %>
-										<% end %>
-									</li>
-									<li role="separator" class="divider"></li>
-
-									<li class="barra">
-										<%= link_to edit_user_registration_path, :method => :get do %>
-										<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
-										<% end %>
-									</li>
-									<li class="barra">
-										<%= link_to do %>
-										<i class="fa fa-tasks" aria-hidden="true"></i> Cuenta
-										<% end %>
-									</li>
-									<% if current_user.admin? %>
-									<li class="barra">
-										<%= link_to  do %>
-										<i class="fa fa-line-chart" aria-hidden="true"></i> Análisis
-										<% end %>
-									</li>
-									<li class="barra">
-										<%= link_to  achievements_path do %>
-										<i class="fa fa-trophy" aria-hidden="true"></i> Logros
-										<% end %>
-									</li>
+								<div class="center">
+									<%= link_to notifications_path do %>
+									<i class="fa fa-bell" aria-hidden="true"></i>Ver todas
 									<% end %>
-									<li class="barra">
-										<%= link_to destroy_user_session_path, :method => :delete do %>
-										<i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión
-										<% end %>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<!--
+				-->
+				<li class="barra dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						<i class="fa fa-id-card-o" aria-hidden="true"></i>
+						<% if current_user.admin? %>
+						Administrador
+						<% else %>
+						Usuario
+						<% end %>
+						<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
 
-									</li>
-								</ul>
-							</li>
-							<% else %>
 							<li class="barra">
-								<%= link_to('Iniciar sesión', new_user_session_path) %>
+								<%= link_to  do %>
+								<i class="fa fa-user" aria-hidden="true"></i> <%= current_user.email %>
+								<% end %>
+							</li>
+							<li role="separator" class="divider"></li>
+
+							<li class="barra">
+								<%= link_to edit_user_registration_path, :method => :get do %>
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
+								<% end %>
 							</li>
 							<li class="barra">
-								<%= link_to('Registráte', new_user_registration_path) %>
+								<%= link_to do %>
+								<i class="fa fa-tasks" aria-hidden="true"></i> Cuenta
+								<% end %>
+							</li>
+							<% if current_user.admin? %>
+							<li class="barra">
+								<%= link_to  do %>
+								<i class="fa fa-line-chart" aria-hidden="true"></i> Análisis
+								<% end %>
+							</li>
+							<li class="barra">
+								<%= link_to  achievements_path do %>
+								<i class="fa fa-trophy" aria-hidden="true"></i> Logros
+								<% end %>
 							</li>
 							<% end %>
-						</ul>
-					</div>
-					<!--/.nav-collapse -->
-				</div>
-				<!--/.container-fluid -->
-			</nav>
+							<li class="barra">
+								<%= link_to destroy_user_session_path, :method => :delete do %>
+								<i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión
+								<% end %>
 
-			<% flash.each do |key, value| %>
-			<div class="alert alert-<%= key %> alert-dismissible" role="alert">
-				<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<ul>
-					<li>
-						<%= value %>
+							</li>
+						</ul>
 					</li>
+					<% else %>
+					<li class="barra">
+						<%= link_to('Iniciar sesión', new_user_session_path) %>
+					</li>
+					<li class="barra">
+						<%= link_to('Registráte', new_user_registration_path) %>
+					</li>
+					<% end %>
 				</ul>
 			</div>
-			<% end %>
+			<!--/.nav-collapse -->
+		</div>
+		<!--/.container-fluid -->
+	</nav>
 
-			<%= yield %>
+	<% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %> alert-dismissible" role="alert">
+		<button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<ul>
+			<li>
+				<%= value %>
+			</li>
+		</ul>
+	</div>
+	<% end %>
 
-			<!-- El pie de pagina -->
-			<footer class="footer">
-				<div class="container">
-					<div class="col-md-4 text-muted">
-						&copy; 2016 MasterBranch S.A.
-					</div>
-					<div class="col-md-4 hoverGris">
-						<%= link_to image_tag("http://gdurl.com/GY5O", :class => "logo-foot"), root_path %> <!-- logo.svg -->
-					</div>
-					<div class="col-md-4 text-muted">
-						<%= link_to 'Condiciones', legal_terms_path %>
-						&nbsp;&nbsp;
-						<%= link_to 'Privacidad', legal_privacy_path %>
-						&nbsp;&nbsp;
-						<%= link_to 'Contacto', about_contact_path %>
-						&nbsp;&nbsp;
-						<%= link_to 'FAQ', about_FAQ_path %>
-					</div>
-				</div>
-			</footer>
+	<%= yield %>
+
+	<!-- El pie de pagina -->
+	<footer class="footer">
+		<div class="container">
+			<div class="col-md-4 text-muted">
+				&copy; 2016 MasterBranch S.A.
+			</div>
+			<div class="col-md-4 hoverGris">
+				<%= link_to image_tag("http://gdurl.com/GY5O", :class => "logo-foot"), root_path %> <!-- logo.svg -->
+			</div>
+			<div class="col-md-4 text-muted">
+				<%= link_to 'Condiciones', legal_terms_path %>
+				&nbsp;&nbsp;
+				<%= link_to 'Privacidad', legal_privacy_path %>
+				&nbsp;&nbsp;
+				<%= link_to 'Contacto', about_contact_path %>
+				&nbsp;&nbsp;
+				<%= link_to 'FAQ', about_FAQ_path %>
+			</div>
+		</div>
+	</footer>
 
 
-		</body>
-		</html>
+</body>
+</html>
