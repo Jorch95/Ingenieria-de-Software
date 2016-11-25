@@ -1,10 +1,8 @@
 class NotificationsController < ApplicationController
   def index
     @notifications=current_user.notifications
-    if @notifications.any?
-    else
-      flash[:notice]="No tienes niguna notificacion"
-      redirect_to :back
+    unless @notifications.any?
+      redirect_to root_path
     end
   end
 
