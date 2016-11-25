@@ -96,17 +96,14 @@
 						<ul class="dropdown-menu" role="menu">
 							<% current_user.notifications.limit(4).each do |n|%>
 								<li class="barra">
-									<div class="row">
-									<div class="col-md-1"></div>
-									<div class="col-md-10" style="font-size: 12px"><%=n.texto%></div>
-								</div>
+									<div style="font-size: 12px; margin-left: 10%"><%=n.texto%></div>
 								</li>
 								<li role="separator" class="divider"></li>
 							<%end%>
 							<li class="barra">
 								<div class="center">
 									<%= link_to notifications_path do %>
-									<i class="fa fa-bell" aria-hidden="true"></i>Ver todas
+									<i class="fa fa-bell" aria-hidden="true"></i> Ver todas
 									<% end %>
 								</div>
 							</li>
