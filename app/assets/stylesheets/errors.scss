@@ -1,0 +1,148 @@
+.fondo404 {
+/**/
+     background-image: url("404.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+/**/
+/*
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(http://www.reactiongifs.us/wp-content/uploads/2015/04/nothing_to_see_here_naked_gun.gif) no-repeat center center fixed;
+  background-size: cover;
+  background-color: #000;
+  */
+}
+
+.mirada {
+  text-align: center;
+  font-size: 80px;
+  text-align: center;
+  width: 450px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  font-weight: lighter;
+  top: -300px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+}
+
+.info1 {
+  text-align: center;
+  font-size: 18px;
+  text-align: center;
+  width: 450px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 140px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  animation: noise-3 1s linear infinite;
+}
+
+.info2 {
+  text-align: center;
+  font-size: 22px;
+  text-align: center;
+  width: 450px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 200px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+}
+
+.titulo-error {
+  text-align: center;
+  opacity: .7;
+  font-size: 115px;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -80px;
+  right: 0;
+  animation: noise 2s linear infinite;
+  overflow: default;
+}
+
+
+.titulo-error:after {
+  content: '404';
+  opacity: .7;
+  font-size: 120px;
+  text-align: center;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25px;
+  right: 0;
+  opacity: 0;
+  color: blue;
+  animation: noise-1 .2s linear infinite;
+}
+
+.titulo-error:before {
+  content: '404';
+  font-size: 120px;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25px;
+  right: 0;
+  opacity: 0;
+  color: red;
+  animation: noise-2 .2s linear infinite;
+}
+
+@keyframes noise-2 {
+  0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
+  10% {opacity: .1;}
+  50% {opacity: .5; left: 6px;}
+  80% {opacity: .3;}
+  100% {opacity: .6; left: -2px;}
+}
+
+@keyframes noise-1 {
+  0%, 20%, 40%, 60%, 70%, 90% {opacity: 0;}
+  10% {opacity: .1;}
+  50% {opacity: .5; left: -6px;}
+  80% {opacity: .3;}
+  100% {opacity: .6; left: 2px;}
+}
+
+@keyframes noise {
+  0%, 3%, 5%, 42%, 44%, 100% {opacity: 1; transform: scaleX(1);}  
+  4.3% {opacity: 1; transform: scaleX(1.7);}
+  43% {opacity: 1; transform: scaleX(1.5);}
+}
+
+@keyframes noise-3 {
+  0%,3%,5%,42%,44%,100% {opacity: 1; transform: scaleX(1);}
+  4.3% {opacity: 1; transform: scaleX(1.2);}
+  43% {opacity: 0.5; transform: scaleX(1.5);}
+}
