@@ -2,13 +2,19 @@ class PurchasesController < ApplicationController
 	before_action :authenticate_user!
 
 	def new
+		@tarjeta_apellido = current_user.tc_apellido
+		@tarjeta_nombre = current_user.tc_nombre
+		@tarjeta_numero = current_user.tc_numero
+		@tarjeta_pin = current_user.tc_pin
+		@tarjeta_caducidad = current_user.tc_caducidad
+
+		unless params[:tarjeta_apellido].nil? && params[:tarjeta_nombre].nil? && params[:tarjeta_numero].nil? && params[:tarjeta_pin].nil? && params[:tarjeta_caducidad].nil? 
+		
+			current_user.update(tc_apellido: params[:tarjeta_apellido], tc_nombre: params[:tarjeta_nombre], tc_numero: params[:tarjeta_numero], tc_pin: params[:tarjeta_pin], tc_caducidad: params[:tarjeta_caducidad])
+			redirect_to new_purchases_path
+		end
+
 		@purchase = Purchase.new
-		if current_user.tc_apellido == nil
-			current_user.update(tc_apellido: '')
-		end
-		if current_user.tc_nombre == nil
-			current_user.update(tc_nombre: '')
-		end
 	end
 
 	def destroy

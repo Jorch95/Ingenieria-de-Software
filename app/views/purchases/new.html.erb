@@ -36,30 +36,54 @@
 			</div>
 		<% end %>
 
-		<%= form_for(@purchase) do |f| %>
-			<div class="formulario-reg">
-				<div class="form-group input-group">
-					<label class="sr-only">Cantidad de puntos</label>
-					<span class="input-group-addon">
-						<i class="fa fa-hashtag"></i> <%= f.label "Puntos" %>
-					</span>
-					<%= f.text_field :puntos, required: true, value: "", id: "puntos",  placeholder: 'Ingrese los cantidad a comprar', class: "form-control" %>
-				</div>
+		<% if current_user.tc_apellido.nil? && current_user.tc_nombre.nil? && current_user.tc_numero.nil? && current_user.tc_pin.nil? && current_user.tc_caducidad.nil? %>
+			<%= form_tag({controller: "purchases", action: "new"}, method: "get")  do %>
 
-				<div class="form-group input-group">
-					<label class="sr-only">Total</label>
-					<span class="input-group-addon">
-						<%= f.label "Total" %> <i class="fa fa-usd"></i>
-					</span>
-					<%= f.number_field :total, id: "total", class: "form-control", disabled: true %> <!-- Despues de realiza la asignacion en realidad no gurada el valor -->
-				</div>
+				<div class="formulario-reg">
+					<div class="form-group input-group">
+						<label class="sr-only">Tarjeta Apellido</label>
+						<span class="input-group-addon">
+							<i class="fa fa-credit-card"></i> <strong>Apellido</strong>
+						</span>
+						<%= text_field_tag :tarjeta_apellido, params[:tarjeta_apellido], class: 'form-control', :value => @tarjeta_apellido %>	
+					</div>
+					<div class="form-group input-group">
+						<label class="sr-only">Tarjeta Nombre</label>
+						<span class="input-group-addon">
+							<i class="fa fa-credit-card"></i> <strong>Nombre</strong>
+						</span>
+						<%= text_field_tag :tarjeta_nombre, params[:tarjeta_nombre], class: 'form-control', :value =>  @tarjeta_nombre %>
+					</div>
+					<div class="form-group input-group">
+						<label class="sr-only">Tarjeta Número</label>
+						<span class="input-group-addon">
+							<i class="fa fa-credit-card"></i> <strong>Número</strong>
+						</span>
+						<%= number_field_tag :tarjeta_numero, params[:tarjeta_numero], class: 'form-control', :value =>  @tarjeta_numero %>
+					</div>
+					<div class="form-group input-group">
+						<label class="sr-only">Tarjeta Pin</label>
+						<span class="input-group-addon">
+							<i class="fa fa-credit-card"></i> <strong>Pin</strong>
+						</span>
+						<%= number_field_tag :tarjeta_pin, params[:tarjeta_pin], class: 'form-control', :value =>  @tarjeta_pin %>
+					</div>
+					<div class="form-group input-group">
+						<label class="sr-only">Tarjeta Caducidad</label>
+						<span class="input-group-addon">
+							<i class="fa fa-credit-card"></i> <strong>Caducidad</strong>
+						</span>
+						<%= date_field_tag :tarjeta_caducidad, params[:tarjeta_caducidad], class: 'form-control', :value =>  @tarjeta_caducidad %>
+					</div>
 
-				<h4 class="titulo">
-					Datos de tarjeta
-					<%= link_to new_purchases_path do %>
-						<i class="fa fa-refresh" aria-hidden="true"></i>
-					<% end %>
-				</h4>
+
+					<div class="form-group filtro-padding-laterales">
+		   				<%= submit_tag "Actualizar Datos", :class => 'btn btn-primary btn-sm' %>
+		    		</div>
+		    	</div>
+			<% end %>
+		<% else %> <!-- DEL IF -->
+				<div class="formulario-reg">
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Apellido</label>
 						<span class="input-group-addon">
@@ -103,10 +127,41 @@
 
 				<div class="actions">
 					<%= link_to "Actualizar tarjeta",  edit_user_registration_path, class: 'btn btn-default btm-sm' %>
+				</div>
+			</div>
+		<% end %>
+
+		<br>
+		
+		<%= form_for(@purchase) do |f| %>
+			<div class="formulario-reg">
+				<div class="form-group input-group">
+					<label class="sr-only">Cantidad de puntos</label>
+					<span class="input-group-addon">
+						<i class="fa fa-hashtag"></i> <%= f.label "Puntos" %>
+					</span>
+					<%= f.text_field :puntos, required: true, value: "", id: "puntos",  placeholder: 'Ingrese los cantidad a comprar', class: "form-control" %>
+				</div>
+
+				<div class="form-group input-group">
+					<label class="sr-only">Total</label>
+					<span class="input-group-addon">
+						<%= f.label "Total" %> <i class="fa fa-usd"></i>
+					</span>
+					<%= f.number_field :total, id: "total", class: "form-control", disabled: true %> <!-- Despues de realiza la asignacion en realidad no gurada el valor -->
+				</div>
+
+				<h4 class="titulo">
+					Datos de tarjeta
+				</h4>
+
+				<div class="actions">
 					<%= f.submit "Comprar", :class => 'btn btn-success actions'%>
 				</div>
 			</div>
 		<% end %>
+		
+					
 	</div>
 
 </body>

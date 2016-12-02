@@ -23,8 +23,15 @@
 		<%end%>
 
 		<div class="panel filtro" style="background-color: #F5F5F5">
-			<label class="filtro-padding-laterales"> Criterio de busqueda <i class="fa fa-filter" aria-hidden="true"></i>  </label>
+			
 			<%= form_tag({controller: "favours", action: "index"}, method: "get")  do %>
+				<% if user_signed_in? %>
+					<label class="filtro-padding-laterales"> Estado de mis favores <i class="fa fa-handshake-o" aria-hidden="true"></i> </label> 
+					<div class="form-group filtro-padding-laterales">
+						<%= select_tag(:estatus, options_for_select(["-", "Todos", "Aceptados", "Finalizados", "Realizados"], :selected => params[:estatus]), class: 'form-control') %>
+					</div>
+				<% end %>
+				<label class="filtro-padding-laterales"> Criterio de busqueda <i class="fa fa-filter" aria-hidden="true"></i>  </label>
 				<div class="form-group filtro-padding-laterales">
 					<%= text_field_tag :filtrado_descripcion, nil, class: 'form-control', placeholder: 'Descripcion', :value => params[:filtrado_descripcion] %>
 				</div>
@@ -39,7 +46,7 @@
 				</div>
 				<label class="filtro-padding-laterales"> Criterio de orden</label>
 				<div class="form-group filtro-padding-laterales">
-					<%= select_tag :ordenado_por,  options_for_select(["Titulo A-Z", "Titulo Z-A","Ciudad A-Z", "Ciudad Z-A","Provincia A-Z", "Provincia Z-A", "Fecha decreciente", "Fecha creciente"]), :value => params[:ordenado_por], class: 'form-control' %>
+					<%= select_tag(:ordenado_por, options_for_select(["Titulo A-Z", "Titulo Z-A", "Ciudad A-Z", "Ciudad Z-A", "Provincia A-Z", "Provincia Z-A", "Fecha decreciente", "Fecha creciente"], :selected => params[:ordenado_por]), class: 'form-control') %>
 				</div>
 
 				<div class="form-group filtro-padding-laterales">

@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :notifications
 
-
 	validates :terminos_legales, acceptance: true
 	# :sexo, :pais
 	validates_presence_of :email, :nombre, :apellido, :fecha_nacimiento,:telefono
@@ -18,24 +17,42 @@ class User < ActiveRecord::Base
 	validates :password, :password_confirmation, length: {minimum: 7, maximum: 30}, on: :update, allow_blank: true
 
 	validates :tc_pin, :allow_nil => true, length: { minimum: 4, maximum: 4 }
-	validate :permitir_tc_numero
-	def permitir_tc_numero
-		unless self.tc_numero.nil? || self.tc_numero == "" || self.tc_numero.length == 16
-			errors.add :tc_numero, 'Solamente numeros con 16 cifras'
+
+	validate :tarjeta_nom_ap_num
+	def tarjeta_nom_ap_num
+		if self.tc_numero == "" || self.tc_nombre == "" || self.tc_apellido == ""
+			errors.add "Los Campos numero, nombre y apellido ", 'no deben estar vacios.'
 		end
 	end
-	# validates_format_of :tc_numero, :allow_nil => true, :with =>  /\d[0-9]\)*\z/ , :message => "Solamente numeros"
-	# validates :tc_numero, :allow_nil => true, length: { minimum: 16, maximum: 16 }
 
-	validates :tc_caducidad,
-	date: { after: Proc.new { Time.now + 1.day }, message: 'Debe caducar como muy pronto mañana' }, on: :create, :allow_nil => true
+	validate :permitir_tc_numero
+	def permitir_tc_numero
+		unless self.tc_numero.nil? || self.tc_numero == '4534305368198206' || self.tc_numero == "4865547196808063" || self.tc_numero == "4223131175950282"
+			unless self.tc_numero.length == 16
+				errors.add "El numero de la tarjeta ", 'debe ser un numero de 16 cifras.'
+			end
+			errors.add "El numero de la tarjeta ", 'debe estar validado por el banco.'
+		end
+	end
+
+	validate :limite_caducidad
+	def limite_caducidad
+		unless self.tc_caducidad.nil?
+			if self.tc_caducidad <= Time.now
+				errors.add "La fecha caducidad de la tarjeta ", 'debe caducar como muy pronto mañana.'
+			end
+		end
+	end
 
 	validates :email, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})\z/, message: ": caracteres permitidos: a-z, A-Z, 0-9, guiones, punto (.)" }
 	validates_format_of :telefono, :with =>  /\d[0-9]\)*\z/ , :message => "Solamente numeros sin espacios"
 
-	validates :fecha_nacimiento,
-	date: { before: Proc.new { Time.now - 18.year }, message: 'Debes ser mayor de 18 años.' }, on: :create
-
+	validate :limite_edad
+	def limite_edad
+		if self.fecha_nacimiento >= Time.now - 18.year
+			errors.add "Tu fecha de nacimiento ", 'debes ser mayor de 18 años.'
+		end
+	end
 
 	##Se sobreescribe el save para que se mantenga la clasificacion actualizada de los logros
 	before_save :achievement_check

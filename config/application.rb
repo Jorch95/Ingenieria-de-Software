@@ -28,5 +28,7 @@ module Gauchada
     config.i18n.default_locale = :es
 
     config.exceptions_app = self.routes
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

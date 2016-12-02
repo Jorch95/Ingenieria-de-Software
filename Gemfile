@@ -65,6 +65,3 @@ gem 'country_select'
 
 # Para los iconos
 gem 'font-awesome-rails'
-
-# Para las validaciones de las fechas
-gem 'date_validator', '~> 0.9.0'

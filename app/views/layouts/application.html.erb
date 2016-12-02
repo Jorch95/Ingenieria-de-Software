@@ -34,48 +34,19 @@
 
 			<div id="menuDesplegable" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
+					<li class="barra">
+							<%= link_to favours_path, :method => :get do %>
+							<i class="fa fa-sign-language" aria-hidden="true"></i> Favores
+							<% end %>
+					</li>
 					<% if user_signed_in? %>
-					<li class="barra dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-							<i class="fa fa-sign-language" aria-hidden="true"></i>
-							Favores
-							<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li class="barra">
-									<%= link_to favours_path, :method => :get do %>
-									<i class="fa fa-bookmark-o" aria-hidden="true"></i> Todos los favores
-									<% end %>
-								</li>
-								<li class="barra">
-									<%= link_to favours_path(:filtrado_user_id => current_user.id, :estatus => "todos"), :method => :get do %>
-									<i class="fa fa-bookmark" aria-hidden="true"></i> Mis favores
-									<% end %>
-								</li>
-								<li class="barra">
-									<%= link_to favours_path(:filtrado_user_id => current_user.id, :estatus => "aceptado"), :method => :get do %>
-									<i class="fa fa-th-list" aria-hidden="true"></i> En proceso
-									<% end %>
-								</li>
-								<li class="barra">
-									<%= link_to favours_path(:filtrado_user_id => current_user.id, :estatus => "finalizado"), :method => :get do %>
-									<i class="fa fa-th-list" aria-hidden="true"></i> Finalizadas
-									<% end %>
-								</li>
-							</ul>
-						</li>
 						<li class="barra">
 							<%= link_to purchases_path, :method => :get do %>
 							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
 							<% end %>
 						</li>
-						<% else %>
-						<li class="barra">
-							<%= link_to favours_path, :method => :get do %>
-							<i class="fa fa-sign-language" aria-hidden="true"></i> Favores
-							<% end %>
-						</li>
-						<% end %>
-					</ul>
+					<% end %>
+				</ul>
 
 					<ul class="nav navbar-nav navbar-right">
 						<% if user_signed_in? %>

@@ -13,11 +13,11 @@ caduc = DateTime.new(2020, 6, 22)
 users = []
 4.times do |i|
   users[i] = User.create(nombre: "Lalo#{i}", apellido: "Mir#{i}", password:"password",password_confirmation: "password", telefono: "5345434444", puntaje: 10, pais: "Argentina", sexo: true, email: "lalo#{i}@gmail.com", fecha_nacimiento: nacim, admin: false, tc_apellido: "Mir",
-    tc_nombre: "Lalo", tc_numero: "1234567891234567", tc_pin: 4379, tc_caducidad: caduc)
+    tc_nombre: "Lalo", tc_numero: "4534305368198206", tc_pin: 4379, tc_caducidad: caduc)
 end
 
  n = User.create(nombre: "nahuel", apellido: "ter", password:"123123123", password_confirmation: "123123123", telefono: "12345678910", puntaje: 10, pais: "Argentina", sexo: true, email: "unlp93nahuelter@gmail.com", fecha_nacimiento: nacim, admin: true, tc_apellido: "Mir",
-    tc_nombre: "Lalo", tc_numero: "1234567891234567", tc_pin: 1234, tc_caducidad: caduc)
+    tc_nombre: "Lalo", tc_numero: "4534305368198206", tc_pin: 1234, tc_caducidad: caduc)
 
 User.create(nombre: "Nancy", apellido: "Diaz", password:"123123123", password_confirmation: "123123123", telefono: "12345678910", puntaje: 10, pais: "Argentina", sexo: false, email: "gauchadaunlp@gmail.com", fecha_nacimiento: nacim, admin: true, tc_apellido: nil,
     tc_nombre: nil, tc_numero: nil, tc_pin: nil, tc_caducidad: nil)

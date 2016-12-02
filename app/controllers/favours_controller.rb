@@ -46,22 +46,24 @@ class FavoursController < ApplicationController
   def inicializar_favor
     aux_favor = Favour.all
 
-      if params[:filtrado_user_id].present? && params[:estatus].present?
-        if user_signed_in?
-          if current_user.id == Integer(params[:filtrado_user_id]) # Si no es el mismo usuario que pide la solicitud que no filtre.
-              if params[:estatus] == "todos"
-                aux_favor = aux_favor.user_id(params[:filtrado_user_id])
-              elsif params[:estatus] == "aceptado"
-                aux_favor = aux_favor.user_id(params[:filtrado_user_id]).where(aceptado: true)
-              elsif params[:estatus] == "finalizado"
-                aux_favor = aux_favor.user_id(params[:filtrado_user_id]).where(finalizado: true)
-              end
-          else
-            redirect_to root_path
+      if params[:estatus].present?
+          if params[:estatus] == "-" # Si no se selecciono nada
+            aux_favor = aux_favor.where(aceptado: false).where(finalizado: false)
+          elsif params[:estatus] == "Todos" # Los mios
+            aux_favor = aux_favor.user_id(current_user.id)
+          elsif params[:estatus] == "Aceptado"
+            aux_favor = aux_favor.user_id(current_user.id).where(aceptado: true)
+          elsif params[:estatus] == "Finalizado"
+            aux_favor = aux_favor.user_id(current_user.id).where(finalizado: true)
+          elsif params[:estatus] == "Realizado"
+            aux_favor = []
+            Request.all.each do |r|
+                fav = Favour.find_by(id: r.favour_id)
+                if r.user_id == current_user.id && r.aceptacion == true && fav.finalizado == true
+                  aux_favor << fav
+                end
+            end
           end
-        else
-          redirect_to root_path
-        end
       else
         aux_favor = aux_favor.where(aceptado: false).where(finalizado: false)
       end
@@ -94,9 +96,13 @@ class FavoursController < ApplicationController
       else
         campo = campo.downcase
       end
-      aux_favor = aux_favor.ordenadoPor(campo, forma)
+      unless aux_favor == []
+        aux_favor = aux_favor.ordenadoPor(campo, forma)
+      end
     else
-      aux_favor = aux_favor.ordenadoPorDefault()
+      unless aux_favor == []
+        aux_favor = aux_favor.ordenadoPorDefault()
+      end
     end
     return aux_favor
   end
@@ -110,6 +116,6 @@ class FavoursController < ApplicationController
     redirect_to favours_path
   end
   def favour_params
-    params.require(:favour).permit(:titulo,:descripcion, :ciudad, :image_url, :provincia)
+    params.require(:favour).permit(:titulo, :descripcion, :ciudad, :image_url, :provincia)
   end
 end
