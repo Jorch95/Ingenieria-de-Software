@@ -10,9 +10,9 @@
 <body class="fondo1">
 
   <div class="formulario-margen">
-    <h2>Editar usuario</h2>
-    <h5> Si no desea cambiar de contraseña deje los campos respectivos vacios.</h5>
-    <h5> Para cambiar los datos ingrese la contraseña actual.</h5>
+    <h2 class="titulo">Editar usuario</h2>
+    <h5 class="blanco"> Si no desea cambiar de contraseña deje los campos respectivos vacios.</h5>
+    <h5 class="blanco"> Para cambiar los datos ingrese la contraseña actual.</h5>
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>

@@ -8,10 +8,10 @@
 
 </head>
 
-<body class="fondo3">
+<body class="fondo4">
 
-<div class="formulario-margen" id="relleno-sesion">
-	<h3>Ingresa tus datos</h3>
+<div class="formulario-margen">
+	<h3 class="titulo">Ingresa tus datos</h3>
 
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -33,13 +33,13 @@
 				<%= f.password_field :password, autocomplete: "off", class: 'form-control col' %>
 			</div>
 			<div style="text-align: right;">
-				<%= link_to('Olvidaste la contraseña?', new_user_password_path) %>
+				<%= link_to('Olvidaste la contraseña?', new_user_password_path, :class => "blanco") %>
 			</div>
 			<br>
 			<% if devise_mapping.rememberable? -%>
 				<div class="field">
 					<%= f.check_box :remember_me, id: "recordar"%>
-					<%= f.label "Recordar datos", for: "recordar" %>
+					<%= f.label "Recordar datos", :class => "blanco", for: "recordar" %>
 				</div>
 			<% end -%>
 

@@ -17,12 +17,27 @@
 				document.getElementById("total").value=total;
 			}
 			$(document).on("change, keyup", "#puntos", actualizarPrecio);
+			$('.btn-actualizar').on('click',function() {
+				if $('.btn-actualizar')
+    			$(this).prop("disabled",true);
+    		});
 		});
 	</script>
 
-	<div class="formulario-margen">
-		<h3 class="titulo">Nueva compra de puntos</h3>
+
 		<%= @NEW %>
+		<% if current_user.errors.any? %>
+			<div id="error_explanation">
+  				<div class="alert alert-danger alert-dismissable">
+    				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    				<ul>
+      					<% current_user.errors.full_messages.each do |msg| %>
+        					<li><%= msg %></li>
+      					<% end %>
+    				</ul>
+  				</div>
+			</div>
+		<% end %>
 		<% if @purchase.errors.any? %>
 			<div id="error_explanation">
   				<div class="alert alert-danger alert-dismissable">
@@ -36,104 +51,57 @@
 			</div>
 		<% end %>
 
-		<% if current_user.tc_apellido.nil? && current_user.tc_nombre.nil? && current_user.tc_numero.nil? && current_user.tc_pin.nil? && current_user.tc_caducidad.nil? %>
-			<%= form_tag({controller: "purchases", action: "new"}, method: "get")  do %>
 
+	<div class="formulario-margen">
+	
+			<%= form_for current_user, url: save_card_user_path(current_user)  do |f| %>
+				<h4 class="titulo">Datos de tarjeta</h4>
 				<div class="formulario-reg">
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Apellido</label>
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Apellido</strong>
 						</span>
-						<%= text_field_tag :tarjeta_apellido, params[:tarjeta_apellido], class: 'form-control', :value => @tarjeta_apellido %>	
+						<%= f.text_field :tc_apellido, class: 'form-control tarjeta' %>
 					</div>
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Nombre</label>
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Nombre</strong>
 						</span>
-						<%= text_field_tag :tarjeta_nombre, params[:tarjeta_nombre], class: 'form-control', :value =>  @tarjeta_nombre %>
+						<%= f.text_field :tc_nombre, class: 'form-control tarjeta' %>
 					</div>
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Número</label>
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Número</strong>
 						</span>
-						<%= number_field_tag :tarjeta_numero, params[:tarjeta_numero], class: 'form-control', :value =>  @tarjeta_numero %>
+						<%= f.text_field :tc_numero, class: 'form-control tarjeta' %>
 					</div>
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Pin</label>
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Pin</strong>
 						</span>
-						<%= number_field_tag :tarjeta_pin, params[:tarjeta_pin], class: 'form-control', :value =>  @tarjeta_pin %>
+						<%= f.text_field :tc_pin, class: 'form-control tarjeta' %>
 					</div>
 					<div class="form-group input-group">
 						<label class="sr-only">Tarjeta Caducidad</label>
 						<span class="input-group-addon">
 							<i class="fa fa-credit-card"></i> <strong>Caducidad</strong>
 						</span>
-						<%= date_field_tag :tarjeta_caducidad, params[:tarjeta_caducidad], class: 'form-control', :value =>  @tarjeta_caducidad %>
+						<%= f.date_field :tc_caducidad, class: 'form-control tarjeta' %>
 					</div>
 
-
 					<div class="form-group filtro-padding-laterales">
-		   				<%= submit_tag "Actualizar Datos", :class => 'btn btn-primary btn-sm' %>
+		   				<%= f.submit "Actualizar Datos", :class => 'btn btn-primary btn-sm' %>
 		    		</div>
 		    	</div>
 			<% end %>
-		<% else %> <!-- DEL IF -->
-				<div class="formulario-reg">
-					<div class="form-group input-group">
-						<label class="sr-only">Tarjeta Apellido</label>
-						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <strong>Apellido</strong>
-						</span>
-						<input class="form-control" value='<%= current_user.tc_apellido %>' type="text" disabled>
-					</div>
-
-					<div class="form-group input-group">
-						<label class="sr-only">Tarjeta Nombre</label>
-						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <strong>Nombre</strong>
-						</span>
-						<input class="form-control" value='<%= current_user.tc_nombre %>' type="text" disabled>
-					</div>
-
-					<div class="form-group input-group">
-						<label class="sr-only">Tarjeta Número</label>
-						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <strong>Número</strong>
-						</span>
-						<input class="form-control" value='<%= current_user.tc_numero %>' type="text" disabled>
-					</div>
-
-					<div class="form-group input-group">
-						<label class="sr-only">Tarjeta Pin</label>
-						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <strong>Pin</strong>
-						</span>
-						<input class="form-control" value='<%= current_user.tc_pin %>' type="text" disabled>
-					</div>
-
-
-					<div class="form-group input-group">
-						<label class="sr-only">Tarjeta Caducidad</label>
-						<span class="input-group-addon">
-							<i class="fa fa-credit-card"></i> <strong>Caducidad</strong>
-						</span>
-						<input class="form-control" value='<%= current_user.tc_caducidad %>' type="text" disabled>
-					</div>
-
-				<div class="actions">
-					<%= link_to "Actualizar tarjeta",  edit_user_registration_path, class: 'btn btn-default btm-sm' %>
-				</div>
-			</div>
-		<% end %>
-
-		<br>
-		
+			
 		<%= form_for(@purchase) do |f| %>
+		<h3 class="titulo">Nueva compra de puntos</h3>
+			<p style="color: white">Ante algun cambio de la tarjeta, primero actualizar los datos.</p>
 			<div class="formulario-reg">
 				<div class="form-group input-group">
 					<label class="sr-only">Cantidad de puntos</label>
@@ -151,10 +119,6 @@
 					<%= f.number_field :total, id: "total", class: "form-control", disabled: true %> <!-- Despues de realiza la asignacion en realidad no gurada el valor -->
 				</div>
 
-				<h4 class="titulo">
-					Datos de tarjeta
-				</h4>
-
 				<div class="actions">
 					<%= f.submit "Comprar", :class => 'btn btn-success actions'%>
 				</div>
@@ -163,6 +127,10 @@
 		
 					
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
 
 </body>
 </html>

@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
 		end
 	end
 
-	validate :limite_caducidad
-	def limite_caducidad
+	validate :limite_caducidad_al_crear
+	def limite_caducidad_al_crear
 		unless self.tc_caducidad.nil?
 			if self.tc_caducidad <= Time.now
 				errors.add "La fecha caducidad de la tarjeta ", 'debe caducar como muy pronto mañana.'
@@ -44,6 +44,12 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	validate :limite_caducidad_al_actualizar, on: :save_card
+	def limite_caducidad_al_actualizar
+		if self.tc_caducidad.nil?
+			errors.add "La fecha caducidad de la tarjeta ", 'no debe ser vacio.'
+		end
+	end
 	validates :email, format: { with: /\A[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})\z/, message: ": caracteres permitidos: a-z, A-Z, 0-9, guiones, punto (.)" }
 	validates_format_of :telefono, :with =>  /\d[0-9]\)*\z/ , :message => "Solamente numeros sin espacios"
 
@@ -65,5 +71,10 @@ class User < ActiveRecord::Base
 			end
 		end
 		self.achievement=nil
+	end
+
+	before_destroy :update_card
+	def update_card
+		self.purchases.update_all(user_id: nil)
 	end
 end

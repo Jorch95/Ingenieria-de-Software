@@ -38,7 +38,21 @@
      background-image: url("http://gdurl.com/JCz2");
  }
 
+ .fondo4 {
+     background-image: url("http://gdurl.com/FJBF");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .titulo {
+  font-weight: lighter;
+  font-size: 30pt;
+  color: white
+}
+
+.blanco {
   color: white
 }
 
@@ -196,6 +210,16 @@ input[type="color"]:focus,
   border-top-left-radius: 0;
   border-top-right-radius: 0;
  }
+
+
+ /* PARA LAS TABLAS */
+table {
+    border: 5px solid #F17321;
+    border-radius: 4px;
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+ /*FIN DE LOS ESTILOS PARA LA TABLA*/
 
 @media (max-width: 768px) {
   .logo-inicio {

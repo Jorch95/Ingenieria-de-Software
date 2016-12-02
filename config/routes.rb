@@ -3,8 +3,13 @@ Rails.application.routes.draw do
 match "/404", :to => "errors#not_found", :via => :all
 match "/500", :to => "errors#internal_server_error", :via => :all
 
-resource :purchases
+resource :purchases do
+	get :save, on: :collection
+end
 devise_for :users
+resources :users, only: [] do
+	patch :save_card, on: :member
+end
 #resources :users,:only=>[:show]
 get 'users/:id', to:'users#show', :as => "users"
 get 'requests/solicitar'
