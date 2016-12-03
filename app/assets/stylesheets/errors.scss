@@ -63,7 +63,9 @@
   color: white;
 }
 
-.titulo-error {
+/*404*/
+
+.titulo-error-404 {
   text-align: center;
   opacity: .7;
   font-size: 115px;
@@ -82,7 +84,7 @@
 }
 
 
-.titulo-error:after {
+.titulo-error-404:after {
   content: '404';
   opacity: .7;
   font-size: 120px;
@@ -101,8 +103,66 @@
   animation: noise-1 .2s linear infinite;
 }
 
-.titulo-error:before {
+.titulo-error-404:before {
   content: '404';
+  font-size: 120px;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25px;
+  right: 0;
+  opacity: 0;
+  color: red;
+  animation: noise-2 .2s linear infinite;
+}
+
+/*500*/
+
+.titulo-error-500 {
+  text-align: center;
+  opacity: .7;
+  font-size: 115px;
+  text-align: center;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -80px;
+  right: 0;
+  animation: noise 2s linear infinite;
+  overflow: default;
+}
+
+
+.titulo-error-500:after {
+  content: '500';
+  opacity: .7;
+  font-size: 120px;
+  text-align: center;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25px;
+  right: 0;
+  opacity: 0;
+  color: blue;
+  animation: noise-1 .2s linear infinite;
+}
+
+.titulo-error-500:before {
+  content: '500';
   font-size: 120px;
   text-align: center;
   width: 100px;
