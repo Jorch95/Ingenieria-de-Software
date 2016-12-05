@@ -1,8 +1,11 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications=current_user.notifications
+    @notifications=current_user.notifications.order("created_at desc")
     unless @notifications.any?
       redirect_to root_path
+    end
+    @notifications.each do |n|
+      n.update(checked: true)
     end
   end
 

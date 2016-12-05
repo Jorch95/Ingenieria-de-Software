@@ -66,7 +66,11 @@
 								<% current_user.notifications.order("created_at desc").where(checked: false).limit(4).each do |n|%>
 									<li class="barra">
 										<div style="font-size: 12px; margin-left: 10%">
+											<% if n.url.nil? %>
+												<%= n.texto %>
+											<%else%>
 											<%= link_to n.texto, notifications_redirekt_path(id: n.id), method: :post %>
+											<%end %>
 										</div>
 									</li>
 									<li role="separator" class="divider"></li>
@@ -107,6 +111,11 @@
 									<li class="barra">
 										<%= link_to users_path(:id => current_user ) do %>
 											<i class="fa fa-tasks" aria-hidden="true"></i> Perfil
+										<% end %>
+									</li>
+									<li class="barra">
+										<%= link_to user_requests_path(current_user) do %>
+											<i class="fa fa-hand-o-right" aria-hidden="true"></i> Mis solicitudes
 										<% end %>
 									</li>
 									<% if current_user.admin? %>
