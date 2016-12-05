@@ -115,6 +115,7 @@ class FavoursController < ApplicationController
     end
     redirect_to favours_path
   end
+    
   def favour_params
     params.require(:favour).permit(:titulo, :descripcion, :ciudad, :image_url, :provincia)
   end
