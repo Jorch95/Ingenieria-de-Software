@@ -25,6 +25,6 @@ get 'about/FAQ'
 get 'legal/terms'
 get 'legal/privacy'
 get "/" => "favours#index", :as => "root"
-
+post "notifications/redirekt" => "notifications#redirekt"
 
  end

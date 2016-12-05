@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+  class CommentsController < ApplicationController
   def new
     @comment=Comment.new
   end
@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @favour = Favour.find(params[:favour_id])
     @comment = current_user.comments.new(comentario: params[:comment][:comentario], respuesta: params[:comment][:respuesta], favour_id: @favour.id)
     if @comment.save
-      @favour.user.notifications.create(texto: "Se realizo una pregunta por "+current_user.nombre+" en el favor "+@favour.titulo)
+      @favour.user.notifications.create(texto: "Se realizo una pregunta por "+current_user.nombre+" en el favor "+@favour.titulo, url: "/favours/"+@favour.id.to_s)
       redirect_to favour_url(@favour)
     else
       render :new
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find params[:id]
     if @comment.update(comment_params)
-      @comment.user.notifications.create(texto: "Te respondieron la pregunta en el favor "+Favour.find(@comment.favour_id).titulo)
+      @comment.user.notifications.create(texto: "Te respondieron la pregunta en el favor "+Favour.find(@comment.favour_id).titulo, url: "/favours/"+@comment.favour_id.to_s)
       redirect_to favour_url(@comment.favour_id)
     else
       render :edit

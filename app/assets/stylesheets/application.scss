@@ -34,7 +34,7 @@
     background-size: cover;
 }
 
-.fondo3 { 
+.fondo3 {
      background-image: url("http://gdurl.com/JCz2");
  }
 
@@ -149,8 +149,8 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
-  border-color: #F17321; 
+.uneditable-input:focus {
+  border-color: #F17321;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 112, 38, 0.5);
   outline: 0 none;
 }
@@ -229,6 +229,6 @@ table {
 }
 @media (max-width: 991px) {
   	html { /* No toquen esto pls, que se rompe todo jaja*/
-  		padding-bottom: 120px;	
+  		padding-bottom: 120px;
 	}
 }

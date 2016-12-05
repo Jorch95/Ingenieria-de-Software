@@ -55,7 +55,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 								<i class="fa fa-bell" aria-hidden="true"></i>
 								Notificaciones
-								<% if current_user.notifications.size > 0 %>
+								<% if current_user.notifications.where(checked: false).size > 0 %>
 									<div class="numero-notificaciones">
 										<%=current_user.notifications.size%>
 									</div>
@@ -63,9 +63,11 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu" role="menu">
-								<% current_user.notifications.order("created_at desc").limit(4).each do |n|%>
+								<% current_user.notifications.order("created_at desc").where(checked: false).limit(4).each do |n|%>
 									<li class="barra">
-										<div style="font-size: 12px; margin-left: 10%"><%=n.texto%></div>
+										<div style="font-size: 12px; margin-left: 10%">
+											<%= link_to n.texto, notifications_redirekt_path(id: n.id), method: :post %>
+										</div>
 									</li>
 									<li role="separator" class="divider"></li>
 								<%end%>

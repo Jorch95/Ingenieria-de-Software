@@ -11,4 +11,9 @@ class NotificationsController < ApplicationController
     redirect_to notifications_path
   end
 
+  def redirekt
+    Notification.find(params[:id]).update(checked: true)
+    redirect_to Notification.find(params[:id]).url
+  end
+
 end
