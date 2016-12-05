@@ -5,6 +5,10 @@ class RequestsController < ApplicationController
     @favour=Favour.find(params[:favour_id])
   end
 
+  def index
+    @requests=current_user.requests
+  end
+
   def create
     @favour = Favour.find(params[:favour_id])
     @request= current_user.requests.new(descripcion: params[:request][:descripcion], fecha: params[:request][:fecha], favour_id: @favour.id)
@@ -48,7 +52,10 @@ class RequestsController < ApplicationController
     r=Request.find(params[:id])
     r.update(aceptacion: true)
     #debe eliminar el resto
-    r.favour.requests.where.not(id: params[:id]).destroy_all
+    r.favour.requests.where.not(id: params[:id]).each do |req|
+      req.user.notifications.create(texto: "Se ha rechazado tu solicitud para el favor "+r.favour.titulo)
+      req.destroy
+    end
     r.favour.update(aceptado: true)
     r.user.notifications.create(texto: "Se ha aceptado tu solicitud al favor "+r.favour.titulo, url: "/contact?request_id="+r.id.to_s)
     redirect_to contact_path(request_id: r.id)

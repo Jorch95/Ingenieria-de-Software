@@ -35,7 +35,7 @@
 			<div id="menuDesplegable" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<li class="barra">
-							<%= link_to favours_path, :method => :get do %>
+							<%= link_to root_path do %>
 							<i class="fa fa-sign-language" aria-hidden="true"></i> Favores
 							<% end %>
 					</li>
@@ -57,7 +57,7 @@
 								Notificaciones
 								<% if current_user.notifications.where(checked: false).size > 0 %>
 									<div class="numero-notificaciones">
-										<%=current_user.notifications.size%>
+										<%=current_user.notifications.where(checked: false).size%>
 									</div>
 								<% end %>
 								<span class="caret"></span>

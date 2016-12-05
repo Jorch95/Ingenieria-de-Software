@@ -56,7 +56,8 @@
                   <%end%>
                 <%end%>
               <%else%>
-              <div class="col-md-1"></div>
+              <div class="col-md-1 col-sm-1"></div>
+              <p class="pull-right"><small> hace <%= time_ago_in_words c.updated_at %> </small></p>
               <div class="media-body">
                 <h4 class="media-heading user_name"><%=@favour.user.nombre%></h4>
                 <%=c.respuesta%><br>
