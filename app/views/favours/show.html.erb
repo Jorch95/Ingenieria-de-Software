@@ -16,12 +16,12 @@
     <%end%>
     <% end %>
     <% if current_user == @favour.user %>
-     <%= link_to "Solicitudes", request_path(:favour_id => @favour.id), class: 'btn btn-primary btn-sm' %>
+    <%= link_to "Solicitudes", request_path(:favour_id => @favour.id), class: 'btn btn-primary btn-sm' %>
     <% end %>
     <%else%>
-      <div class="btn btn-warning btn-md disabled">
-        Ya se acepto una solicitud
-      </div>
+    <div class="btn btn-warning btn-md disabled">
+      Ya se acepto una solicitud
+    </div>
     <%end%>
 
   </div>
@@ -43,20 +43,26 @@
               <div class="media-body">
                 <h4 class="media-heading user_name"><%=c.user.nombre%></h4>
                 <%=c.comentario%><br>
-                <!--
+              </div>
+              <!-- Responder -->
+              <%if c.respuesta.nil?%>
                 <%if user_signed_in? && current_user.id==@favour.user.id%>
-                  <%=form_for @favour.comments.build do |f|%>
-                    <%= hidden_field_tag :favour_id, @favour.id %>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                      <%= f.text_field :respuesta, required: true, placeholder: 'Responda', class: "form-control" %>
-                    </div><div class="col-md-2">
-                      <%= f.submit "Enviar", :class => 'btn btn-default actions'%>
-                    </div>
+                  <%=form_for c do |f|%>
+                  <div class="col-md-8">
+                    <%= f.text_field :respuesta, required: true, placeholder: 'Ingrese la respuesta', class: "form-control" %>
+                  </div><div class="col-md-2">
+                    <%= f.submit "Responder", :class => 'btn btn-default actions'%>
+                  </div>
                   <%end%>
                 <%end%>
-              -->
+              <%else%>
+              <div class="col-md-1"></div>
+              <div class="media-body">
+                <h4 class="media-heading user_name"><%=@favour.user.nombre%></h4>
+                <%=c.respuesta%><br>
               </div>
+              <%end%>
+
             </div>
             <%end%>
           </div>

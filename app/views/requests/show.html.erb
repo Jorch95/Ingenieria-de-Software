@@ -12,6 +12,8 @@
 					<%= link_to raw("<span class='fa fa-sort-alpha-desc'></span>"), request_path(favour_id: @favour.id, sort: "usuario", sentido: "desc-u") %>
 				<% end %>
 			</th>
+			<th> Logro
+			</th>
 			<th> Fecha
 				<% if @sentido == "desc-f" %>
 					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), request_path(favour_id: @favour.id, sort: "fecha", sentido: "asc-f") %>
@@ -26,6 +28,7 @@
 		<% @requests.each do |r| %>
 			<tr>
 				<td> <%= r.user.nombre %> </td>
+				<td> <%= r.user.achievement.titulo %> </td>
 				<td> <%= r.fecha %> </td>
 				<td> <%= r.descripcion %> </td>
 				<td >

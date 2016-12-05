@@ -112,6 +112,8 @@ class FavoursController < ApplicationController
     if f.aceptado==false
       f.destroy
       flash[:notice]="Se elimino satisfactoriamente"
+    else
+      flash[:notice]="No se puede eliminar un favor ya aceptado"
     end
     redirect_to favours_path
   end

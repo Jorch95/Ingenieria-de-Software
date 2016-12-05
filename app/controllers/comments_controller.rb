@@ -13,4 +13,22 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find params[:id]
+  end
+
+  def update
+    @comment = Comment.find params[:id]
+    if @comment.update(comment_params)
+      @comment.user.notifications.create(texto: "Te respondieron la pregunta en el favor "+Favour.find(@comment.favour_id).titulo)
+      redirect_to favour_url(@comment.favour_id)
+    else
+      render :edit
+    end
+  end
+
+  def comment_params
+    params.require(:comment).permit(:respuesta)
+  end
+
 end
