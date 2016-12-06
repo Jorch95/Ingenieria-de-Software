@@ -18,7 +18,7 @@
 			<tr>
 				<td> <%= r.fecha %> </td>
 				<td>
-					<%= r.favour.titulo %>
+					<%= link_to r.favour.titulo,favour_path(r.favour)%>
 				</td>
 				<td> <%= r.descripcion %> </td>
 				<td>

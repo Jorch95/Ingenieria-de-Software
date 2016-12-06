@@ -29,6 +29,6 @@ get 'legal/terms'
 get 'legal/privacy'
 get "/" => "favours#index", :as => "root"
 post "notifications/redirekt" => "notifications#redirekt"
-
+post "notifications/destroy_all" => "notifications#destroy_all"
 
  end

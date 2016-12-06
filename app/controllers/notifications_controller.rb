@@ -19,4 +19,9 @@ class NotificationsController < ApplicationController
     redirect_to Notification.find(params[:id]).url
   end
 
+  def destroy_all
+    current_user.notifications.destroy_all
+    flash[:notice]="Se eliminaron todas las notificaciones correctamente"
+    redirect_to root_path
+  end
 end
