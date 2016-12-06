@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 		redirect_to new_purchases_path
 	end
 
+  def ranking
+		@users = User.all
+    @puntaje = @users.order(puntaje: :desc)
+	end
+
 	private
 
 	def save_card_params

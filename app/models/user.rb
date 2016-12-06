@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
 	validates :tc_pin, :allow_nil => true, length: { minimum: 4, maximum: 4 }
 
 	validate :tarjeta_nom_ap_num
+	def ranking
+		@users = User.all.order(:puntaje)
+	end
 	def tarjeta_nom_ap_num
 		if self.tc_numero == "" || self.tc_nombre == "" || self.tc_apellido == ""
 			errors.add "Los Campos numero, nombre y apellido ", 'no deben estar vacios.'

@@ -12,7 +12,9 @@ resources :users, only: [] do
 	resources :requests
 end
 #resources :users,:only=>[:show]
+get 'users/ranking', to:'users#ranking'
 get 'users/:id', to:'users#show', :as => "users"
+get 'purchases/analisis', to:'purchases#analisis', :as => "analisis"
 get 'requests/solicitar'
 resources :favours
 resources :achievements

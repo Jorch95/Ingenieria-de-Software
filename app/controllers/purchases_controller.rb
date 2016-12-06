@@ -56,9 +56,13 @@ class PurchasesController < ApplicationController
 			render :new
 		end
 	end
-	
+
+	def analisis
+			@compras = Purchase.all
+	end
+
 	private
-	
+
 	def purchase_params
 		params.require(:purchase).permit(:puntos, :total)
 	end
