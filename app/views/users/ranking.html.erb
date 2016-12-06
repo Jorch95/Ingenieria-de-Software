@@ -7,18 +7,22 @@
   <link rel="javascripts" href="assets/stylesheets/application.js">
 </head>
 <body class="fondo1">
-<h1 class="titulo">Ranking de usuarios</h1>
+<h1 class="titulo center">Ranking de usuarios</h1>
 	<br>
 	<table class="table table-striped table-bordered" style="width: 70% ; background-color: #ffa141" align="center">
 		<tr>
+			<th> #</th>
 			<th> Nombre </th>
 			<th> Puntaje </th>
+			<th> Logros </th>
 		</tr>
-
+		<% i=0%>
 		<% @puntaje.each do |p| %>
 			<tr>
+				<td> <%=i+=1%></td>
 				<td> <%= p.nombre %> </td>
 				<td> <%= p.puntaje %> </td>
+				<td> <%= p.achievement.titulo %> </td>
 			</tr>
 		<% end %>
 	</table>

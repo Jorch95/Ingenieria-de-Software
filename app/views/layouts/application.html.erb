@@ -4,6 +4,7 @@
 	<title>Gauchada</title>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 	<%= csrf_meta_tags %>
 
 	<%= favicon_link_tag('http://gdurl.com/UBYV') %> <!-- logo.png -->
@@ -122,6 +123,11 @@
 										<li class="barra">
 											<%= link_to analisis_path do %>
 												<i class="fa fa-line-chart" aria-hidden="true"></i> Análisis
+											<% end %>
+										</li>
+										<li class="barra">
+											<%= link_to users_ranking_path do %>
+												<i class="fa fa-slack" aria-hidden="true"></i> Ranking
 											<% end %>
 										</li>
 										<li class="barra">

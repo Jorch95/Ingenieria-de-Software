@@ -65,3 +65,7 @@ gem 'country_select'
 
 # Para los iconos
 gem 'font-awesome-rails'
+
+# Para los graficos del analisis
+gem 'chartkick'
+gem 'groupdate'

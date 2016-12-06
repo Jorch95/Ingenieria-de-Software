@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
 	before_action :authenticate_user!
+	before_action :fecha_correcta
 
 	def new
 		@purchase = Purchase.new
@@ -58,10 +59,34 @@ class PurchasesController < ApplicationController
 	end
 
 	def analisis
-			@compras = Purchase.all
+			comprasAux = Purchase.all
+			if params[:fecha_inicial].present? && params[:fecha_final].present?
+				#comprasAux = comprasAux.where(:created_at => params[:fecha_inicial]...params[:fecha_final])
+				comprasAux = comprasAux.where("created_at BETWEEN '#{Date.parse(params[:fecha_inicial]).beginning_of_day}' AND '#{Date.parse(params[:fecha_final]).end_of_day}'")
+				@compras = comprasAux.group_by_day(:created_at).count
+			else 
+				@compras = comprasAux.group_by_day(:created_at).count
+			end
+			gananciaAux = 0 
+			comprasAux.each do |c|
+				gananciaAux += c.total
+			end
+			@ganancia = gananciaAux
+			
 	end
 
 	private
+
+	def fecha_correcta
+		if params[:fecha_inicial].present? && params[:fecha_final].present?
+			if params[:fecha_inicial] > Time.now || params[:fecha_final] > Time.now
+				flash[:alert] = 'Las fechas deben ser anterior al actual'
+			end
+			if params[:fecha_inicial] > params[:fecha_final]
+				flash[:alert] = 'Fecha inicial debe ser menor que fecha final'
+			end
+		end
+	end
 
 	def purchase_params
 		params.require(:purchase).permit(:puntos, :total)

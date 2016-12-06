@@ -1,24 +1,40 @@
 <body class="fondo1">
-<h1>Analisis de pagos </h1>
+<h1 class="titulo center">Analisis de pagos </h1>
 <div class="formulario-margen">
-<h2 class="titulo">Elija dos fechas</h2>
+	<h3 class="blanco">Elija dos fechas</h3>
 
-<!-- <%= form_for(@purchases) do |f| %>
-<div class="formulario-reg">
-  	<div class="form-group input-group">
-  <label class="sr-only">Fecha inicial</label>
-  <span class="input-group-addon">
-    <i class="fa fa-pencil"></i> <%= f.label "Fecha inicial" %>
-  </span>
-  <%= f.text_field :fecha1, required: true,
-    placeholder: 'Ingrese fecha incial', class: "form-control" %>
+	<%= form_tag({controller: "purchases", action: "analisis"}, method: "get")  do %>
+		<div class="formulario-reg">
+			<div class="form-group input-group">
+				<label class="sr-only">Fecha inicial</label>
+				<span class="input-group-addon">
+					<i class="fa fa-calendar-plus-o"></i> <%= label_tag "Fecha inicial" %>
+				</span>
+				<%= date_field_tag :fecha_inicial, nil, required: true, :value => params[:fecha_inicial], class: "form-control" %>
+			</div>
+			<div class="form-group input-group">
+				<label class="sr-only">Fecha final</label>
+				<span class="input-group-addon">
+					<i class="fa fa-calendar-plus-o"></i> <%= label_tag "Fecha final" %>
+				</span>
+	  			<%= date_field_tag :fecha_final, nil, required: true, :value => params[:fecha_final], class: "form-control" %>
+			</div>
+			
+			<div class="actions">
+				<%= submit_tag "Mostrar", :class => 'btn btn-default actions'%>
+				<%= link_to favours_path, method: "get" do %>
+					<i id="recarga" class="fa fa-refresh" aria-hidden="true"></i>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
 </div>
-<div class="actions">
-  <%= f.submit "Guardar", :class => 'btn btn-default actions'%>
+<br>
+<h3 class="center blanco"> Ganancia total entre los dias: <%= @ganancia %> </h3>
+<div class="formulario-margen", style="background-color: white; padding: 20px">
+	<%= line_chart @compras %>
 </div>
-<% end %>
-</div>
-</div>
+<br>
+<br>
 </body>
 
--->
