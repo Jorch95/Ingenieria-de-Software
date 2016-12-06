@@ -32,10 +32,9 @@ class FavoursController < ApplicationController
   end
   def create
     @favour=current_user.favours.new favour_params
-    user = current_user
-    puntajeN = user.puntaje-1
-    user.update(puntaje: puntajeN)
+    @puntaje = current_user.puntaje
     if @favour.save
+      current_user.update(puntaje: current_user.puntaje-1)
       redirect_to action: "index"
     else
       render :new
@@ -117,7 +116,7 @@ class FavoursController < ApplicationController
     end
     redirect_to favours_path
   end
-    
+
   def favour_params
     params.require(:favour).permit(:titulo, :descripcion, :ciudad, :image_url, :provincia)
   end
