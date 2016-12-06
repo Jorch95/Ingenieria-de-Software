@@ -31,9 +31,11 @@
 </div>
 <br>
 <h3 class="center blanco"> Ganancia total entre los dias: <%= @ganancia %> </h3>
+<% unless flash.any? %>
 <div class="formulario-margen", style="background-color: white; padding: 20px">
-	<%= line_chart @compras %>
+	<%= area_chart @compras,colors: ["#FFB047"] %>
 </div>
+<% end %>
 <br>
 <br>
 </body>

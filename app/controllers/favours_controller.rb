@@ -32,9 +32,12 @@ class FavoursController < ApplicationController
   end
   def create
     @favour=current_user.favours.new favour_params
-    @puntaje = current_user.puntaje
+    @puntaje = current_user.puntaje    
     if @favour.save
       current_user.update(puntaje: current_user.puntaje-1)
+      if favour_params[:image_url].blank?
+        @favour.update(image_url: "http://gdurl.com/GY5O")
+      end
       redirect_to action: "index"
     else
       render :new
@@ -50,18 +53,19 @@ class FavoursController < ApplicationController
             aux_favor = aux_favor.where(aceptado: false).where(finalizado: false)
           elsif params[:estatus] == "Todos" # Los mios
             aux_favor = aux_favor.user_id(current_user.id)
-          elsif params[:estatus] == "Aceptado"
+          elsif params[:estatus] == "Aceptados"
             aux_favor = aux_favor.user_id(current_user.id).where(aceptado: true)
-          elsif params[:estatus] == "Finalizado"
+          elsif params[:estatus] == "Finalizados"
             aux_favor = aux_favor.user_id(current_user.id).where(finalizado: true)
-          elsif params[:estatus] == "Realizado"
-            aux_favor = []
-            Request.all.each do |r|
+          elsif params[:estatus] == "Realizados"
+            id_a=[]
+            current_user.requests.each do |r|
                 fav = Favour.find_by(id: r.favour_id)
-                if r.user_id == current_user.id && r.aceptacion == true && fav.finalizado == true
-                  aux_favor << fav
+                if r.aceptacion == true && fav.finalizado == true
+                  id_a << fav.id
                 end
             end
+            aux_favor= aux_favor.where(id: id_a)
           end
       else
         aux_favor = aux_favor.where(aceptado: false).where(finalizado: false)
@@ -90,16 +94,17 @@ class FavoursController < ApplicationController
       else
         flash[:alert]="Hubo un error critico, por favor reinicia la pagina."
       end
+
       if campo == "Fecha"
         campo = "created_at"
       else
         campo = campo.downcase
       end
-      unless aux_favor == []
+      unless aux_favor.any?
         aux_favor = aux_favor.ordenadoPor(campo, forma)
       end
     else
-      unless aux_favor == []
+      unless aux_favor.any?
         aux_favor = aux_favor.ordenadoPorDefault()
       end
     end
@@ -112,7 +117,7 @@ class FavoursController < ApplicationController
       f.destroy
       flash[:notice]="Se elimino satisfactoriamente"
     else
-      flash[:notice]="No se puede eliminar un favor ya aceptado"
+      flash[:alert]="No se puede eliminar un favor ya aceptado"
     end
     redirect_to favours_path
   end

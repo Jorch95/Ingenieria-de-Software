@@ -3,6 +3,7 @@
 	<br>
 	<h3 class="titulo" align="center"> Solicitudes para: <%= @favour.titulo %></h3>
 	<br>
+	<% if @requests.any? %>
 	<table class="table table-striped table-bordered" style="width: 70% ; background-color: #ffa141" align="center">
 		<tr>
 			<th> Usuario
@@ -37,4 +38,7 @@
 			</tr>
 		<% end %>
 	</table>
+	<%else%>
+	<h4 class="blanco center">No posees solicitantes</h4>
+	<%end%>
 </body>

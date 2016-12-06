@@ -3,7 +3,7 @@ class Favour < ActiveRecord::Base
   has_many :requests, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :grade
-  validate :default_image
+  #validate :default_image
   validate :provincias
 
   scope :provincia, -> (provincia) { where provincia: provincia }

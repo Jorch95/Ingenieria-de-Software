@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :es_admin?
+	before_action :es_admin?, only: [:ranking]
   def show
       @user = User.find(params[:id])
   end

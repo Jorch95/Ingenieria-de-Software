@@ -71,8 +71,7 @@ class PurchasesController < ApplicationController
 			comprasAux.each do |c|
 				gananciaAux += c.total
 			end
-			@ganancia = gananciaAux
-			
+			@ganancia = gananciaAux			
 	end
 
 	private
