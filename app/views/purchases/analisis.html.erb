@@ -19,10 +19,10 @@
 				</span>
 	  			<%= date_field_tag :fecha_final, nil, required: true, :value => params[:fecha_final], class: "form-control" %>
 			</div>
-			
+
 			<div class="actions">
 				<%= submit_tag "Mostrar", :class => 'btn btn-default actions'%>
-				<%= link_to favours_path, method: "get" do %>
+				<%= link_to analisis_path, method: "get" do %>
 					<i id="recarga" class="fa fa-refresh" aria-hidden="true"></i>
 				<% end %>
 			</div>
@@ -39,4 +39,3 @@
 <br>
 <br>
 </body>
-

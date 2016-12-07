@@ -22,6 +22,7 @@ class GradesController < ApplicationController
     if @grade.save
       redirect_to root_path
       flash[:notice]="La calificacion se realizo correctamente"
+      @grade.user.notifications.create(texto: "Te han calificado por realizar el favor "+@grade.favour.titulo, url:"/users/"+@grade.user.id.to_s)
     else
       render :new
     end

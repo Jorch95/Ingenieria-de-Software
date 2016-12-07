@@ -64,14 +64,14 @@ class PurchasesController < ApplicationController
 				#comprasAux = comprasAux.where(:created_at => params[:fecha_inicial]...params[:fecha_final])
 				comprasAux = comprasAux.where("created_at BETWEEN '#{Date.parse(params[:fecha_inicial]).beginning_of_day}' AND '#{Date.parse(params[:fecha_final]).end_of_day}'")
 				@compras = comprasAux.group_by_day(:created_at).count
-			else 
+			else
 				@compras = comprasAux.group_by_day(:created_at).count
 			end
-			gananciaAux = 0 
+			gananciaAux = 0
 			comprasAux.each do |c|
 				gananciaAux += c.total
 			end
-			@ganancia = gananciaAux			
+			@ganancia = gananciaAux
 	end
 
 	private

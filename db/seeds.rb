@@ -27,13 +27,13 @@ puts 'Creo algunos compras ficticias'
   sleep 2 # Duermo 2 segundos
   n.purchases.create(puntos: 10, total: 120, created_at: Time.new(2016,12,01))
   n.update(puntaje: 12)
-  users[0].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,02))
+  users[0].purchases.create(puntos: 10, total: 120, created_at: Time.new(2016,12,02))
   users[0].update(puntaje: 10)
-  users[1].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,03))
+  users[1].purchases.create(puntos: 10, total: 120, created_at: Time.new(2016,12,03))
   users[1].update(puntaje: 10)
-  users[2].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,04))
+  users[2].purchases.create(puntos: 10, total: 120, created_at: Time.new(2016,12,04))
   users[2].update(puntaje: 10)
-  users[3].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,05))
+  users[3].purchases.create(puntos: 10, total: 120, created_at: Time.new(2016,12,05))
   users[3].update(puntaje: 10)
 
 puts 'Creo algunos favores'
