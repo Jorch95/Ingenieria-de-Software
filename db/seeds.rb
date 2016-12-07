@@ -11,7 +11,7 @@ puts 'Creo algunos usuarios'
 nacim = DateTime.new(1990, 11, 02) # Estandar ISO 8601: YYYY, MM, DD
 caduc = DateTime.new(2020, 6, 22)
 users = []
-4.times do |i|
+5.times do |i|
   users[i] = User.create(nombre: "Lalo#{i}", apellido: "Mir#{i}", password:"password",password_confirmation: "password", telefono: "5345434444", puntaje: 10, pais: "Argentina", sexo: true, email: "lalo#{i}@gmail.com", fecha_nacimiento: nacim, admin: false, tc_apellido: "Mir",
     tc_nombre: "Lalo", tc_numero: "4534305368198206", tc_pin: 4379, tc_caducidad: caduc)
 end
@@ -25,10 +25,16 @@ User.create(nombre: "Nancy", apellido: "Diaz", password:"123123123", password_co
 puts 'Creo algunos compras ficticias'
   n.purchases.create(puntos: 2, total: 24)
   sleep 2 # Duermo 2 segundos
-  n.purchases.create(puntos: 10, total: 120)
+  n.purchases.create(puntos: 10, total: 120, created_at: Time.new(2016,12,01))
   n.update(puntaje: 12)
-  users[0].purchases.create(puntos: 10, total: 120)
+  users[0].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,02))
   users[0].update(puntaje: 10)
+  users[1].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,03))
+  users[1].update(puntaje: 10)
+  users[2].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,04))
+  users[2].update(puntaje: 10)
+  users[3].purchases.create(puntos: 10, total: 120, created_at: time.new(2016,12,05))
+  users[3].update(puntaje: 10)
 
 puts 'Creo algunos favores'
 users[0].favours.find_or_create_by(titulo: "Ayuda 0", descripcion:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum justo vitae mi commodo cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget dapibus dui, eu viverra mauris. Fusce quis justo mi. Donec viverra aliquet nisi. Phasellus auctor quam eget eros porta consectetur. Nullam vel efficitur erat. Quisque pulvinar eget arcu semper finibus. Suspendisse euismod massa vitae nisl dapibus condimentum. Sed ultricies turpis risus, quis tincidunt diam ullamcorper ut. Pellentesque pulvinar augue libero, quis iaculis leo commodo tempor. Phasellus eleifend convallis euismod. Ut urna ex, malesuada facilisis nibh in, imperdiet varius lorem.", ciudad: "Mendoza", provincia: "Mendoza", image_url: "http://gdurl.com/Tt5L" )
