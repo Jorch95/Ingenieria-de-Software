@@ -18,7 +18,7 @@ class GradesController < ApplicationController
     @favour=Favour.find(params[:favour_id])
     @user=@favour.requests.first.user
     f=Favour.find(params[:favour_id])
-    @grade=f.requests.first.user.grades.new(descripcion: params[:grade][:descripcion], calificacion:params[:grade][:calificacion],favour_id: f.id)
+    @grade=f.requests.first.user.grades.new(descripcion: params[:grade][:descripcion], calificacion: params[:grade][:calificacion],favour_id: f.id)
     if @grade.save
       redirect_to root_path
       flash[:notice]="La calificacion se realizo correctamente"
