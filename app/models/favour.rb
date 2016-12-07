@@ -3,7 +3,7 @@ class Favour < ActiveRecord::Base
   has_many :requests, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :grade
-  #validate :default_image
+  validate :image_correct?
   validate :provincias
 
   scope :provincia, -> (provincia) { where provincia: provincia }
@@ -13,12 +13,18 @@ class Favour < ActiveRecord::Base
   scope :ciudad, -> (ciudad) { where ciudad: ciudad }
   scope :ordenadoPor, -> (campo,criterio) {order(campo + " " + criterio)}
   scope :ordenadoPorDefault, -> {order("titulo asc")}
+  scope :image, -> (image_url) { where "favours.image_url like ?", "%" + '.com' + "%" }
 
-  def default_image
-    if self.image_url==""
-        errors.add :image_url, "Tiene que dejar la imagen por defecto o agregar una."
+  def image_correct?
+    if self.image_url.blank?
+      self.image_url="http://gdurl.com/GY5O"
+    else
+        if !self.image_url.include? ".com"
+          errors.add :image_url, "tiene que ser una URL para poder subir la foto"
+        end
     end
   end
+
   def provincias
     cant = 0
     provincias_validas = ['Buenos Aires', 'Tucuman', 'Chaco', 'Neuquen', 'Rio Negro',
