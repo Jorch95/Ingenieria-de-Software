@@ -15,6 +15,9 @@
 			</th>
 			<th> Logro
 			</th>
+			<th>
+				Calificacion
+			</th>
 			<th> Fecha
 				<% if @sentido == "desc-f" %>
 					<%= link_to raw("<span class='fa fa-sort-numeric-asc'></span>"), request_path(favour_id: @favour.id, sort: "fecha", sentido: "asc-f") %>
@@ -28,8 +31,12 @@
 
 		<% @requests.each do |r| %>
 			<tr>
-				<td> <%= r.user.nombre %> </td>
+				<td> <%= link_to r.user.nombre, user_calificaciones_path(user_id: r.user.id, back_url:"/requests/"+@favour.id.to_s+"?favour_id="+@favour.id.to_s)%> </td>
 				<td> <%= r.user.achievement.titulo %> </td>
+				<td>
+					<%=r.user.grades.where(calificacion: true).size%> <i class="fa fa-thumbs-up"></i>
+					<%=r.user.grades.where(calificacion: false).size%> <i class="fa fa-thumbs-down"></i>
+				</td>
 				<td> <%= r.fecha %> </td>
 				<td> <%= r.descripcion %> </td>
 				<td >

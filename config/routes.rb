@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+resources :grades
+
 match "/404", :to => "errors#not_found", :via => :all
 match "/500", :to => "errors#internal_server_error", :via => :all
 
@@ -16,6 +18,7 @@ get 'users/ranking', to:'users#ranking'
 get 'users/:id', to:'users#show', :as => "users"
 get 'purchases/analisis', to:'purchases#analisis', :as => "analisis"
 get 'requests/solicitar'
+get 'user/calificaciones', to: "grades#calificaciones"
 resources :favours
 resources :achievements
 resources :comments

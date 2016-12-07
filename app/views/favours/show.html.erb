@@ -5,23 +5,36 @@
     <h4> Provincia: <%= @favour.provincia %>. Ciudad: <%= @favour.ciudad %> </h4>
     <h4> Publicado por: <%= @favour.user.nombre %> <%= @favour.user.apellido %> </h4>
     <% if @favour.aceptado==false %>
-    <% if user_signed_in? && current_user.id != @favour.user.id && @requests.where(favour_id: @favour.id).empty?%>
-    <%= link_to "Enviar Solicitud", new_request_path(:favour_id => @favour.id), class: 'btn btn-success btn-sm' %>
-    <% end %>
-    <% if current_user == @favour.user %>
-    <%= link_to "Editar", edit_favour_path(@favour), class: 'btn btn-info btn-sm' %>
+      <% if user_signed_in? && current_user.id != @favour.user.id && @requests.where(favour_id: @favour.id).empty?%>
+        <%= link_to "Enviar Solicitud", new_request_path(:favour_id => @favour.id), class: 'btn btn-success btn-sm' %>
+      <% end %>
+      <% if current_user == @favour.user %>
+        <%= link_to "Editar", edit_favour_path(@favour), class: 'btn btn-info btn-sm' %>
 
-    <% if @favour.aceptado==false %>
-    <%= link_to "Eliminar", @favour, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
-    <%end%>
-    <% end %>
-    <% if current_user == @favour.user %>
-    <%= link_to "Solicitudes", request_path(:favour_id => @favour.id), class: 'btn btn-primary btn-sm' %>
-    <% end %>
+        <% if @favour.aceptado==false %>
+          <%= link_to "Eliminar", @favour, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: "Estas seguro gaucho?" } %>
+        <%end%>
+      <% end %>
+      <% if current_user == @favour.user %>
+        <%= link_to "Solicitudes", request_path(:favour_id => @favour.id), class: 'btn btn-primary btn-sm' %>
+      <% end %>
     <%else%>
-    <div class="btn btn-warning btn-md disabled">
-      Ya se acepto una solicitud
-    </div>
+      <div class="btn btn-warning btn-md disabled">
+        Ya se acepto una solicitud
+      </div>
+      <% if current_user.id==@favour.user.id %>
+        <% unless @favour.grade.nil? %>
+          <% if @favour.grade.calificacion%>
+          <button type="button" class="btn btn-default disabled">Calificacion<i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button>
+          <%else%>
+          <button type="button" class="btn btn-default disabled">Calificacion<i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+          <%end%>
+        <%else%>
+        <%= link_to "Calificar solicitante", new_grade_path(favour_id: @favour.id), class: "btn btn-info btn-md" %>
+        <%end%>
+
+
+      <% end %>
     <%end%>
 
   </div>
