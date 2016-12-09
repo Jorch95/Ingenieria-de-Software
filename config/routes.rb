@@ -18,6 +18,7 @@ get 'users/ranking', to:'users#ranking'
 get 'users/:id', to:'users#show', :as => "users"
 get 'purchases/analisis', to:'purchases#analisis', :as => "analisis"
 get 'requests/solicitar'
+get 'user/calificaciones', to: "grades#calificaciones"
 resources :favours
 resources :achievements
 resources :comments

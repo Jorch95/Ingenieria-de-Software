@@ -6,7 +6,13 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests=current_user.requests
+    id_a=[]
+    current_user.requests.each do |r|
+        unless r.favour.finalizado
+          id_a << r.id
+        end
+    end
+    @requests=Request.where(id: id_a)
   end
 
   def create

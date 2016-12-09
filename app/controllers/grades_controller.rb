@@ -26,4 +26,8 @@ class GradesController < ApplicationController
       render :new
     end
   end
+
+  def calificaciones
+    @user=User.find(params[:user_id])
+  end
 end

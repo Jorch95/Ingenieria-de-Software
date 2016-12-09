@@ -58,7 +58,10 @@
 								Notificaciones
 								<% if current_user.notifications.where(checked: false).size > 0 %>
 									<div class="numero-notificaciones">
-										<%=current_user.notifications.where(checked: false).size%>
+										<%=current_user.notifications.where(checked: false).limit(4).size%>
+										<%if current_user.notifications.where(checked: false).size>4%>
+										<%="+"%>
+										<%end%>
 									</div>
 								<% end %>
 								<span class="caret"></span>
