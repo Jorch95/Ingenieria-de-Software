@@ -29,5 +29,6 @@ class GradesController < ApplicationController
 
   def calificaciones
     @user=User.find(params[:user_id])
+    @back=params[:back_url]
   end
 end

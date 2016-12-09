@@ -31,7 +31,7 @@
 
 		<% @requests.each do |r| %>
 			<tr>
-				<td> <%= link_to r.user.nombre, user_calificaciones_path(user_id: r.user.id)%> </td>
+				<td> <%= link_to r.user.nombre, user_calificaciones_path(user_id: r.user.id, back_url:"/requests/"+@favour.id.to_s+"?favour_id="+@favour.id.to_s)%> </td>
 				<td> <%= r.user.achievement.titulo %> </td>
 				<td>
 					<%=r.user.grades.where(calificacion: true).size%> <i class="fa fa-thumbs-up"></i>
