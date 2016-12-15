@@ -32,7 +32,7 @@ class FavoursController < ApplicationController
   end
   def create
     @favour=current_user.favours.new favour_params
-    @puntaje = current_user.puntaje    
+    @puntaje = current_user.puntaje
     if @favour.save
       current_user.update(puntaje: current_user.puntaje-1)
       if favour_params[:image_url].blank?
@@ -54,7 +54,7 @@ class FavoursController < ApplicationController
           elsif params[:estatus] == "Todos" # Los mios
             aux_favor = aux_favor.user_id(current_user.id)
           elsif params[:estatus] == "Aceptados"
-            aux_favor = aux_favor.user_id(current_user.id).where(aceptado: true)
+            aux_favor = aux_favor.user_id(current_user.id).where(aceptado: true).where.not(finalizado:true)
           elsif params[:estatus] == "Finalizados"
             aux_favor = aux_favor.user_id(current_user.id).where(finalizado: true)
           elsif params[:estatus] == "Realizados"
